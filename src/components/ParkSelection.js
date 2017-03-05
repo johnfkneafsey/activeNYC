@@ -13,7 +13,9 @@ export class ParkSelection extends Component {
     }
 
     onPressButton(park) {
-        console.log(park);
+        this.props.dispatch(actions.selectParkType(park));
+        this.props.dispatch(actions.pullParkData(park));
+
     }
 
 
@@ -90,7 +92,10 @@ export class ParkSelection extends Component {
 }
 
 const mapStateToProps = (state, props) => ({
-    parkType: state.parkType
+    parkType: state.parkType,
+    facilityData: state.facilityData,
+    initialPosition: state.initialPosition,
+    lastPosition: state.lastPosition
 });
 
 

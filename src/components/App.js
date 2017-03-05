@@ -1,6 +1,6 @@
 import React from 'react';
 import ParkSelection from './ParkSelection';
-import DisplayParks from './DisplayParks';
+import HomeContainer from './HomeContainer';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -20,7 +20,7 @@ class App extends React.Component {
         }
         else if (this.props.parkType) {
             return (
-                    <DisplayParks />
+                    <HomeContainer />
                     )
         }
     }
