@@ -38,3 +38,11 @@ export const saveLastPosition = (lastPosition) => ({
 	lastPosition: lastPosition
 
 })
+
+
+export const SELECTED_FACILITY = 'SELECTED_FACILITY'
+export const selectedFacility = (facility) => ({
+	type: SELECTED_FACILITY,
+	facility: facility
+
+})

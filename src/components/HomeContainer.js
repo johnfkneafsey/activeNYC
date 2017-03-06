@@ -3,6 +3,8 @@ import GeolocationExample from './GeolocationExample'
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
+import { Container, Content, Button, Text } from 'native-base';
+import { View } from 'react-native';
 
 export  class HomeContainer extends Component {
 
@@ -41,10 +43,13 @@ export  class HomeContainer extends Component {
 
    render() {
       return (
-         <GeolocationExample
-            initialPosition = {this.state.initialPosition}
-            lastPosition = {this.state.lastPosition}
-         />
+
+                <GeolocationExample
+                initialPosition = {this.state.initialPosition}
+                lastPosition = {this.state.lastPosition}
+                />
+
+
       );
    }
 }
