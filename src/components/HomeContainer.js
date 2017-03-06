@@ -32,7 +32,7 @@ export  class HomeContainer extends Component {
          var lastPosition = JSON.stringify(position);
          this.setState({lastPosition});
          this.props.dispatch(actions.saveLastPosition(JSON.parse(lastPosition)))
-         this.props.dispatch(actions.showMarkers(this.props.facilityData, this.props.lastPosition.coords.latitude, this.props.lastPosition.coords.longitude, 5))
+         this.props.dispatch(actions.showMarkers(this.props.facilityData, this.props.lastPosition.coords.latitude, this.props.lastPosition.coords.longitude, 15))
       });
    }
    componentWillUnmount = () => {

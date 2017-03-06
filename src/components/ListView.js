@@ -23,21 +23,74 @@ export class ListView extends React.Component {
     constructor(props) {
         super(props);
     }  
+  
+renderListView() {
+  this.props.dispatch(actions.renderListView());
+}
+
+  
 
   render() {
+
+    const nameObj = {
+            basketball: "Basketball",
+            soccerAndFootball: "Soccer",
+            runningtracks: "Tracks",
+            pools_indoor: "Swimming",
+            tennis: "Tennis",
+            bocce: "Bocce",
+            cricket: "Cricket",
+            handball: "Handball",
+            kayak: "Kayak and Canoe ",
+            iceskating: "Ice Skating"
+        }      
+
+    let displayTitle = nameObj[this.props.parkType]
+
+    let results = this.props.markers.map(facility => {
+      return (
+            <Card key={facility.Prop_ID}>
+                <CardItem>
+                    <Body>
+                        <Thumbnail style={{width: 240, height: 132}} square source={{uri: 'https://static01.nyt.com/images/2010/08/06/arts/06nyctennis-5/TENN-3-popup.jpg' }} />
+                        <Title>{facility.Name}</Title>
+                        <Text>{facility.Location}</Text>
+                        <Text>{facility.Prop_ID}</Text>
+                        <Text>Prop_ID: {facility.Location}</Text>
+                        <Text>Latitude: {facility.lat}</Text>
+                        <Text>Longitude: {facility.lon}</Text>
+                        <Text>DistanceVariance: {facility.locationVariance}</Text>
+                        <Icon name="ios-people" />
+                        <Icon name="ios-walk-outline" />
+                    </Body>
+                </CardItem>
+            </Card>
+      )
+    })
+
+
       return(
+        <View>
+          <Header>
+            <Left>
+              <Button transparent>
+                <Icon name='arrow-back' />
+                <Text></Text>
+              </Button>
+              </Left>
+              <Body>
+              <Title>{displayTitle}</Title>
+              </Body>
+              <Right>
+              <Button transparent onPress={() => { this.renderListView()}} >
+                <Icon name='menu' />
+              </Button>
+            </Right>
+          </Header>
         <ScrollView>
-          <Text style={{fontSize:96}}>Scroll me plz</Text>
-          <Text style={{fontSize:96}}>If you like</Text>
-
-          <Text style={{fontSize:96}}>Scrolling down</Text>
-
-          <Text style={{fontSize:96}}>What's the best</Text>
-
-          <Text style={{fontSize:96}}>Framework around?</Text>
-
-          <Text style={{fontSize:80}}>React Native</Text>
+          {results}
         </ScrollView>
+      </View>
     );
   }
 }

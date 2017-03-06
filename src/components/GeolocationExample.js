@@ -8,7 +8,8 @@ import {
     InteractionManager,
     TouchableHighlight,
     Linking,
-    ScrollView
+    ScrollView,
+
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
 import { Container, Card, Thumbnail, CardItem, Content, Button, Footer, FooterTab, Icon, Header, Title, Left, Right, Body } from 'native-base';
