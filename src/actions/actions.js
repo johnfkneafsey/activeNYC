@@ -51,3 +51,11 @@ export const renderListView = () => ({
 	type: RENDER_LIST_VIEW,
 
 })
+
+
+
+export const FACILITY_TYPE_VIEW = 'FACILITY_TYPE_VIEW'
+export const renderFacilityTypeView = () => ({
+	type: FACILITY_TYPE_VIEW,
+
+})

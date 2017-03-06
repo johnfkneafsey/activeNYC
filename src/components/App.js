@@ -16,8 +16,8 @@ class App extends React.Component {
         
     if (this.props.parkType === null) {
             return (
-                    <ParkSelection />
-                    )
+                <ParkSelection />
+            )
         }
         else if (this.props.parkType) {
             if (this.props.renderListView % 2 === 0) {
@@ -26,8 +26,8 @@ class App extends React.Component {
                 )
             }
             return (
-                    <HomeContainer />
-                    )
+                <HomeContainer />
+            )
         }
     }
 }

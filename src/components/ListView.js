@@ -13,7 +13,7 @@ import {
     Image
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
-import { Container, Card, Thumbnail, CardItem, Content, Button, Footer, FooterTab, Icon, Header, Title, Left, Right, Body } from 'native-base';
+import { Container, Card, Thumbnail, CardItem, Content, Button, Footer, Icon, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -29,8 +29,20 @@ renderListView() {
 }
 
   
-
+selectedFacility(facility) {
+  console.log('FACILITY REPONSE LISTVIEW', facility)
+  this.props.dispatch(actions.selectedFacility(facility))
+}
   render() {
+
+    let iconToggle;
+
+    if (this.props.renderListView % 2 === 0) {
+      iconToggle =  "ios-map"
+    } else {
+      iconToggle = "ios-map"
+    }
+
 
     const nameObj = {
             basketball: "Basketball",
@@ -51,8 +63,9 @@ renderListView() {
       return (
             <Card key={facility.Prop_ID}>
                 <CardItem>
+                    
                     <Body>
-                        <Thumbnail style={{width: 240, height: 132}} square source={{uri: 'https://static01.nyt.com/images/2010/08/06/arts/06nyctennis-5/TENN-3-popup.jpg' }} />
+                      <Thumbnail style={{width: 240, height: 132}} square source={{uri: 'https://static01.nyt.com/images/2010/08/06/arts/06nyctennis-5/TENN-3-popup.jpg' }} />
                         <Title>{facility.Name}</Title>
                         <Text>{facility.Location}</Text>
                         <Text>{facility.Prop_ID}</Text>
@@ -60,9 +73,17 @@ renderListView() {
                         <Text>Latitude: {facility.lat}</Text>
                         <Text>Longitude: {facility.lon}</Text>
                         <Text>DistanceVariance: {facility.locationVariance}</Text>
-                        <Icon name="ios-people" />
-                        <Icon name="ios-walk-outline" />
+                        <Button>
+                          <Icon name="ios-people" />
+                        </Button>
+                        <Button button onPress={() => { this.selectedFacility(facility)}}>
+                          <Icon name="ios-map" />
+                        </Button>
+                        <Button>
+                          <Icon name='ios-information-circle' />
+                        </Button>
                     </Body>
+
                 </CardItem>
             </Card>
       )
@@ -83,7 +104,7 @@ renderListView() {
               </Body>
               <Right>
               <Button transparent onPress={() => { this.renderListView()}} >
-                <Icon name='menu' />
+                <Icon name={iconToggle} />
               </Button>
             </Right>
           </Header>
@@ -103,7 +124,8 @@ const mapStateToProps = (state, props) => ({
     lastPosition: state.lastPosition,
     userLatitude: state.userLatitude,
     userLongitude: state.userLongitude,
-    selectedFacility: state.selectedFacility
+    selectedFacility: state.selectedFacility,
+    renderListView: state.renderListView
 });
 
 

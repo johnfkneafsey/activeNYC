@@ -12,16 +12,18 @@ import {
 
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
-import { Container, Card, Thumbnail, CardItem, Content, Button, Footer, FooterTab, Icon, Header, Title, Left, Right, Body } from 'native-base';
+import { Container, Card, Thumbnail, CardItem, Content, Icon, Button, Footer, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
+
 
 export class GeolocationExample extends React.Component {
     constructor(props) {
         super(props);
 		this.markerPress = this.markerPress.bind(this);
         this.navigateToFacility = this.navigateToFacility.bind(this);
+        this.renderFacilityTypeView = this.renderFacilityTypeView.bind(this);
     }
 
     markerPress(e) {
@@ -43,7 +45,21 @@ export class GeolocationExample extends React.Component {
     }
 
 
+    renderFacilityTypeView() {
+        this.props.dispatch(actions.renderFacilityTypeView());
+    }
+
+
     render() {
+
+    let iconToggle;
+
+    if (this.props.renderListView % 2 === 0) {
+      iconToggle =  "ios-map"
+    } else {
+      iconToggle = "menu"
+    }
+
         const nameObj = {
                 basketball: "Basketball",
                 soccerAndFootball: "Soccer",
@@ -66,12 +82,14 @@ export class GeolocationExample extends React.Component {
         cardView = 
             <Card style={{flex: .3}}>
                 <CardItem>
-                    <Body>
-                        <Thumbnail style={{width: 240, height: 69}} square source={{uri: 'https://www.nycgovparks.org/facilities/images/basketball-header.jpg'}} />
-                        <Title>{this.props.selectedFacility.Name}</Title>
-                        <Text>Location: {this.props.selectedFacility.Location}</Text>
-                        <Text>Property ID: {this.props.selectedFacility.Prop_ID}</Text>
-                    </Body>
+                    
+                        <Body>
+                            <Thumbnail style={{width: 240, height: 69}} square source={{uri: 'https://www.nycgovparks.org/facilities/images/basketball-header.jpg'}} />
+                            <Title>{this.props.selectedFacility.Name}</Title>
+                            <Text>Location: {this.props.selectedFacility.Location}</Text>
+                            <Text>Property ID: {this.props.selectedFacility.Prop_ID}</Text>
+                        </Body>
+
                 </CardItem>
             </Card> 
                   
@@ -92,7 +110,7 @@ export class GeolocationExample extends React.Component {
                 <Container>
                     <Header>
                         <Left>
-                            <Button transparent>
+                            <Button transparent onPress={() => { this.renderFacilityTypeView()}}>
                                 <Icon name='arrow-back' />
                                 <Text></Text>
                             </Button>
@@ -102,7 +120,7 @@ export class GeolocationExample extends React.Component {
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
-                                <Icon name='menu' />
+                                <Icon name={iconToggle} />
                             </Button>
                         </Right>
                     </Header>

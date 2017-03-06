@@ -11,11 +11,6 @@ const initialState = {
     facilityData: null,
     markers: null,
     selectedFacility: null,
-    // selectedFacility: {
-    //     Name: "Make a selection to see more info!",
-    //     Location: " ",
-    //     Prop_ID: " "
-    // },
     initialPosition: null,
     lastPosition: null,
     userLatitude: 40.7565,
@@ -74,8 +69,14 @@ export const mainReducer = (state= initialState, action) => {
     if (action.type === actions.SELECTED_FACILITY) { 
 
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE SELECTED_FACILITY GETSTATE()")}, 3000);
-
-        let parsedFacility = JSON.parse(action.facility)
+        
+        let parsedFacility;
+        
+        if (typeof action.facility === "string") {
+            parsedFacility = JSON.parse(action.facility)
+        } else {
+            parsedFacility = action.facility
+        }
 
         return update(state, {
             selectedFacility: {$set: parsedFacility}
@@ -89,6 +90,16 @@ export const mainReducer = (state= initialState, action) => {
 
         return update(state, {
             renderListView: {$apply: function(x) {return x + 1;}}
+        })
+    }
+
+    if (action.type === actions.FACILITY_TYPE_VIEW) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE FACILITY_TYPE_VIEW GETSTATE()")}, 3000);
+
+
+        return update(state, {
+            parkType: {$set: null}
         })
     }
 
