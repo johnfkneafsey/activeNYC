@@ -11,10 +11,16 @@ const initialState = {
     facilityData: null,
     markers: null,
     selectedFacility: null,
+    // selectedFacility: {
+    //     Name: "Make a selection to see more info!",
+    //     Location: " ",
+    //     Prop_ID: " "
+    // },
     initialPosition: null,
     lastPosition: null,
     userLatitude: 40.7565,
     userLongitude: -73.5734,
+    renderListView: 1
 
 }
 
@@ -69,8 +75,20 @@ export const mainReducer = (state= initialState, action) => {
 
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE SELECTED_FACILITY GETSTATE()")}, 3000);
 
+        let parsedFacility = JSON.parse(action.facility)
+
         return update(state, {
-            selectedFacility: {$set: action.facility}
+            selectedFacility: {$set: parsedFacility}
+        })
+    }
+
+    if (action.type === actions.RENDER_LIST_VIEW) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE RENDER_LIST_VIEW GETSTATE()")}, 3000);
+
+
+        return update(state, {
+            renderListView: {$apply: function(x) {return x + 1;}}
         })
     }
 

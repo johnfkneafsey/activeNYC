@@ -6,10 +6,12 @@ import {
     Text,
     Dimensions,
     InteractionManager,
-    TouchableHighlight
+    TouchableHighlight,
+    Linking,
+    ScrollView
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
-import { Container, Card, CardItem, Content, Button, Footer, FooterTab, Icon, Header, Title, Left, Right, Body } from 'native-base';
+import { Container, Card, Thumbnail, CardItem, Content, Button, Footer, FooterTab, Icon, Header, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -18,15 +20,25 @@ export class GeolocationExample extends React.Component {
     constructor(props) {
         super(props);
 		this.markerPress = this.markerPress.bind(this);
+        this.navigateToFacility = this.navigateToFacility.bind(this);
     }
 
     markerPress(e) {
         for (i = 0; i < this.props.markers.length; i ++) {
             if (e.nativeEvent.id === this.props.markers[i].Prop_ID) {
-                let facility = this.props.markers[i]
+                let facility = JSON.stringify(this.props.markers[i])
+                console.log('hello', facility)
                 this.props.dispatch(actions.selectedFacility(facility))
             }
         }
+    }
+
+    navigateToFacility(url) {
+            Linking.openURL(url);
+    }
+
+    renderListView() {
+        this.props.dispatch(actions.renderListView());
     }
 
 
@@ -46,9 +58,35 @@ export class GeolocationExample extends React.Component {
 
         let displayTitle = nameObj[this.props.parkType]
 
+    let cardView = <View></View>
+
+    
+    if (this.props.selectedFacility) {
+        cardView = 
+            <Card style={{flex: .3}}>
+                <CardItem>
+                    <Body>
+                        <Thumbnail style={{width: 240, height: 69}} square source={{uri: 'https://www.nycgovparks.org/facilities/images/basketball-header.jpg'}} />
+                        <Title>{this.props.selectedFacility.Name}</Title>
+                        <Text>Location: {this.props.selectedFacility.Location}</Text>
+                        <Text>Property ID: {this.props.selectedFacility.Prop_ID}</Text>
+                    </Body>
+                </CardItem>
+            </Card> 
+                  
+    } else {
+
+        let cardView = () => {
+            return (
+                <View></View>
+            )
+        }
+    }
+
+                
+
 
         if (this.props.markers) {
-            console.log('MARKERS DETECTED')
             return (
                 <Container>
                     <Header>
@@ -62,7 +100,7 @@ export class GeolocationExample extends React.Component {
                             <Title>{displayTitle}</Title>
                         </Body>
                         <Right>
-                            <Button transparent>
+                            <Button transparent onPress={() => { this.renderListView()}} >
                                 <Icon name='menu' />
                             </Button>
                         </Right>
@@ -83,7 +121,6 @@ export class GeolocationExample extends React.Component {
                         {this.props.markers.map(marker => {
                             return (
                             <Marker
-                                
                                 onSelect={this.markerPress}
                                 key={marker.Prop_ID}                        
                                 coordinate={{
@@ -98,20 +135,10 @@ export class GeolocationExample extends React.Component {
                             )})}
                         </MapView>
                     </View>
-
-                    <Card>
-                        <CardItem>
-                            <Body>
-                                <Text>
-                                    //Your text here
-                                </Text>
-                            </Body>
-                        </CardItem>
-                    </Card>
-   
+                    {cardView}
                     <Footer>
                         <FooterTab>
-                            <Button transparent>
+                            <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
                                 <Icon name="ios-walk-outline" />
                                 <Text>Take me there</Text>
                             </Button>
@@ -127,7 +154,6 @@ export class GeolocationExample extends React.Component {
             )
         }
 
-        console.log('NO MARKERS DETECTED')
 
         return (
             <View style = {styles.container}>
@@ -141,9 +167,7 @@ export class GeolocationExample extends React.Component {
                         latitudeDelta: 0.0222,
                         longitudeDelta: 0.0201,
                     }}
-                
                 >
-
                 </MapView>
             </View>            
         )
@@ -174,7 +198,8 @@ const mapStateToProps = (state, props) => ({
     initialPosition: state.initialPosition,
     lastPosition: state.lastPosition,
     userLatitude: state.userLatitude,
-    userLongitude: state.userLongitude
+    userLongitude: state.userLongitude,
+    selectedFacility: state.selectedFacility
 });
 
 

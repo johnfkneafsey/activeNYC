@@ -22,7 +22,6 @@ export  class HomeContainer extends Component {
          (position) => {
             var initialPosition = JSON.stringify(position);
             this.setState({});
-            console.log('DISPATCHING INITIAL POSITION')
             this.props.dispatch(actions.saveInitialPosition(JSON.parse(initialPosition)))
        
          },
@@ -33,7 +32,6 @@ export  class HomeContainer extends Component {
          var lastPosition = JSON.stringify(position);
          this.setState({lastPosition});
          this.props.dispatch(actions.saveLastPosition(JSON.parse(lastPosition)))
-         console.log('CALLING BIG ALG')
          this.props.dispatch(actions.showMarkers(this.props.facilityData, this.props.lastPosition.coords.latitude, this.props.lastPosition.coords.longitude, 5))
       });
    }

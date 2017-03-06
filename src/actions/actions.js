@@ -44,5 +44,10 @@ export const SELECTED_FACILITY = 'SELECTED_FACILITY'
 export const selectedFacility = (facility) => ({
 	type: SELECTED_FACILITY,
 	facility: facility
+})
+
+export const RENDER_LIST_VIEW = 'RENDER_LIST_VIEW'
+export const renderListView = () => ({
+	type: RENDER_LIST_VIEW,
 
 })
