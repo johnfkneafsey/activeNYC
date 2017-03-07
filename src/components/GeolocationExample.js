@@ -86,10 +86,8 @@ export class GeolocationExample extends React.Component {
         let mapFocusLongitude;
 
         if (this.props.selectedFacility && this.props.initialPosition.coords.latitude) {
-            console.log("facility selected")
             mapFocusLatitude = this.props.selectedFacility.lat;
             mapFocusLongitude = this.props.selectedFacility.lon;
-            console.log('DFAILITY SELECTED, ', mapFocusLatitude, mapFocusLongitude)
         } 
 
 

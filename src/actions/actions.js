@@ -57,10 +57,16 @@ export const facilityTypeView = () => ({
 	type: FACILITY_TYPE_VIEW,
 
 })
-FACILITY_TYPE_VIEW
 
 export const RENDER_EVENTS_VIEW = 'RENDER_EVENTS_VIEW'
 export const renderEventsView = () => ({
 	type: RENDER_EVENTS_VIEW,
+
+})
+
+export const SELECTED_DATE = 'SELECTED_DATE'
+export const selectedDate = (date) => ({
+	type: SELECTED_DATE,
+	date: date
 
 })
