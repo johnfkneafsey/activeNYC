@@ -13,7 +13,7 @@ import {
     Image
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
-import { Container, Card, Thumbnail, CardItem, Content, Button, Footer, Icon, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
+import { Container, Header, Card, Thumbnail, CardItem, Content, Button, Footer, Icon, FooterTab, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -22,17 +22,30 @@ import store from '../store/store';
 export class ListView extends React.Component {
     constructor(props) {
         super(props);
+        this.selectFacilityandViewMap = this.selectFacilityandViewMap.bind(this);  
+        this.renderListView = this.renderListView.bind(this);
+        this.renderEventsView = this.renderEventsView.bind(this);  
+        this.facilityTypeView = this.facilityTypeView.bind(this);  
     }  
   
-renderListView() {
-  this.props.dispatch(actions.renderListView());
-}
+  renderListView() {
+      this.props.dispatch(actions.renderListView());
+  }
 
+  selectFacilityandViewMap(facility) {
+    this.props.dispatch(actions.selectedFacility(facility))  
+    this.props.dispatch(actions.renderListView());
+  }
+
+  renderEventsView() {
+    this.props.dispatch(actions.renderEventsView());
+  }
+
+  facilityTypeView() {
+    this.props.dispatch(actions.facilityTypeView());
+  }
   
-selectedFacility(facility) {
-  console.log('FACILITY REPONSE LISTVIEW', facility)
-  this.props.dispatch(actions.selectedFacility(facility))
-}
+
   render() {
 
     let iconToggle;
@@ -65,7 +78,7 @@ selectedFacility(facility) {
                 <CardItem>
                     
                     <Body>
-                      <Thumbnail style={{width: 240, height: 132}} square source={{uri: 'https://static01.nyt.com/images/2010/08/06/arts/06nyctennis-5/TENN-3-popup.jpg' }} />
+                       <Thumbnail style={{width: 240, height: 132}} square source={{uri: "https://unsplash.it/200/300/?random"}} />
                         <Title>{facility.Name}</Title>
                         <Text>{facility.Location}</Text>
                         <Text>{facility.Prop_ID}</Text>
@@ -73,15 +86,17 @@ selectedFacility(facility) {
                         <Text>Latitude: {facility.lat}</Text>
                         <Text>Longitude: {facility.lon}</Text>
                         <Text>DistanceVariance: {facility.locationVariance}</Text>
-                        <Button>
-                          <Icon name="ios-people" />
-                        </Button>
-                        <Button button onPress={() => { this.selectedFacility(facility)}}>
-                          <Icon name="ios-map" />
-                        </Button>
-                        <Button>
-                          <Icon name='ios-information-circle' />
-                        </Button>
+                        <View style={{flex: 1, flexDirection: 'row'}}>
+                          <Button button onPress={() => { this.renderEventsView()}}>
+                            <Icon name="ios-people" />
+                          </Button>
+                          <Button button onPress={() => { this.selectFacilityandViewMap(facility)}}>
+                            <Icon name="ios-map" />
+                          </Button>
+                          <Button>
+                            <Icon name='ios-information-circle' />
+                          </Button>   
+                        </View>               
                     </Body>
 
                 </CardItem>
@@ -94,8 +109,8 @@ selectedFacility(facility) {
         <View>
           <Header>
             <Left>
-              <Button transparent>
-                <Icon name='arrow-back' />
+              <Button transparent button onPress={() => { this.facilityTypeView()}}>
+                <Icon name='arrow-back'  />
                 <Text></Text>
               </Button>
               </Left>
@@ -103,8 +118,8 @@ selectedFacility(facility) {
               <Title>{displayTitle}</Title>
               </Body>
               <Right>
-              <Button transparent onPress={() => { this.renderListView()}} >
-                <Icon name={iconToggle} />
+              <Button transparent button onPress={() => { this.renderEventsView()}} >
+                <Icon name="ios-map" />
               </Button>
             </Right>
           </Header>
@@ -125,7 +140,8 @@ const mapStateToProps = (state, props) => ({
     userLatitude: state.userLatitude,
     userLongitude: state.userLongitude,
     selectedFacility: state.selectedFacility,
-    renderListView: state.renderListView
+    renderListView: state.renderListView,
+    renderEventsView: state.renderEventsView
 });
 
 

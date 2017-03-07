@@ -15,12 +15,27 @@ const initialState = {
     lastPosition: null,
     userLatitude: 40.7565,
     userLongitude: -73.5734,
-    renderListView: 1
+    renderListView: 1,
+    renderEventsView: 1,
+    icons: {
+        basketball: "ios-basketball",
+        bocce: "ios-disc",
+        cricket: "ios-disc",
+        handball: "ios-globe-outline",
+        iceskating: "ios-snow",
+        soccerAndFootball: "ios-football",
+        pools_indoor: "ios-analytics",
+        tennis: "ios-tennisball",
+        runningtracks: "ios-walk",
+        kayak: "ios-boat"
+    }
+    // EVENTS DB - THIS WILL GO TO BACK END
+
+    // END BACKEND
 
 }
 
 export const mainReducer = (state= initialState, action) => {
-
 
 
     if (action.type === actions.SELECT_PARK_TYPE) {
@@ -71,7 +86,7 @@ export const mainReducer = (state= initialState, action) => {
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE SELECTED_FACILITY GETSTATE()")}, 3000);
         
         let parsedFacility;
-        
+
         if (typeof action.facility === "string") {
             parsedFacility = JSON.parse(action.facility)
         } else {
@@ -100,6 +115,16 @@ export const mainReducer = (state= initialState, action) => {
 
         return update(state, {
             parkType: {$set: null}
+        })
+    }
+
+    if (action.type === actions.RENDER_EVENTS_VIEW) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE RENDER_EVENTS_VIEW GETSTATE()")}, 3000);
+
+
+        return update(state, {
+            renderEventsView: {$apply: function(x) {return x + 1;}}
         })
     }
 

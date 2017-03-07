@@ -23,14 +23,15 @@ export class GeolocationExample extends React.Component {
         super(props);
 		this.markerPress = this.markerPress.bind(this);
         this.navigateToFacility = this.navigateToFacility.bind(this);
-        this.renderFacilityTypeView = this.renderFacilityTypeView.bind(this);
+        this.facilityTypeView = this.facilityTypeView.bind(this);
+        this.renderListView = this.renderListView.bind(this);       
+        this.renderEventsView = this.renderEventsView.bind(this);
     }
 
     markerPress(e) {
         for (i = 0; i < this.props.markers.length; i ++) {
             if (e.nativeEvent.id === this.props.markers[i].Prop_ID) {
                 let facility = JSON.stringify(this.props.markers[i])
-                console.log('hello', facility)
                 this.props.dispatch(actions.selectedFacility(facility))
             }
         }
@@ -45,20 +46,24 @@ export class GeolocationExample extends React.Component {
     }
 
 
-    renderFacilityTypeView() {
-        this.props.dispatch(actions.renderFacilityTypeView());
+    facilityTypeView() {
+        this.props.dispatch(actions.facilityTypeView());
+    }
+
+    renderEventsView() {
+        this.props.dispatch(actions.renderEventsView());
     }
 
 
     render() {
 
-    let iconToggle;
+        let iconToggle;
 
-    if (this.props.renderListView % 2 === 0) {
-      iconToggle =  "ios-map"
-    } else {
-      iconToggle = "menu"
-    }
+        if (this.props.renderListView % 2 === 0) {
+            iconToggle =  "ios-map"
+        } else {
+            iconToggle = "menu"
+        }
 
         const nameObj = {
                 basketball: "Basketball",
@@ -71,46 +76,52 @@ export class GeolocationExample extends React.Component {
                 handball: "Handball",
                 kayak: "Kayak and Canoe ",
                 iceskating: "Ice Skating"
-            }      
+        }      
 
         let displayTitle = nameObj[this.props.parkType]
 
-    let cardView = <View></View>
+        let cardView = <View></View>
 
-    
-    if (this.props.selectedFacility) {
-        cardView = 
-            <Card style={{flex: .3}}>
-                <CardItem>
+        let mapFocusLatitude;
+        let mapFocusLongitude;
+
+        if (this.props.selectedFacility && this.props.initialPosition.coords.latitude) {
+            console.log("facility selected")
+            mapFocusLatitude = this.props.selectedFacility.lat;
+            mapFocusLongitude = this.props.selectedFacility.lon;
+            console.log('DFAILITY SELECTED, ', mapFocusLatitude, mapFocusLongitude)
+        } 
+
+
+        
+        if (this.props.selectedFacility) {
+            cardView = 
+                <Card style={{flex: .3}}>
+                    <CardItem>       
+                            <Body>
+                                <Thumbnail style={{width: 240, height: 69}} square source={{uri: "https://unsplash.it/200/300/?random"}} />
+                                <Title>{this.props.selectedFacility.Name}</Title>
+                                <Text>Location: {this.props.selectedFacility.Location}</Text>
+                                <Text>Property ID: {this.props.selectedFacility.Prop_ID}</Text>
+                            </Body>
+                    </CardItem>
+                </Card> 
                     
-                        <Body>
-                            <Thumbnail style={{width: 240, height: 69}} square source={{uri: 'https://www.nycgovparks.org/facilities/images/basketball-header.jpg'}} />
-                            <Title>{this.props.selectedFacility.Name}</Title>
-                            <Text>Location: {this.props.selectedFacility.Location}</Text>
-                            <Text>Property ID: {this.props.selectedFacility.Prop_ID}</Text>
-                        </Body>
+        } else {
 
-                </CardItem>
-            </Card> 
-                  
-    } else {
-
-        let cardView = () => {
-            return (
-                <View></View>
-            )
+            let cardView = () => {
+                return (
+                    <View></View>
+                )
+            }
         }
-    }
-
-                
-
 
         if (this.props.markers) {
             return (
                 <Container>
                     <Header>
                         <Left>
-                            <Button transparent onPress={() => { this.renderFacilityTypeView()}}>
+                            <Button transparent onPress={() => { this.facilityTypeView()}}>
                                 <Icon name='arrow-back' />
                                 <Text></Text>
                             </Button>
@@ -135,7 +146,6 @@ export class GeolocationExample extends React.Component {
                                 latitudeDelta: 0.0222,
                                 longitudeDelta: 0.0201,
                             }}
-
                         >
                         {this.props.markers.map(marker => {
                             return (
@@ -163,7 +173,7 @@ export class GeolocationExample extends React.Component {
                             </Button>
                         </FooterTab>
                         <FooterTab>
-                            <Button transparent>
+                            <Button transparent button onPress={() => { this.renderEventsView()}}>
                                 <Icon name="ios-people" />
                                 <Text>Matches and Events</Text>
                             </Button>
@@ -218,7 +228,9 @@ const mapStateToProps = (state, props) => ({
     lastPosition: state.lastPosition,
     userLatitude: state.userLatitude,
     userLongitude: state.userLongitude,
-    selectedFacility: state.selectedFacility
+    selectedFacility: state.selectedFacility,
+    renderListView: state.renderListView,
+    renderEventsView: state.renderEventsView
 });
 
 
