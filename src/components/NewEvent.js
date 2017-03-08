@@ -12,6 +12,8 @@ export class NewEvent extends React.Component {
         this.cancelNewEvent = this.cancelNewEvent.bind(this);     
         this.setTitle = this.setTitle.bind(this); 
         this.onDateChange = this.onDateChange.bind(this); 
+        this.addHour = this.addHour.bind(this); 
+        this.subtractHour = this.subtractHour.bind(this); 
     }
 
     cancelNewEvent() {       
@@ -23,14 +25,22 @@ export class NewEvent extends React.Component {
     }
 
     onDateChange = (startTime) => {
-        var endTime = startTime;
-        endTime.setHours(endTime.getHours() + this.props.userSelectedEventDuration);
         console.log('THIS IS START TIME ' , startTime);
-        console.log('AND THIS IS ENDTIME ', endTime);
-        this.props.dispatch(actions.userSelectedEventStartTime(startTime));
-        this.props.dispatch(actions.userSelectedEventEndTime(endTime));
-  };
+        this.props.dispatch(actions.userSelectedEventStartTime(startTime, this.props.userSelectedEventDuration));
 
+    };
+
+    addHour() {
+        if (this.props.userSelectedEventDuration < 5) {
+            this.props.dispatch(actions.addHour());
+        }
+    }
+
+    subtractHour() {
+        if (this.props.userSelectedEventDuration > 1) {
+            this.props.dispatch(actions.subtractHour());
+        }
+    }
 
     render() {
 
@@ -66,30 +76,39 @@ export class NewEvent extends React.Component {
                             </View>
                         </Item>
                     </Form>
+                    <View>
+                        <DatePickerIOS
+                            date={this.props.userSelectedEventStartTime}
+                            mode="time"
+                            onDateChange={this.onDateChange}
+                            minuteInterval={10}
+                        />
+                    </View>
+                    <View style={{flexDirection: "row" }}>
+                        
+                            <Button iconLeft light onPress={() => { this.subtractHour() }}>
+                                
+                                <Icon name='arrow-back' />
+                            </Button>
+                            <Text>{this.props.userSelectedEventDuration} Hours </Text> 
 
-                                <DatePickerIOS
-                                    date={this.props.userSelectedEventStartTime}
-                                    mode="time"
-                                    onDateChange={this.onDateChange}
-                                    timeZoneOffsetInMinutes={0 * 60}
-                                    minuteInterval={10}
-                                />
+                            <Button iconRight light onPress={() => { this.addHour() }}>
+                                
+                                <Icon name='arrow-forward' />
+                            </Button>
+                        
+                                     
+                       
+
+
+                   
+                    </View>
                 </Content>
             </Container>
         );
     }
 }
 
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#D9D9D9'
-//   },
- 
-//   picker: {
-//     backgroundColor: '#E5E5E5'
-//   }
-// });
 
 
 const mapStateToProps = (state, props) => ({

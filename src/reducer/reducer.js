@@ -1,3 +1,6 @@
+// timepicker not reading and writing properly
+
+
 import update from 'immutability-helper';
 import * as actions from '../actions/actions';
 import store from '../store/store';
@@ -18,6 +21,7 @@ const initialState = {
     renderListView: 1,
     renderEventsView: 1,
     renderNewEventView: 1,
+    renderViewEventView: 1,
     icons: {
         basketball: "ios-basketball",
         bocce: "ios-disc",
@@ -32,8 +36,9 @@ const initialState = {
     },
     selectedDate: null,    // change to userSelected . . 
     userSelectedEventStartTime: new Date(),
-    userSelectedEventEndTime: null,
     userSelectedEventDuration: 1,
+    userSelectedEvent: null,
+
 
 /*
 Title USER                                     Organizer: 
@@ -244,36 +249,51 @@ export const mainReducer = (state= initialState, action) => {
     if (action.type === actions.USER_SELECTED_EVENT_START_TIME) { 
 
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_START_TIME GETSTATE()")}, 3000);
+   //     console.log('DURATION IMPORT ',action.duration)
+        let beginTime = action.time; 
+   //     console.log('begin time import', beginTime)
+     //   console.log('end time import, instant convert ', endTime)
+          console.log('PLEASE BE 3 HRS LATER', Date(beginTime.setHours(beginTime.getHours() + action.duration)));
+    //    console.log('POST METHOD ENDTIME', endTime)
+      //  console.log('POST METHOD ENDTIME SPELLED OUT AGAIN ', endTime.setHours(endTime.getHours() + action.duration))
+      //  console.log('POST ALL BEGIN TIME CHECK FOR SAME VALUE ', beginTime)
+        return update(state, {
+            userSelectedEventStartTime: {$set: beginTime},
+            })
+    }
+
+
+    if (action.type === actions.ADD_HOUR) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE ADD_HOUR GETSTATE()")}, 3000);
+
+        
 
         return update(state, {
-            userSelectedEventStartTime: {$set: action.time}
+            userSelectedEventDuration: {$apply: function(x) {return x + 1;}}
         })
     }
 
 
-    if (action.type === actions.USER_SELECTED_EVENT_END_TIME) { 
+    if (action.type === actions.SUBTRACT_HOUR) { 
 
-        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_END_TIME GETSTATE()")}, 3000);
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SUBTRACT_HOUR GETSTATE()")}, 3000);
 
         return update(state, {
-            userSelectedEventEndTime: {$set: action.time}
+            userSelectedEventDuration: {$apply: function(x) {return x - 1;}}
         })
     }
 
+    if (action.type === actions.RENDER_VIEW_EVENT_VIEW) { 
 
-    if (action.type === actions.USER_SELECTED_EVENT_DURATION) { 
-
-        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_DURATION GETSTATE()")}, 3000);
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE RENDER_VIEW_EVENT_VIEW GETSTATE()")}, 3000);
 
         return update(state, {
-            userSelectedEventDuration: {$set: action.hours}
+            renderViewEventView: {$apply: function(x) {return x + 1;}},
+            //needs help
+            userSelectedEvent: {$set: action.event}
         })
     }
-
-
-
-
-
 
 
 	return state;

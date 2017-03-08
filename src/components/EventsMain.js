@@ -14,7 +14,8 @@ export class EventsMain extends React.Component {
         this.renderEventsView = this.renderEventsView.bind(this);
         this.facilityTypeView = this.facilityTypeView.bind(this);
         this.selectedDate = this.selectedDate.bind(this);
-        this.renderNewEventView = this.renderNewEventView.bind(this);       
+        this.renderNewEventView = this.renderNewEventView.bind(this);    
+        this.renderViewEventView = this.renderViewEventView.bind(this); 
     }
 
     renderEventsView() {
@@ -35,6 +36,21 @@ export class EventsMain extends React.Component {
     renderNewEventView() {
         console.log('add event triggered')
         this.props.dispatch(actions.renderNewEventView());
+    }
+
+    renderViewEventView(event) {
+        
+        console.log('are we here yet')
+        let selectedEvent;
+        for (i = 0; i < this.props.globalEventsFAKE.length; i ++) {
+            console.log('are we iterating')
+            if (this.props.globalEventsFAKE[i].eventName === event) {
+                console.log('are we true?')
+                this.props.dispatch(actions.renderViewEventView(this.props.globalEventsFAKE[i]));
+
+            }
+        }
+
     }
 
 
@@ -58,6 +74,9 @@ export class EventsMain extends React.Component {
 
         let events = this.props.globalEventsFAKE.map(event => {
 
+            let name = event.eventName
+            console.log('NAME' ,name)
+
         return (
                 <Card key={event.eventName}>
                     <CardItem>
@@ -69,10 +88,6 @@ export class EventsMain extends React.Component {
 
                                     <Thumbnail circle source={{uri: "https://unsplash.it/40/40/?random"}} />
                                     <Text>{event.eventOrganizerName}</Text>
-                    
-    
-                            
-
                             </View>
                         </Left>
                         <Right>
@@ -81,7 +96,7 @@ export class EventsMain extends React.Component {
                                     <Icon name='ios-person-add' />
                                     <Text>Join Event</Text>   
                                 </Button>  
-                                <Button transparent onPress={() => { this.addEvent()}}>
+                                <Button transparent onPress={(name) => { this.renderViewEventView(name)}}>
                                     <Icon name='ios-information-circle' />
                                     <Text>  Info and Chat</Text>
                                 </Button>  

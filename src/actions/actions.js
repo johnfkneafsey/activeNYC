@@ -78,27 +78,37 @@ export const renderNewEventView = () => ({
 })
 
 
-
 export const USER_SELECTED_EVENT_START_TIME = 'USER_SELECTED_EVENT_START_TIME'
-export const userSelectedEventStartTime = (time) => ({
+export const userSelectedEventStartTime = (time, duration) => ({
 	type: USER_SELECTED_EVENT_START_TIME,
-	time: time
+	time: time,
+	duration: duration
 
 })
 
-export const USER_SELECTED_EVENT_END_TIME = 'USER_SELECTED_EVENT_END_TIME'
-export const userSelectedEventEndTime = (time) => ({
-	type: USER_SELECTED_EVENT_END_TIME,
-	time: time
+
+export const ADD_HOUR = 'ADD_HOUR'
+export const addHour = () => ({
+	type: ADD_HOUR,
 
 })
 
-export const USER_SELECTED_EVENT_DURATION = 'USER_SELECTED_EVENT_DURATION'
-export const userSelectedEventDuration = (hours) => ({
-	type: USER_SELECTED_EVENT_DURATION,
-	hours: hours
+export const SUBTRACT_HOUR = 'SUBTRACT_HOUR'
+export const subtractHour = () => ({
+	type: SUBTRACT_HOUR,
 
 })
+
+export const RENDER_VIEW_EVENT_VIEW = 'RENDER_VIEW_EVENT_VIEW'
+export const renderViewEventView = (event) => ({
+	type: RENDER_VIEW_EVENT_VIEW,
+	event: event
+
+})
+
+
+
+
 
 
 
