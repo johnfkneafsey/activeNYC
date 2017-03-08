@@ -9,7 +9,6 @@ import {
     TouchableHighlight,
     Linking,
     ScrollView,
-
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
 import { Container, Card, Thumbnail, CardItem, Content, Icon, Button, Footer, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
@@ -90,8 +89,6 @@ export class GeolocationExample extends React.Component {
             mapFocusLongitude = this.props.selectedFacility.lon;
         } 
 
-
-        
         if (this.props.selectedFacility) {
             cardView = 
                 <Card style={{flex: .3}}>

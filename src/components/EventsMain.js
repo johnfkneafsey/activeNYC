@@ -6,8 +6,6 @@ import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
 var moment = require('moment');
-// import Icon from 'react-native-vector-icons/FontAwesome';
-
 import CalendarStrip from 'react-native-calendar-strip';
 
 export class EventsMain extends React.Component {
@@ -16,7 +14,7 @@ export class EventsMain extends React.Component {
         this.renderEventsView = this.renderEventsView.bind(this);
         this.facilityTypeView = this.facilityTypeView.bind(this);
         this.selectedDate = this.selectedDate.bind(this);
-        this.addEvent = this.addEvent.bind(this);       
+        this.renderNewEventView = this.renderNewEventView.bind(this);       
     }
 
     renderEventsView() {
@@ -25,6 +23,7 @@ export class EventsMain extends React.Component {
 
     facilityTypeView() {
         this.props.dispatch(actions.facilityTypeView());
+        this.props.dispatch(actions.renderEventsView());
     }
 
     selectedDate(e) {
@@ -33,9 +32,9 @@ export class EventsMain extends React.Component {
         this.props.dispatch(actions.selectedDate(selectedDate))
     }
 
-    addEvent() {
+    renderNewEventView() {
         console.log('add event triggered')
-        
+        this.props.dispatch(actions.renderNewEventView());
     }
 
 
@@ -94,35 +93,10 @@ export class EventsMain extends React.Component {
                                     <Text>and {event.eventParticipants} others... </Text>
                             </View>                                     
                         </Right>
-
-                        
-                        {/*<Body>
-                        <Thumbnail style={{width: 240, height: 132}} square source={{uri: "https://unsplash.it/200/300/?random"}} />
-                            <Title>{facility.Name}</Title>
-                            <Text>{facility.Location}</Text>
-                            <Text>{facility.Prop_ID}</Text>
-                            <Text>Prop_ID: {facility.Location}</Text>
-                            <Text>Latitude: {facility.lat}</Text>
-                            <Text>Longitude: {facility.lon}</Text>
-                            <Text>DistanceVariance: {facility.locationVariance}</Text>
-                            <View style={{flex: 1, flexDirection: 'row'}}>
-                            <Button button onPress={() => { this.renderEventsView()}}>
-                                <Icon name="ios-people" />
-                            </Button>
-                            <Button button onPress={() => { this.selectFacilityandViewMap(facility)}}>
-                                <Icon name="ios-map" />
-                            </Button>
-                            <Button>
-                                <Icon name='ios-information-circle' />
-                            </Button>   
-                            </View>               
-                        </Body>*/}
-
                     </CardItem>
                 </Card>
         )
         })
-
 
         return (
             <Container>
@@ -157,21 +131,21 @@ export class EventsMain extends React.Component {
                                     </Body>
                                 </CardItem>
                                 <CardItem cardBody>
-                                    <Image style={{  width: 50, flex: 1, height: 200 }} source={{uri: "https://unsplash.it/200/300/?random"}} />
+                                    <Image style={{  width: 50, flex: 1, height: 100 }} source={{uri: "https://unsplash.it/200/200/?random"}} />
                                 </CardItem>
                                 <CardItem>
                                     <Left>
                                             <Icon name={typeIcon} style={{ color: '#ED4A6A' }} />
-                                            <Text>Events</Text>
+                                            <Text>What's happening?</Text>
                                     </Left>
                                     <Right>
-                                        <Button transparent onPress={() => { this.addEvent()}}>
+                                        <Button transparent onPress={() => { this.renderNewEventView()}}>
                                             <Icon name='ios-add-circle' />
-                                            <Text>Add Event</Text>
+                                            <Text>New Event</Text>
                                         </Button>                                        
                                     </Right>
                                 </CardItem>
-                                <View>
+                                <View >
                                     <CalendarStrip
                                         calendarAnimation={{type: 'sequence', duration: 30}}
                                         selection={'border'}

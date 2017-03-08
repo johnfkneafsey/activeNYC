@@ -70,3 +70,35 @@ export const selectedDate = (date) => ({
 	date: date
 
 })
+
+export const RENDER_NEW_EVENT_VIEW = 'RENDER_NEW_EVENT_VIEW'
+export const renderNewEventView = () => ({
+	type: RENDER_NEW_EVENT_VIEW,
+
+})
+
+
+
+export const USER_SELECTED_EVENT_START_TIME = 'USER_SELECTED_EVENT_START_TIME'
+export const userSelectedEventStartTime = (time) => ({
+	type: USER_SELECTED_EVENT_START_TIME,
+	time: time
+
+})
+
+export const USER_SELECTED_EVENT_END_TIME = 'USER_SELECTED_EVENT_END_TIME'
+export const userSelectedEventEndTime = (time) => ({
+	type: USER_SELECTED_EVENT_END_TIME,
+	time: time
+
+})
+
+export const USER_SELECTED_EVENT_DURATION = 'USER_SELECTED_EVENT_DURATION'
+export const userSelectedEventDuration = (hours) => ({
+	type: USER_SELECTED_EVENT_DURATION,
+	hours: hours
+
+})
+
+
+

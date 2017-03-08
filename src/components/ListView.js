@@ -43,6 +43,7 @@ export class ListView extends React.Component {
 
   facilityTypeView() {
     this.props.dispatch(actions.facilityTypeView());
+    this.props.dispatch(actions.renderListView());
   }
   
 

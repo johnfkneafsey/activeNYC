@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import store from '../store/store';
 
 
-export class ParkSelection extends Component {
+export class ParkSelection extends React.Component {
     constructor(props) {
         super(props);
 		this.onPressButton = this.onPressButton.bind(this);

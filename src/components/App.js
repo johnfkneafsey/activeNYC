@@ -3,6 +3,7 @@ import ParkSelection from './ParkSelection';
 import HomeContainer from './HomeContainer';
 import ListView from './ListView';
 import EventsMain from './EventsMain';
+import NewEvent from './NewEvent';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -20,6 +21,11 @@ class App extends React.Component {
                 <ParkSelection />
             )
         } else if (this.props.renderEventsView % 2 === 0) {
+            if (this.props.renderNewEventView % 2 === 0) {
+                return (
+                    <NewEvent />
+                )
+            }
             return (
                 <EventsMain />
             )
@@ -41,7 +47,8 @@ class App extends React.Component {
 const mapStateToProps = (state, props) => ({
     parkType: state.parkType,
     renderListView: state.renderListView,
-    renderEventsView: state.renderEventsView
+    renderEventsView: state.renderEventsView,
+    renderNewEventView: state.renderNewEventView
 });
 
 export default connect(mapStateToProps)(App);

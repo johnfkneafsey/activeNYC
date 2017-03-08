@@ -17,6 +17,7 @@ const initialState = {
     userLongitude: -73.5734,
     renderListView: 1,
     renderEventsView: 1,
+    renderNewEventView: 1,
     icons: {
         basketball: "ios-basketball",
         bocce: "ios-disc",
@@ -29,6 +30,48 @@ const initialState = {
         runningtracks: "ios-walk",
         kayak: "ios-boat"
     },
+    selectedDate: null,    // change to userSelected . . 
+    userSelectedEventStartTime: new Date(),
+    userSelectedEventEndTime: null,
+    userSelectedEventDuration: 1,
+
+/*
+Title USER                                     Organizer: 
+                                            [           ]
+Description:  USER                          [           ] FB
+~~~~~~~~~~~~~~~~~~~~~~~~~~                  [           ]
+~~~~~~~~~~~~~~~~~~~~~~~~~~                  Beyonce Knowles FB
+~~~~~~~~~~~~~~~~~~~~~~~~~~                   
+
+Time: USER
+
+Location: CURRENTPARK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Attending:  EVENTATTENDEES  
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]   ... and 3 others
+
+
+Chat:
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+
+
+
+*/
+
+
+
+
     // EVENTS DB - THIS WILL GO TO BACK END
     globalEventsFAKE: [{
         eventName: "2 vs. 2 this Afternoon",
@@ -79,8 +122,8 @@ const initialState = {
         eventParticipants: 3
     }
 
-    ],
-    selectedDate: null
+    ]
+
     // END BACKEND
 
 }
@@ -188,6 +231,50 @@ export const mainReducer = (state= initialState, action) => {
             selectedDate: {$set: date}
         })
     }
+
+    if (action.type === actions.RENDER_NEW_EVENT_VIEW) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE RENDER_NEW_EVENT_VIEW GETSTATE()")}, 3000);
+
+        return update(state, {
+            renderNewEventView: {$apply: function(x) {return x + 1;}}
+        })
+    }
+
+    if (action.type === actions.USER_SELECTED_EVENT_START_TIME) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_START_TIME GETSTATE()")}, 3000);
+
+        return update(state, {
+            userSelectedEventStartTime: {$set: action.time}
+        })
+    }
+
+
+    if (action.type === actions.USER_SELECTED_EVENT_END_TIME) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_END_TIME GETSTATE()")}, 3000);
+
+        return update(state, {
+            userSelectedEventEndTime: {$set: action.time}
+        })
+    }
+
+
+    if (action.type === actions.USER_SELECTED_EVENT_DURATION) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_DURATION GETSTATE()")}, 3000);
+
+        return update(state, {
+            userSelectedEventDuration: {$set: action.hours}
+        })
+    }
+
+
+
+
+
+
 
 	return state;
     

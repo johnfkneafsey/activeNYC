@@ -6,8 +6,7 @@ import store from '../store/store';
 import { Container, Content, Button, Text } from 'native-base';
 import { View } from 'react-native';
 
-export  class HomeContainer extends Component {
-
+export class HomeContainer extends React.Component {
    constructor() {
       super();
       this.state = {
