@@ -18,9 +18,24 @@
     <string>1.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
+    
+    
     <key>CFBundleURLTypes</key>
-    <array>
-      <dict>
+      <array>
+        <dict>
+          <key>CFBundleURLSchemes</key>
+          <array>
+            <string>fb646549128881241</string>
+          </array>
+        </dict>
+      </array>
+      
+      <key>FacebookAppID</key>
+      <string>646549128881241</string>
+      <key>FacebookDisplayName</key>
+      <string>John Kneafsey</string>
+      
+    
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
@@ -29,8 +44,9 @@
         <array>
           <string>com.googleusercontent.apps.94216888701-gsmfameuhk6ar1optj84li3vjudaa2j3</string>
         </array>
-      </dict>
-      <dict>
+
+      
+
         <key>CFBundleTypeRole</key>
         <string>Editor</string>
         <key>CFBundleURLName</key>
@@ -39,8 +55,20 @@
         <array>
           <string>f557148</string>
         </array>
-      </dict>
+
+    
+    
+
+
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+      <string>fbapi</string>
+      <string>fb-messenger-api</string>
+      <string>fbauth2</string>
+      <string>fbshareextension</string>
     </array>
+    
+    
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
@@ -48,13 +76,40 @@
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSExceptionDomains</key>
+      
       <dict>
         <key>localhost</key>
         <dict>
           <key>NSExceptionAllowsInsecureHTTPLoads</key>
           <true/>
         </dict>
+        <key>facebook.com</key>
+        <dict>
+          <key>NSIncludesSubdomains</key> <true/>
+          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key> <false/>
+        </dict>
+        <key>fbcdn.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key> <true/>
+          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>  <false/>
+        </dict>
+        <key>akamaihd.net</key>
+        <dict>
+          <key>NSIncludesSubdomains</key> <true/>
+          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key> <false/>
+        </dict>
+        <key>localhost</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key> <true/>
+        </dict>
+        <key>api.mydomain.com</key>
+        <dict>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key> <true/>
+        </dict>
       </dict>
+      
+      
+      
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>

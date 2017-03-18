@@ -10,6 +10,7 @@ import { findNearest } from '../algorithms/displayNearest';
 
 
 const initialState = {
+    user: null,
     parkType: null,
     facilityData: null,
     markers: null,
@@ -249,14 +250,9 @@ export const mainReducer = (state= initialState, action) => {
     if (action.type === actions.USER_SELECTED_EVENT_START_TIME) { 
 
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_START_TIME GETSTATE()")}, 3000);
-   //     console.log('DURATION IMPORT ',action.duration)
+        
         let beginTime = action.time; 
-   //     console.log('begin time import', beginTime)
-     //   console.log('end time import, instant convert ', endTime)
-          console.log('PLEASE BE 3 HRS LATER', Date(beginTime.setHours(beginTime.getHours() + action.duration)));
-    //    console.log('POST METHOD ENDTIME', endTime)
-      //  console.log('POST METHOD ENDTIME SPELLED OUT AGAIN ', endTime.setHours(endTime.getHours() + action.duration))
-      //  console.log('POST ALL BEGIN TIME CHECK FOR SAME VALUE ', beginTime)
+
         return update(state, {
             userSelectedEventStartTime: {$set: beginTime},
             })
@@ -295,6 +291,14 @@ export const mainReducer = (state= initialState, action) => {
         })
     }
 
+    if (action.type === actions.SAVE_PROFILE_TO_STORE) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SAVE_PROFILE_TO_STORE GETSTATE()")}, 3000);
+
+        return update(state, {
+            user: {$set: action.userProfile}
+        })
+    }
 
 	return state;
     

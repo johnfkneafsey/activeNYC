@@ -20,15 +20,12 @@ export const showMarkers = (facilities, userLat, userLon, results) => ({
 	userLat: userLat, 
 	userLon: userLon,
 	results: results,
-	
-
 })
 
 export const SAVE_INITIAL_POSITION = 'SAVE_INITIAL_POSITION'
 export const saveInitialPosition = (initialPosition) => ({
 	type: SAVE_INITIAL_POSITION,
 	initialPosition: initialPosition
-
 })
 
 
@@ -36,7 +33,6 @@ export const SAVE_LAST_POSITION = 'SAVE_LAST_POSITION'
 export const saveLastPosition = (lastPosition) => ({
 	type: SAVE_LAST_POSITION,
 	lastPosition: lastPosition
-
 })
 
 
@@ -83,32 +79,28 @@ export const userSelectedEventStartTime = (time, duration) => ({
 	type: USER_SELECTED_EVENT_START_TIME,
 	time: time,
 	duration: duration
-
 })
 
 
 export const ADD_HOUR = 'ADD_HOUR'
 export const addHour = () => ({
 	type: ADD_HOUR,
-
 })
 
 export const SUBTRACT_HOUR = 'SUBTRACT_HOUR'
 export const subtractHour = () => ({
 	type: SUBTRACT_HOUR,
-
 })
 
 export const RENDER_VIEW_EVENT_VIEW = 'RENDER_VIEW_EVENT_VIEW'
 export const renderViewEventView = (event) => ({
 	type: RENDER_VIEW_EVENT_VIEW,
 	event: event
-
 })
 
 
-
-
-
-
-
+export const SAVE_PROFILE_TO_STORE = 'SAVE_PROFILE_TO_STORE'
+export const saveProfileToStore = (userProfile) => ({
+	type: SAVE_PROFILE_TO_STORE,
+	userProfile: userProfile
+})

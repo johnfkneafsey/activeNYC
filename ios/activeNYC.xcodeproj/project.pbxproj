@@ -30,6 +30,10 @@
 		17CE4197380F47CF95BF62E2 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 26D431BF8B1E4F0B90BB161A /* FontAwesome.ttf */; };
 		1A1705C068514FA9870E5323 /* Microsoft Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1564F67B7648D7AB7DF9C9 /* Microsoft Sans Serif.ttf */; };
 		1D289E7E734641369E766FB3 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3E85AC625448DBCB31CEF /* Roboto_medium.ttf */; };
+		1E75BFBC1E7DACAC00576B2A /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFA31E7DAC7600576B2A /* libRCTFBLogin.a */; };
+		1E75BFEF1E7DB18E00576B2A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFEE1E7DB18E00576B2A /* FBSDKLoginKit.framework */; };
+		1E75BFF11E7DB87300576B2A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFF01E7DB87300576B2A /* FBSDKCoreKit.framework */; };
+		1E75BFF31E7DB88200576B2A /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFF21E7DB88200576B2A /* FBSDKShareKit.framework */; };
 		1E8A91821E6C944B0060869E /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 1E8A91811E6C944B0060869E /* GoogleSignIn.bundle */; };
 		1E8A918A1E6C947E0060869E /* RNGoogleSignin in Resources */ = {isa = PBXBuildFile; fileRef = 1E8A91891E6C947E0060869E /* RNGoogleSignin */; };
 		1F67F04F7E9D4CBAA0DCF19C /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D3E2D313EDF141B09D23451D /* MaterialCommunityIcons.ttf */; };
@@ -66,6 +70,7 @@
 		82FA942460084BA59528ADFB /* Ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDE2B7C4B2EB47A0B3E1C227 /* Ionicons.ttf */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		899758F8A2A24C3FB72BBD68 /* Rubik-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6A2AF393B98C4333AD1D1AE2 /* Rubik-BoldItalic.ttf */; };
+		8A31DA8A95CB46A58CA4C02B /* libRCTFBSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 189A2CCCBAEB4ABA977AE948 /* libRCTFBSDK.a */; };
 		9D4FC9EE8C174667973B3A3D /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1103C7168AD84F62A4BA3E9F /* MaterialIcons.ttf */; };
 		9F504A58F9A34F8FB0B66CF3 /* Andale Mono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = AF01547C80244295962C97CC /* Andale Mono.ttf */; };
 		A36B09A399CA44F5AAFDC403 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3A86E199C4DF41DAA89131F9 /* Entypo.ttf */; };
@@ -165,6 +170,20 @@
 			proxyType = 2;
 			remoteGlobalIDString = 11FA5C511C4A1296003AC2EE;
 			remoteInfo = AirMaps;
+		};
+		1E75BFA21E7DAC7600576B2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1E75BF9A1E7DAC7600576B2A /* RCTFBLogin.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4F3A6B5B1ACFBCC500CA65F7;
+			remoteInfo = RCTFBLogin;
+		};
+		1E75BFD41E7DB0A300576B2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 4B0EEB03C50442AAB1F1F9CB /* RCTFBSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9350E0F11CE3B0920041D815;
+			remoteInfo = RCTFBSDK;
 		};
 		1EABE06A1E6DFC3500894418 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -325,8 +344,13 @@
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = activeNYC/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = activeNYC/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
+		189A2CCCBAEB4ABA977AE948 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		1C2236A30CC44307B5E0816E /* Rubik-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Light.ttf"; path = "../node_modules/native-base/Fonts/Rubik-Light.ttf"; sourceTree = "<group>"; };
 		1E1564F67B7648D7AB7DF9C9 /* Microsoft Sans Serif.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Microsoft Sans Serif.ttf"; path = "../node_modules/native-base/Fonts/Microsoft Sans Serif.ttf"; sourceTree = "<group>"; };
+		1E75BF9A1E7DAC7600576B2A /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
+		1E75BFEE1E7DB18E00576B2A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		1E75BFF01E7DB87300576B2A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		1E75BFF21E7DB88200576B2A /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKShareKit.framework; sourceTree = "<group>"; };
 		1E8A917B1E6C94200060869E /* GoogleAuthUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAuthUtilities.framework; sourceTree = "<group>"; };
 		1E8A917D1E6C942F0060869E /* GoogleAppUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleAppUtilities.framework; sourceTree = "<group>"; };
 		1E8A917F1E6C94440060869E /* GoogleNetworkingUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleNetworkingUtilities.framework; sourceTree = "<group>"; };
@@ -344,6 +368,7 @@
 		37234E2276F942C29DE2F4C5 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/native-base/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		3A86E199C4DF41DAA89131F9 /* Entypo.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Entypo.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Entypo.ttf"; sourceTree = "<group>"; };
 		40AD9361EE2A4E66B7D3739C /* Rubik-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Medium.ttf"; path = "../node_modules/native-base/Fonts/Rubik-Medium.ttf"; sourceTree = "<group>"; };
+		4B0EEB03C50442AAB1F1F9CB /* RCTFBSDK.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDK.xcodeproj; path = "../node_modules/react-native-fbsdk/ios/RCTFBSDK.xcodeproj"; sourceTree = "<group>"; };
 		4D936C65FB2C45ADA419F1D7 /* Rubik-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-MediumItalic.ttf"; path = "../node_modules/native-base/Fonts/Rubik-MediumItalic.ttf"; sourceTree = "<group>"; };
 		5338923ED73347E59FC2ABF8 /* Courier New.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Courier New.ttf"; path = "../node_modules/native-base/Fonts/Courier New.ttf"; sourceTree = "<group>"; };
 		53CFC17876604530ADE12A98 /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
@@ -400,20 +425,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E75BFEF1E7DB18E00576B2A /* FBSDKLoginKit.framework in Frameworks */,
+				1E75BFBC1E7DACAC00576B2A /* libRCTFBLogin.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
 				5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */,
 				00C302E51ABCBA2D00DB3ED1 /* libRCTActionSheet.a in Frameworks */,
 				00C302E71ABCBA2D00DB3ED1 /* libRCTGeolocation.a in Frameworks */,
 				00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */,
+				1E75BFF11E7DB87300576B2A /* FBSDKCoreKit.framework in Frameworks */,
 				133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */,
 				00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */,
 				139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */,
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
+				1E75BFF31E7DB88200576B2A /* FBSDKShareKit.framework in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
 				61FCA77F20974F769D034A51 /* libRNVectorIcons.a in Frameworks */,
 				A46DEC586FD3499289A77000 /* libAirMaps.a in Frameworks */,
 				B08C9681E51F48B3A6FA5555 /* libRCTMaterialKit.a in Frameworks */,
+				8A31DA8A95CB46A58CA4C02B /* libRCTFBSDK.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -564,6 +594,22 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		1E75BF9B1E7DAC7600576B2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E75BFA31E7DAC7600576B2A /* libRCTFBLogin.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E75BFCC1E7DB0A300576B2A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E75BFD51E7DB0A300576B2A /* libRCTFBSDK.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		1EABE05E1E6DFC3500894418 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -575,6 +621,9 @@
 		229B67DF1FCD4654B0AC6502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				1E75BFF21E7DB88200576B2A /* FBSDKShareKit.framework */,
+				1E75BFF01E7DB87300576B2A /* FBSDKCoreKit.framework */,
+				1E75BFEE1E7DB18E00576B2A /* FBSDKLoginKit.framework */,
 				1E8A91871E6C94590060869E /* GoogleUtilities.framework */,
 				1E8A91851E6C94540060869E /* GoogleSymbolUtilities.framework */,
 				1E8A91831E6C94500060869E /* GoogleSignIn.framework */,
@@ -607,6 +656,7 @@
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				1E75BF9A1E7DAC7600576B2A /* RCTFBLogin.xcodeproj */,
 				1E8A91891E6C947E0060869E /* RNGoogleSignin */,
 				5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */,
 				146833FF1AC3E56700842450 /* React.xcodeproj */,
@@ -622,6 +672,7 @@
 				AD01F8F3F8FF4493B3959A38 /* RNVectorIcons.xcodeproj */,
 				7E9128A06CB94F52AFA1D28D /* AirMaps.xcodeproj */,
 				B216727F5AB04DB4A7E8E0CE /* RCTMaterialKit.xcodeproj */,
+				4B0EEB03C50442AAB1F1F9CB /* RCTFBSDK.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -836,6 +887,14 @@
 					ProjectRef = 5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */;
 				},
 				{
+					ProductGroup = 1E75BF9B1E7DAC7600576B2A /* Products */;
+					ProjectRef = 1E75BF9A1E7DAC7600576B2A /* RCTFBLogin.xcodeproj */;
+				},
+				{
+					ProductGroup = 1E75BFCC1E7DB0A300576B2A /* Products */;
+					ProjectRef = 4B0EEB03C50442AAB1F1F9CB /* RCTFBSDK.xcodeproj */;
+				},
+				{
 					ProductGroup = 00C302B61ABCB90400DB3ED1 /* Products */;
 					ProjectRef = 00C302B51ABCB90400DB3ED1 /* RCTGeolocation.xcodeproj */;
 				},
@@ -959,6 +1018,20 @@
 			fileType = archive.ar;
 			path = libAirMaps.a;
 			remoteRef = 1E6240411E68968F00CD8B82 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E75BFA31E7DAC7600576B2A /* libRCTFBLogin.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBLogin.a;
+			remoteRef = 1E75BFA21E7DAC7600576B2A /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		1E75BFD51E7DB0A300576B2A /* libRCTFBSDK.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDK.a;
+			remoteRef = 1E75BFD41E7DB0A300576B2A /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		1EABE06B1E6DFC3500894418 /* libRCTMaterialKit.a */ = {
@@ -1279,12 +1352,14 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = activeNYCTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1309,12 +1384,14 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = activeNYCTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1336,6 +1413,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1344,6 +1422,7 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = activeNYC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1370,6 +1449,12 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK",
+				);
+				"FRAMEWORK_SEARCH_PATHS[arch=*]" = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+					"~/Documents/FacebookSDK",
 				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1378,6 +1463,7 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = activeNYC/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1415,11 +1501,13 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = "activeNYC-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1453,11 +1541,13 @@
 					"$(SRCROOT)/../node_modules/lottie-react-native/lib/ios/LottieReactNative",
 					"$(SRCROOT)/../node_modules/react-native-google-signin/ios/RNGoogleSignin/**",
 					"$(SRCROOT)/../node_modules/react-native-material-kit/iOS/RCTMaterialKit",
+					"$(SRCROOT)/../node_modules/react-native-fbsdk/ios/RCTFBSDK/**",
 				);
 				INFOPLIST_FILE = "activeNYC-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1488,6 +1578,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.activeNYC-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1512,6 +1603,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
+					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.activeNYC-tvOSTests";
