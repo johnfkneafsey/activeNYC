@@ -39,8 +39,7 @@ export class EventsMain extends React.Component {
     }
 
     renderViewEventView(event) {
-        
-        console.log('are we here yet')
+        console.log('are we here yet. here is event', event)
         let selectedEvent;
         for (i = 0; i < this.props.globalEventsFAKE.length; i ++) {
             console.log('are we iterating')
@@ -57,16 +56,16 @@ export class EventsMain extends React.Component {
     render() {
 
         const nameObj = {
-                basketball: "Basketball",
-                soccerAndFootball: "Soccer",
-                runningtracks: "Tracks",
-                pools_indoor: "Swimming",
-                tennis: "Tennis",
-                bocce: "Bocce",
-                cricket: "Cricket",
-                handball: "Handball",
-                kayak: "Kayak and Canoe ",
-                iceskating: "Ice Skating"
+            basketball: "Basketball",
+            soccerAndFootball: "Soccer",
+            runningtracks: "Tracks",
+            pools_indoor: "Swimming",
+            tennis: "Tennis",
+            bocce: "Bocce",
+            cricket: "Cricket",
+            handball: "Handball",
+            kayak: "Kayak and Canoe ",
+            iceskating: "Ice Skating"
         }      
 
         let displayTitle = nameObj[this.props.parkType];
@@ -77,40 +76,40 @@ export class EventsMain extends React.Component {
             let name = event.eventName
             console.log('NAME' ,name)
 
-        return (
-                <Card key={event.eventName}>
-                    <CardItem>
-                        <Left>
-                            <View style={{flex: 1, flexDirection: 'column'}}>
-                                <Title>{event.eventTime}</Title>
-                                <Text>{event.eventName}</Text>
-                                <Text></Text>
+            return (
+                    <Card key={event.eventName}>
+                        <CardItem>
+                            <Left>
+                                <View style={{flex: 1, flexDirection: 'column'}}>
+                                    <Title>{event.eventTime}</Title>
+                                    <Text>{event.eventName}</Text>
+                                    <Text></Text>
 
-                                    <Thumbnail circle source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                    <Text>{event.eventOrganizerName}</Text>
-                            </View>
-                        </Left>
-                        <Right>
-                            <View style={{flex: 1, flexDirection: 'column'}}>
-                                <Button transparent onPress={() => { this.addEvent()}}>
-                                    <Icon name='ios-person-add' />
-                                    <Text>Join Event</Text>   
-                                </Button>  
-                                <Button transparent onPress={(name) => { this.renderViewEventView(name)}}>
-                                    <Icon name='ios-information-circle' />
-                                    <Text>  Info and Chat</Text>
-                                </Button>  
-                                <View style={{flex: 1, flexDirection: 'row'}}>
-                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                </View>  
-                                    <Text>and {event.eventParticipants} others... </Text>
-                            </View>                                     
-                        </Right>
-                    </CardItem>
-                </Card>
-        )
+                                        <Thumbnail circle source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                        <Text>{event.eventOrganizerName}</Text>
+                                </View>
+                            </Left>
+                            <Right>
+                                <View style={{flex: 1, flexDirection: 'column'}}>
+                                    <Button transparent onPress={() => { this.addEvent()}}>
+                                        <Icon name='ios-person-add' />
+                                        <Text>Join Event</Text>   
+                                    </Button>  
+                                    <Button transparent onPress={() => { this.renderViewEventView(name)}}>
+                                        <Icon name='ios-information-circle' />
+                                        <Text>  Info and Chat</Text>
+                                    </Button>  
+                                    <View style={{flex: 1, flexDirection: 'row'}}>
+                                        <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                        <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                        <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                    </View>  
+                                        <Text>and {event.eventParticipants} others... </Text>
+                                </View>                                     
+                            </Right>
+                        </CardItem>
+                    </Card>
+            )
         })
 
         return (

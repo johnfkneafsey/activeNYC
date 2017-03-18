@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, DatePickerIOS, View, ScrollView, StyleSheet } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Header, Left, Right, Button, Icon, Body, Title, Text } from 'native-base';
+import { Container, Content, Form, Item, Input, Thumbnail, Label, Header, Left, Right, Button, Icon, Body, Title, Text } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -18,7 +18,6 @@ export class ViewEvent extends React.Component {
 
     }
 
-    
     render() {
 
         return (
@@ -39,9 +38,25 @@ export class ViewEvent extends React.Component {
                 </Header>  
 
                 <Content>
-
-                    <Title>{this.props.userSelectedEvent.eventName}</Title>
-
+                    <Title>Event Name</Title>
+                    <Text>{this.props.userSelectedEvent.eventName}</Text>
+                    <Title>Event Description</Title>
+                    <Text>{this.props.userSelectedEvent.eventDescription}</Text>
+                    <Title>EventLocation</Title>
+                    <Text>{this.props.userSelectedEvent.eventLocation}</Text>
+                    <Title>Event Date</Title>
+                    <Text>{this.props.userSelectedEvent.eventDate}</Text>
+                    <Title>Event Time</Title>
+                    <Text>{this.props.userSelectedEvent.eventTime}</Text>
+                    <Title>Event Name</Title>
+                    <Text>{this.props.userSelectedEvent.eventName}</Text>
+                    <Title>Event Organizer Name</Title>
+                    <Text>{this.props.userSelectedEvent.eventOrganizerName}</Text>
+                    <Title>Event Organizer Imae</Title>
+                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />                    
+                    <Title>Event Participants</Title>
+                    <Text>{this.props.userSelectedEvent.eventParticipants}</Text>
+                   
                 </Content>
             </Container>
         );
@@ -71,3 +86,38 @@ const mapStateToProps = (state, props) => ({
 
 
 export default connect(mapStateToProps)(ViewEvent);
+
+
+/*
+Title USER                                     Organizer: 
+                                            [           ]
+Description:  USER                          [           ] FB
+~~~~~~~~~~~~~~~~~~~~~~~~~~                  [           ]
+~~~~~~~~~~~~~~~~~~~~~~~~~~                  Beyonce Knowles FB
+~~~~~~~~~~~~~~~~~~~~~~~~~~                   
+
+Time: USER
+
+Location: CURRENTPARK
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Attending:  EVENTATTENDEES  
+[  ][  ][  ][  ][  ]
+[  ][  ][  ][  ][  ]   ... and 3 others
+
+
+Chat:
+|
+|
+|
+|
+|
+|
+|
+|
+|
+
+
+
+
+*/
