@@ -98,9 +98,14 @@ export const renderViewEventView = (event) => ({
 	event: event
 })
 
-
 export const SAVE_PROFILE_TO_STORE = 'SAVE_PROFILE_TO_STORE'
 export const saveProfileToStore = (userProfile) => ({
 	type: SAVE_PROFILE_TO_STORE,
 	userProfile: userProfile
+})
+
+export const RENDER_EVENT_CHAT_VIEW = 'RENDER_EVENT_CHAT_VIEW'
+export const renderEventChatView = () => ({
+	type: RENDER_EVENT_CHAT_VIEW,
+
 })

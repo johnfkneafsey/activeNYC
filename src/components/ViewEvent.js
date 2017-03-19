@@ -15,7 +15,10 @@ export class ViewEvent extends React.Component {
 
     cancelViewEvent() {
         this.props.dispatch(actions.renderViewEventView());
+    }
 
+    eventChatView() {
+        this.props.dispatch(actions.renderEventChatView());
     }
 
     render() {
@@ -56,7 +59,10 @@ export class ViewEvent extends React.Component {
                     <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />                    
                     <Title>Event Participants</Title>
                     <Text>{this.props.userSelectedEvent.eventParticipants}</Text>
-                   
+                    <Button transparent onPress={() => { this.eventChatView()}} >
+                        <Text>Event Discussion</Text>
+                        <Icon name="ios-chatbubbles" />
+                    </Button>
                 </Content>
             </Container>
         );

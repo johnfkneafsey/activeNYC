@@ -23,6 +23,7 @@ const initialState = {
     renderEventsView: 1,
     renderNewEventView: 1,
     renderViewEventView: 1,
+    renderEventChatView: 1,
     icons: {
         basketball: "ios-basketball",
         bocce: "ios-disc",
@@ -263,13 +264,10 @@ export const mainReducer = (state= initialState, action) => {
 
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE ADD_HOUR GETSTATE()")}, 3000);
 
-        
-
         return update(state, {
             userSelectedEventDuration: {$apply: function(x) {return x + 1;}}
         })
     }
-
 
     if (action.type === actions.SUBTRACT_HOUR) { 
 
@@ -297,6 +295,15 @@ export const mainReducer = (state= initialState, action) => {
 
         return update(state, {
             user: {$set: action.userProfile}
+        })
+    }
+
+    if (action.type === actions.RENDER_EVENT_CHAT_VIEW) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE RENDER_EVENT_CHAT_VIEW GETSTATE()")}, 3000);
+
+        return update(state, {
+            renderEventChatView: {$apply: function(x) {return x + 1;}}
         })
     }
 

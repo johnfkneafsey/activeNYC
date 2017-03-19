@@ -6,6 +6,7 @@ import EventsMain from './EventsMain';
 import NewEvent from './NewEvent';
 import ViewEvent from './ViewEvent';
 import Login from './Login';
+import EventChat from './EventChat';
 import { AppRegistry, StyleSheet, Text, View } from 'react-native';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -37,6 +38,11 @@ class App extends React.Component {
         }
 
         if (this.props.renderViewEventView % 2 === 0) {
+            if (this.props.renderEventChatView % 2 === 0) {
+                return (
+                    <EventChat />
+                )
+            }
             return (
                 <ViewEvent />
             )
@@ -66,7 +72,8 @@ const mapStateToProps = (state, props) => ({
     renderEventsView: state.renderEventsView,
     renderNewEventView: state.renderNewEventView,
     renderViewEventView: state.renderViewEventView,
-    user: state.user
+    user: state.user,
+    renderEventChatView: state.renderEventChatView
 });
 
 export default connect(mapStateToProps)(App);
