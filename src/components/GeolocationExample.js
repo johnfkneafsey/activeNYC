@@ -33,29 +33,23 @@ export class GeolocationExample extends React.Component {
     }
 
     markerPress(e) {
+        let bestMatch = null;
         for (i = 0; i < this.props.markers.length; i ++) {
             if (e.nativeEvent.id === this.props.markers[i].Prop_ID) {
                 let facilityObj = this.props.markers[i];
                 let facility = JSON.stringify(this.props.markers[i])
                 console.log('FACILITY HEEEYA' , facilityObj)
 
-                let params = {
-                        "ll": facilityObj.lat + "," + facilityObj.lon,
-                    "query": facilityObj.Name
-                    };
-                    
-                foursquare.venues.getVenues(params)
-                    .then(function(venues) {
-                            console.log('venuesf sfjskgsjg' , venues);
-                        })
-                    .catch(function(err){
-                        console.log(err);
-                    });
-
-
+                let paramsVenues = {
+                    "ll": facilityObj.lat + "," + facilityObj.lon,
+                    "query": facilityObj.Name,
+                    "venuePhotos": 1
+                };
                 this.props.dispatch(actions.selectedFacility(facility))
+                this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
             }
         }
+        console.log('way late best match   ', bestMatch)
     }
 
     navigateToFacility(url) {
@@ -75,7 +69,6 @@ export class GeolocationExample extends React.Component {
         this.props.dispatch(actions.renderEventsView());
     }
 
-
     render() {
 
         let iconToggle;
@@ -87,16 +80,16 @@ export class GeolocationExample extends React.Component {
         }
 
         const nameObj = {
-                basketball: "Basketball",
-                soccerAndFootball: "Soccer",
-                runningtracks: "Tracks",
-                pools_indoor: "Swimming",
-                tennis: "Tennis",
-                bocce: "Bocce",
-                cricket: "Cricket",
-                handball: "Handball",
-                kayak: "Kayak and Canoe ",
-                iceskating: "Ice Skating"
+            basketball: "Basketball",
+            soccerAndFootball: "Soccer",
+            runningtracks: "Tracks",
+            pools_indoor: "Swimming",
+            tennis: "Tennis",
+            bocce: "Bocce",
+            cricket: "Cricket",
+            handball: "Handball",
+            kayak: "Kayak and Canoe ",
+            iceskating: "Ice Skating"
         }      
 
         let displayTitle = nameObj[this.props.parkType]

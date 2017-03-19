@@ -15,6 +15,7 @@ const initialState = {
     facilityData: null,
     markers: null,
     selectedFacility: null,
+    selectedVenue: null,
     initialPosition: null,
     lastPosition: null,
     userLatitude: 40.7565,
@@ -284,7 +285,7 @@ export const mainReducer = (state= initialState, action) => {
 
         return update(state, {
             renderViewEventView: {$apply: function(x) {return x + 1;}},
-            //needs help
+  
             userSelectedEvent: {$set: action.event}
         })
     }
@@ -304,6 +305,17 @@ export const mainReducer = (state= initialState, action) => {
 
         return update(state, {
             renderEventChatView: {$apply: function(x) {return x + 1;}}
+        })
+    }
+
+    if (action.type === actions.SAVE_FOURSQUARE_VENUE_TO_STORE) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SAVE_FOURSQUARE_VENUE_TO_STORE GETSTATE()")}, 3000);
+        
+        console.log('THIS IS THE VENUE OBJ IN REDUCER ', action.venueObj)
+       
+        return update(state, {
+            selectedVenue: {$set: action.venueObj}
         })
     }
 

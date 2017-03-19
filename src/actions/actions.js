@@ -1,5 +1,10 @@
 import store from '../store/store'
-
+const foursquare = require('react-native-foursquare-api')({
+  clientID: 'XFP50ZHK1ADEQXMZVRPT3GNVLRZJVIELIJVE2WS4T3ZTI3FL',
+  clientSecret: '50UNQ5MPQIYJASBURHQ1EQRCM02SK3T2F403ZDRZZ240IXMF',
+  style: 'foursquare', // default: 'foursquare' 
+  version: '20161016' //  default: '20140806' 
+});
 
 export const SELECT_PARK_TYPE = 'SELECT_PARK_TYPE';
 export const selectParkType = (parkType) => ({
@@ -107,5 +112,25 @@ export const saveProfileToStore = (userProfile) => ({
 export const RENDER_EVENT_CHAT_VIEW = 'RENDER_EVENT_CHAT_VIEW'
 export const renderEventChatView = () => ({
 	type: RENDER_EVENT_CHAT_VIEW,
-
 })
+
+export const SAVE_FOURSQUARE_VENUE_TO_STORE = 'SAVE_FOURSQUARE_VENUE_TO_STORE'
+export const saveVenueToStore = (venueObj) => ({
+	type: SAVE_FOURSQUARE_VENUE_TO_STORE,
+	venueObj: venueObj
+})
+
+
+export const asyncSaveVenueToStore = (params) => dispatch => {
+	return foursquare.venues.explore(params)
+		.then(function(venues) {
+			console.log('venuesf sfjskgsjg' , venues);
+			let bestMatch = venues.response.groups[0].items[0].venue;
+			console.log('best aMATCH BABY YAAAAA' ,bestMatch);
+			return dispatch(saveVenueToStore(bestMatch))
+		})
+		.catch(function(err){
+			console.log(err);
+		});
+}
+
