@@ -3,7 +3,7 @@ const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 const HOST = process.env.HOST;
 const config = require('./config');
-const { User } = require('./models');
+const { User, Event } = require('./models');
 const app = express();
 mongoose.Promise = global.Promise;
 const jsonParser = bodyParser.json();
@@ -48,6 +48,39 @@ app.put('/users', jsonParser, (req, res) => {
         .then(user => {
             console.log('USER ',user)
             return user
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+app.get('/events', jsonParser, (req, res) => {
+    res.status(200)
+  
+    console.log('events get REQ ', req.body);
+
+    Event
+        .find()
+        .exec()
+        .then(events => {
+          console.log('WHAT KIDNA EVENTS DO WE GOT???', events)
+          res.json(events.map(event => event.apiRepr()))
+        })
+        .catch(err => {
+            console.log(err);
+        })
+});
+
+
+app.post('/events', jsonParser, (req, res) => {
+    res.status(200)
+  
+    console.log('events create REQ ', req.body);
+
+    Event
+        .create(req.body)
+        .then(event => {
+          console.log('EVENT CREATED ', event)
         })
         .catch(err => {
             console.log(err);

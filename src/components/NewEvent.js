@@ -21,7 +21,13 @@ export class NewEvent extends React.Component {
     }
 
     setTitle(title) {
-        console.log('INPUT USERNAME', title)
+        console.log('INPUT title', title)
+        this.props.dispatch(actions.userSelectedEventTitle(title));
+    }
+
+    setDescription(description) {
+        console.log('INPUT description', description)
+        this.props.dispatch(actions.userSelectedEventDescription(description));
     }
 
     onDateChange = (startTime) => {
@@ -40,6 +46,34 @@ export class NewEvent extends React.Component {
         if (this.props.userSelectedEventDuration > 1) {
             this.props.dispatch(actions.subtractHour());
         }
+    }
+
+    createEvent () {
+        let create_eventName = this.props.userSelectedEventTitle;
+        let create_eventType = this.props.parkType;
+        let create_eventOrganizer = this.props.user;
+        let create_EventAttendees = [];
+        let create_eventDescription = this.props.userSelectedEventDescription;
+        let create_eventDate = this.props.selectedDate;
+        let create_eventStartTime = this.props.userSelectedEventStartTime;
+        let create_eventDuration = this.props.userSelectedEventDuration;
+        let create_eventChat = [];
+        let create_eventFacilityName = this.props.selectedFacility.Name;
+
+        let eventObj = {
+            eventName: create_eventName,
+            eventType: create_eventType,
+            eventOrganizer: create_eventOrganizer,
+            eventAttendees: create_EventAttendees,
+            eventDescription: create_eventDescription,
+            eventDate: create_eventDate,
+            eventStartTime: create_eventStartTime,
+            eventDuration: create_eventDuration,            
+            eventChat: create_eventChat,
+            eventFacilityName: create_eventFacilityName
+        }
+        console.log('ITS THE EVENT OBJ', eventObj);
+        this.props.dispatch(actions.createEvent(eventObj));
     }
 
     render() {
@@ -68,7 +102,7 @@ export class NewEvent extends React.Component {
                         </Item>
                         <Item  last>
                             <Label>Description: </Label>
-                            <Input  onChangeText={(title) => {this.setTitle(title); }}/>
+                            <Input  onChangeText={(description) => {this.setDescription(description); }}/>
                         </Item>
                         <Item>
                             <View>
@@ -81,27 +115,28 @@ export class NewEvent extends React.Component {
                             date={this.props.userSelectedEventStartTime}
                             mode="time"
                             onDateChange={this.onDateChange}
-                            minuteInterval={10}
+                            minuteInterval={15}
                         />
                     </View>
                     <View style={{flexDirection: "row" }}>
                         
-                            <Button iconLeft light onPress={() => { this.subtractHour() }}>
-                                
-                                <Icon name='arrow-back' />
-                            </Button>
-                            <Text>{this.props.userSelectedEventDuration} Hours </Text> 
+                        <Button iconLeft light onPress={() => { this.subtractHour() }}>
+                            
+                            <Icon name='arrow-back' />
+                        </Button>
+                        <Text>{this.props.userSelectedEventDuration} Hours </Text> 
 
-                            <Button iconRight light onPress={() => { this.addHour() }}>
-                                
-                                <Icon name='arrow-forward' />
-                            </Button>
-                        
-                                     
-                       
-
-
+                        <Button iconRight light onPress={() => { this.addHour() }}>
+                            
+                            <Icon name='arrow-forward' />
+                        </Button>
                    
+                    </View>
+                    <View>
+                        <Button  light onPress={() => { this.createEvent() }}>
+                            <Text>Create</Text>
+                            <Icon name='checkbox' />
+                        </Button>
                     </View>
                 </Content>
             </Container>
@@ -126,7 +161,11 @@ const mapStateToProps = (state, props) => ({
     globalEventsFAKE: state.globalEventsFAKE,
     userSelectedEventStartTime: state.userSelectedEventStartTime,
     userSelectedEventEndTime: state.userSelectedEventEndTime,
-    userSelectedEventDuration: state.userSelectedEventDuration
+    userSelectedEventDuration: state.userSelectedEventDuration,
+    userSelectedEventTitle: state.userSelectedEventTitle,
+    userSelectedEventDescription: state.userSelectedEventDescription,
+    user: state.user,
+    selectedDate: state.selectedDate
 });
 
 

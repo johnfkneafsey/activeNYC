@@ -7,7 +7,8 @@ const foursquare = require('react-native-foursquare-api')({
 });
 const HOST = process.env.HOST;
 const config = require('../../server/config');
-
+const host = config.HOST;
+const port = config.PORT;
 
 
 export const SELECT_PARK_TYPE = 'SELECT_PARK_TYPE';
@@ -124,6 +125,25 @@ export const saveVenueToStore = (venueObj) => ({
 	venueObj: venueObj
 })
 
+export const SAVE_EVENTS_TO_STORE = 'SAVE_EVENTS_TO_STORE'
+export const saveEventsToStore = (events) => ({
+	type: SAVE_EVENTS_TO_STORE,
+	events: events
+})
+
+export const USER_SELECTED_EVENT_TITLE = 'USER_SELECTED_EVENT_TITLE'
+export const userSelectedEventTitle = (title) => ({
+	type: USER_SELECTED_EVENT_TITLE,
+	title: title
+})
+
+export const USER_SELECTED_EVENT_DESCRIPTION = 'USER_SELECTED_EVENT_DESCRIPTION'
+export const userSelectedEventDescription = (description) => ({
+	type: USER_SELECTED_EVENT_DESCRIPTION,
+	description: description
+})
+
+
 
 export const asyncSaveVenueToStore = (params) => dispatch => {
 	return foursquare.venues.explore(params)
@@ -136,36 +156,6 @@ export const asyncSaveVenueToStore = (params) => dispatch => {
 		});
 }
 
-
-export const userDatabaseCheck = (user) => dispatch => {
-	return fetch('http://localhost:8080/api/logout', {
-		method: 'PUT',
-		headers: {
-			Accept: 'application/json',
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(userData)
-	})
-	.then(res => {
-		if (!res.ok) {
-				throw new Error(res.statusText);
-		}
-		console.log('THIS IS BEING SENT TO LOG OUT ENDPOINT ', res);
-		return res.json();
-	})
-	.catch(error => {
-		return error;
-	})
-}
-
-
-
-
-
-
-//
-let host = config.HOST;
-let port = config.PORT;
 
 export const updateUserInDatabase = (userData) => dispatch => {
 	console.log('JSON STRINGIFY' , JSON.stringify(userData));
@@ -182,10 +172,57 @@ export const updateUserInDatabase = (userData) => dispatch => {
 				throw new Error(res.statusText);
 		}
 		console.log('THIS IS BEING SENT TO UDER DATA ENDPOINT ', res);
-	//	dispatch(saveProfileToStore(res))
 		return res.json();
 	})
 	.catch(error => {
 		return error;
 	})
 }
+
+
+export const loadEvents = () => dispatch => {
+	return fetch(`http://${host}:${port}/events`, {
+		method: 'GET',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		}
+	})
+	.then(res => {
+		if (!res.ok) {
+				throw new Error(res.statusText);
+		}
+		console.log('ARE THESE EVENTS???', res);
+		dispatch(saveEventsToStore(res))
+		return res.json();
+	})
+	.catch(error => {
+		return error;
+	})
+}
+
+
+export const createEvent = (event) => dispatch => {
+	return fetch(`http://${host}:${port}/events`, {
+		method: 'POST',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(event)
+	})
+	.then(res => {
+		if (!res.ok) {
+				throw new Error(res.statusText);
+		}
+		console.log('ARE THESE EVENTS???', res);
+	//	dispatch(saveEventsToStore(res))
+		return res.json();
+	})
+	.catch(error => {
+		return error;
+	})
+}
+
+
+

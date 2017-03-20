@@ -38,6 +38,8 @@ const initialState = {
     userSelectedEventStartTime: new Date(),
     userSelectedEventDuration: 1,
     userSelectedEvent: null,
+    userSelectedEventTitle: null,
+    userSelectedEventDescription: null,
 
 
 /*
@@ -78,6 +80,7 @@ Chat:
 
 
     // EVENTS DB - THIS WILL GO TO BACK END
+    events: null,
     globalEventsFAKE: [{
         eventName: "2 vs. 2 this Afternoon",
         eventOrganizerName: "James Freedman",
@@ -315,6 +318,37 @@ export const mainReducer = (state= initialState, action) => {
             selectedVenue: {$set: action.venueObj}
         })
     }
+
+    if (action.type === actions.SAVE_EVENTS_TO_STORE) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SAVE_FOURSQUARE_VENUE_TO_STORE GETSTATE()")}, 3000);
+        
+        console.log('THIS IS THE EVENTS IN REDUCER ', action.events)
+       
+        return update(state, {
+            events: {$set: action.events}
+        })
+    }
+
+    if (action.type === actions.USER_SELECTED_EVENT_TITLE) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT_TITLE GETSTATE()")}, 3000);
+
+        return update(state, {
+            userSelectedEventTitle: {$set: action.title}
+        })
+    }
+
+    if (action.type === actions.USER_SELECTED_EVENT_DESCRIPTION) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SAVE_PROFILE_TO_STORE GETSTATE()")}, 3000);
+
+        return update(state, {
+            userSelectedEventDescription: {$set: action.description}
+        })
+    }
+
+
 
 	return state;
     
