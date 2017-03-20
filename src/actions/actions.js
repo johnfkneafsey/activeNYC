@@ -5,6 +5,10 @@ const foursquare = require('react-native-foursquare-api')({
   style: 'foursquare', // default: 'foursquare' 
   version: '20161016' //  default: '20140806' 
 });
+const HOST = process.env.HOST;
+const config = require('../../server/config');
+
+
 
 export const SELECT_PARK_TYPE = 'SELECT_PARK_TYPE';
 export const selectParkType = (parkType) => ({
@@ -124,9 +128,7 @@ export const saveVenueToStore = (venueObj) => ({
 export const asyncSaveVenueToStore = (params) => dispatch => {
 	return foursquare.venues.explore(params)
 		.then(function(venues) {
-			console.log('venuesf sfjskgsjg' , venues);
 			let bestMatch = venues.response.groups[0].items[0].venue;
-			console.log('best aMATCH BABY YAAAAA' ,bestMatch);
 			return dispatch(saveVenueToStore(bestMatch))
 		})
 		.catch(function(err){
@@ -134,3 +136,56 @@ export const asyncSaveVenueToStore = (params) => dispatch => {
 		});
 }
 
+
+export const userDatabaseCheck = (user) => dispatch => {
+	return fetch('http://localhost:8080/api/logout', {
+		method: 'PUT',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(userData)
+	})
+	.then(res => {
+		if (!res.ok) {
+				throw new Error(res.statusText);
+		}
+		console.log('THIS IS BEING SENT TO LOG OUT ENDPOINT ', res);
+		return res.json();
+	})
+	.catch(error => {
+		return error;
+	})
+}
+
+
+
+
+
+
+//
+let host = config.HOST;
+let port = config.PORT;
+
+export const updateUserInDatabase = (userData) => dispatch => {
+	console.log('JSON STRINGIFY' , JSON.stringify(userData));
+	return fetch(`http://${host}:${port}/users`, {
+		method: 'PUT',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(userData)
+	})
+	.then(res => {
+		if (!res.ok) {
+				throw new Error(res.statusText);
+		}
+		console.log('THIS IS BEING SENT TO UDER DATA ENDPOINT ', res);
+	//	dispatch(saveProfileToStore(res))
+		return res.json();
+	})
+	.catch(error => {
+		return error;
+	})
+}

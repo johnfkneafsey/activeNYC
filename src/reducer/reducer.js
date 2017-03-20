@@ -1,6 +1,3 @@
-// timepicker not reading and writing properly
-
-
 import update from 'immutability-helper';
 import * as actions from '../actions/actions';
 import store from '../store/store';
@@ -10,8 +7,8 @@ import { findNearest } from '../algorithms/displayNearest';
 
 
 const initialState = {
-    user: null,
-    parkType: null,
+    user: null,                 //
+    parkType: null,             
     facilityData: null,
     markers: null,
     selectedFacility: null,

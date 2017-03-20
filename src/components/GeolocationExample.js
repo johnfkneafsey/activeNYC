@@ -32,6 +32,7 @@ export class GeolocationExample extends React.Component {
         this.renderEventsView = this.renderEventsView.bind(this);
     }
 
+
     markerPress(e) {
         let bestMatch = null;
         for (i = 0; i < this.props.markers.length; i ++) {
@@ -104,15 +105,26 @@ export class GeolocationExample extends React.Component {
             mapFocusLongitude = this.props.selectedFacility.lon;
         } 
 
-        if (this.props.selectedFacility) {
+
+        let footer = <View></View>
+
+        if (this.props.selectedVenue) {
+            
+            let prefix = this.props.selectedVenue.featuredPhotos.items[0].prefix;
+            let suffix = this.props.selectedVenue.featuredPhotos.items[0].suffix;
+            let size = "height300"
+            let photoURL = prefix + size + suffix;
+
+            console.log('PHOTO URL ', photoURL);
+            
             cardView = 
-                <Card style={{flex: .3}}>
+                <Card style={{flex: .4}}>
                     <CardItem>       
                             <Body>
-                                <Thumbnail style={{width: 240, height: 69}} square source={{uri: "https://unsplash.it/200/300/?random"}} />
+                                <Thumbnail style={{width: 100, height: 100}}  source={{uri: photoURL}} />
                                 <Title>{this.props.selectedFacility.Name}</Title>
                                 <Text>Location: {this.props.selectedFacility.Location}</Text>
-                                <Text>Property ID: {this.props.selectedFacility.Prop_ID}</Text>
+                                <Text>Status: {this.props.selectedVenue.hours.status}</Text>
                             </Body>
                     </CardItem>
                 </Card> 
@@ -125,6 +137,26 @@ export class GeolocationExample extends React.Component {
                 )
             }
         }
+
+
+        if (this.props.selectedFacility) {
+            footer = 
+                <Footer>
+                    <FooterTab>
+                        <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
+                            <Icon name="ios-walk-outline" />
+                            <Text>Take me there</Text>
+                        </Button>
+                    </FooterTab>
+                    <FooterTab>
+                        <Button transparent button onPress={() => { this.renderEventsView()}}>
+                            <Icon name="ios-people" />
+                            <Text>Matches and Events</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>
+        }
+
 
         if (this.props.markers) {
             return (
@@ -175,20 +207,7 @@ export class GeolocationExample extends React.Component {
                         </MapView>
                     </View>
                     {cardView}
-                    <Footer>
-                        <FooterTab>
-                            <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                                <Icon name="ios-walk-outline" />
-                                <Text>Take me there</Text>
-                            </Button>
-                        </FooterTab>
-                        <FooterTab>
-                            <Button transparent button onPress={() => { this.renderEventsView()}}>
-                                <Icon name="ios-people" />
-                                <Text>Matches and Events</Text>
-                            </Button>
-                        </FooterTab>
-                    </Footer>   
+                    {footer}
                 </Container>
             )
         }
@@ -240,7 +259,8 @@ const mapStateToProps = (state, props) => ({
     userLongitude: state.userLongitude,
     selectedFacility: state.selectedFacility,
     renderListView: state.renderListView,
-    renderEventsView: state.renderEventsView
+    renderEventsView: state.renderEventsView,
+    selectedVenue: state.selectedVenue
 });
 
 

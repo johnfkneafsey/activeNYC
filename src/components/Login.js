@@ -15,6 +15,7 @@ export class Login extends React.Component {
         super(props); 
     }
 
+
     render() {
 
         return (
@@ -34,16 +35,14 @@ export class Login extends React.Component {
                                 AccessToken.getCurrentAccessToken().then(
                                     (data) => {
                                     let accessToken = data.accessToken
-                                    alert(accessToken.toString())
 
                                     const responseInfoCallback = (error, result) => {
                                         if (error) {
                                             console.log(error)
-                                            alert('Error fetching data: ' + error.toString());
                                         } else {
                                             console.log(result)
                                             this.props.dispatch(actions.saveProfileToStore(result));
-                                            alert('Success fetching data: ' + result.toString());
+                                            this.props.dispatch(actions.updateUserInDatabase(result));
                                         }
                                     }
 

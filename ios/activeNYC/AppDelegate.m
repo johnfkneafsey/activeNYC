@@ -87,7 +87,7 @@
 
 //#import <React/RCTBundleURLProvider.h>
 #import <React/RCTRootView.h>
-
+#import "SplashScreen.h"
 
 //  AppDelegate.m
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
@@ -96,6 +96,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+ //   [SplashScreen show];  // here
   NSURL *jsCodeLocation;
   
   /**
@@ -161,6 +162,7 @@
                                                         openURL:url
                                               sourceApplication:sourceApplication
                                                      annotation:annotation];
+
 }
 
 @end
