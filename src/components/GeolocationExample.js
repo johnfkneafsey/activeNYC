@@ -15,6 +15,8 @@ import { Container, Card, Thumbnail, CardItem, Content, Icon, Button, Footer, Fo
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
+
+
 const foursquare = require('react-native-foursquare-api')({
   clientID: 'XFP50ZHK1ADEQXMZVRPT3GNVLRZJVIELIJVE2WS4T3ZTI3FL',
   clientSecret: '50UNQ5MPQIYJASBURHQ1EQRCM02SK3T2F403ZDRZZ240IXMF',
@@ -32,6 +34,10 @@ export class GeolocationExample extends React.Component {
         this.renderEventsView = this.renderEventsView.bind(this);
     }
 
+    componentDidMount() {
+        console.log('EVENTS LOADED')
+        this.props.dispatch(actions.loadEvents());
+    }
 
     markerPress(e) {
         let bestMatch = null;
@@ -50,7 +56,6 @@ export class GeolocationExample extends React.Component {
                 this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
             }
         }
-        console.log('way late best match   ', bestMatch)
     }
 
     navigateToFacility(url) {
@@ -104,7 +109,6 @@ export class GeolocationExample extends React.Component {
             mapFocusLatitude = this.props.selectedFacility.lat;
             mapFocusLongitude = this.props.selectedFacility.lon;
         } 
-
 
         let footer = <View></View>
 

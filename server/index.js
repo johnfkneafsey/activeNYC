@@ -21,33 +21,36 @@ app.use(function(req, res, next) {
    next();
 });
 
-app.put('/users', jsonParser, (req, res) => {
+app.post('/users', jsonParser, (req, res) => {
     res.status(200)
   
     console.log('USERS REQ ', req);
-
+    
     User
         .findOne({id: req.body.id})
         .exec()
         .then(user => {
             if (!user) {
                 console.log('BUILDING NEW USER')
+                console.log('IS THIS PICTURE URL??? ', req.body)
                 var newUser = {
                     first_name: req.body.first_name,
                     gender: req.body.gender,
                     id: req.body.id,
                     last_name: req.body.last_name,
                     link: req.body.link,
-                    name: req.body.name
+                    name: req.body.name,
+                    picture: req.body.picture.data.url
                 }    
                 console.log('NEW USER ', newUser)
                 return User
                     .create(newUser)
             }
+            return user
         })
         .then(user => {
             console.log('USER ',user)
-            return user
+            return res.json(user)
         })
         .catch(err => {
             console.log(err);
@@ -57,7 +60,7 @@ app.put('/users', jsonParser, (req, res) => {
 app.get('/events', jsonParser, (req, res) => {
     res.status(200)
   
-    console.log('events get REQ ', req.body);
+    console.log('events get REQ')
 
     Event
         .find()
@@ -70,7 +73,6 @@ app.get('/events', jsonParser, (req, res) => {
             console.log(err);
         })
 });
-
 
 app.post('/events', jsonParser, (req, res) => {
     res.status(200)
@@ -121,3 +123,4 @@ if (require.main === module) {
 module.exports = {
     app, runServer, closeServer
 };
+

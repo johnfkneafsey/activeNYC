@@ -16,6 +16,7 @@ export class EventsMain extends React.Component {
         this.selectedDate = this.selectedDate.bind(this);
         this.renderNewEventView = this.renderNewEventView.bind(this);    
         this.renderViewEventView = this.renderViewEventView.bind(this); 
+        this.passUpFacilityName = this.passUpFacilityName.bind(this);
     }
 
     renderEventsView() {
@@ -46,12 +47,19 @@ export class EventsMain extends React.Component {
             if (this.props.globalEventsFAKE[i].eventName === event) {
                 console.log('are we true?')
                 this.props.dispatch(actions.renderViewEventView(this.props.globalEventsFAKE[i]));
-
             }
         }
-
     }
 
+    passUpFacilityName (facility) {
+        console.log('FACILITY ', facility)
+        this.props.dispatch(actions.currentCard(facility))
+    }
+
+    // load events into markers
+    // load the calendar and the events into the card itself. i.e. one big component
+    // call all events for each facility, filter them using the calendar
+    //  
 
     render() {
 
@@ -68,14 +76,17 @@ export class EventsMain extends React.Component {
             iceskating: "Ice Skating"
         }      
 
+        
         let displayTitle = nameObj[this.props.parkType];
         let typeIcon = this.props.icons[this.props.parkType];
+        
 
-        let events = this.props.globalEventsFAKE.map(event => {
+        let eventList = this.props.events.map(event => {
 
             let name = event.eventName
             console.log('NAME' ,name)
-
+            console.log('EVENT PICTURE ', event.eventOrganizer.picture)
+            
             return (
                     <Card key={event.eventName}>
                         <CardItem>
@@ -85,8 +96,8 @@ export class EventsMain extends React.Component {
                                     <Text>{event.eventName}</Text>
                                     <Text></Text>
 
-                                        <Thumbnail circle source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                        <Text>{event.eventOrganizerName}</Text>
+                                        <Thumbnail circle source={{uri: event.eventOrganizer.picture}} />
+                                        <Text>{event.eventOrganizer.name}</Text>
                                 </View>
                             </Left>
                             <Right>
@@ -159,7 +170,7 @@ export class EventsMain extends React.Component {
                                         </Button>                                        
                                     </Right>
                                 </CardItem>
-                                <View >
+                                <View>
                                     <CalendarStrip
                                         calendarAnimation={{type: 'sequence', duration: 30}}
                                         selection={'border'}
@@ -172,11 +183,11 @@ export class EventsMain extends React.Component {
                                         dateNameStyle={{color: 'white'}}
                                         borderHighlightColor={'white'}
                                         iconContainer={{flex: 0.1}}
-                                        onDateSelected={this.selectedDate}
+                                        onDateSelected={ () => {this.selectedDate(); this.passUpFacilityName(item)}}
                                     />
-                                <ScrollView>
-                                    {events}
-                                </ScrollView>
+                                    <ScrollView>
+                                        {eventList}
+                                    </ScrollView>
                                 </View>
                             </Card>
                         }
@@ -200,7 +211,9 @@ const mapStateToProps = (state, props) => ({
     renderListView: state.renderListView,
     renderEventsView: state.renderEventsView,
     icons: state.icons,
-    globalEventsFAKE: state.globalEventsFAKE
+    globalEventsFAKE: state.globalEventsFAKE,
+    events: state.events,
+    currentCard: state.currentCard
 });
 
 

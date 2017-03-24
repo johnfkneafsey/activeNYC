@@ -33,7 +33,6 @@ export class NewEvent extends React.Component {
     onDateChange = (startTime) => {
         console.log('THIS IS START TIME ' , startTime);
         this.props.dispatch(actions.userSelectedEventStartTime(startTime, this.props.userSelectedEventDuration));
-
     };
 
     addHour() {

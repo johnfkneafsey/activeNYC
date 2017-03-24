@@ -5,7 +5,6 @@ import { facilityData } from '../data/facilityData';
 import { findNearest } from '../algorithms/displayNearest';
 
 
-
 const initialState = {
     user: null,                 //
     parkType: null,             
@@ -40,7 +39,7 @@ const initialState = {
     userSelectedEvent: null,
     userSelectedEventTitle: null,
     userSelectedEventDescription: null,
-
+    currentCard: null,
 
 /*
 Title USER                                     Organizer: 
@@ -72,12 +71,7 @@ Chat:
 |
 
 
-
-
 */
-
-
-
 
     // EVENTS DB - THIS WILL GO TO BACK END
     events: null,
@@ -321,7 +315,7 @@ export const mainReducer = (state= initialState, action) => {
 
     if (action.type === actions.SAVE_EVENTS_TO_STORE) { 
 
-        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SAVE_FOURSQUARE_VENUE_TO_STORE GETSTATE()")}, 3000);
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SAVE_EVENTS_TO_STORE GETSTATE()")}, 3000);
         
         console.log('THIS IS THE EVENTS IN REDUCER ', action.events)
        
@@ -348,7 +342,14 @@ export const mainReducer = (state= initialState, action) => {
         })
     }
 
+    if (action.type === actions.CURRENT_CARD) { 
 
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE CURRENT_CARD GETSTATE()")}, 3000);
+
+        return update(state, {
+            currentCard: {$set: action.facility}
+        })
+    }
 
 	return state;
     

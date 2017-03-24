@@ -21,7 +21,6 @@ export class Login extends React.Component {
         return (
             <View>
                 <LoginButton
-                    //publishPermissions={['publish_actions']}
                     readPermissions={['public_profile']}
                     onLoginFinished={
                         (error, result) => {
@@ -40,8 +39,8 @@ export class Login extends React.Component {
                                         if (error) {
                                             console.log(error)
                                         } else {
-                                            console.log(result)
-                                            this.props.dispatch(actions.saveProfileToStore(result));
+                                            console.log('USER COMING BACK FROM FB ', result)
+                                 //           this.props.dispatch(actions.saveProfileToStore(result));
                                             this.props.dispatch(actions.updateUserInDatabase(result));
                                         }
                                     }

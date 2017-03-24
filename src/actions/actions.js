@@ -143,7 +143,11 @@ export const userSelectedEventDescription = (description) => ({
 	description: description
 })
 
-
+export const CURRENT_CARD = 'CURRENT_CARD'
+export const currentCard = (facility) => ({
+	type: CURRENT_CARD,
+	facility: facility
+})
 
 export const asyncSaveVenueToStore = (params) => dispatch => {
 	return foursquare.venues.explore(params)
@@ -156,11 +160,10 @@ export const asyncSaveVenueToStore = (params) => dispatch => {
 		});
 }
 
-
 export const updateUserInDatabase = (userData) => dispatch => {
 	console.log('JSON STRINGIFY' , JSON.stringify(userData));
 	return fetch(`http://${host}:${port}/users`, {
-		method: 'PUT',
+		method: 'POST',
 		headers: {
 			Accept: 'application/json',
 			'Content-Type': 'application/json'
@@ -171,14 +174,16 @@ export const updateUserInDatabase = (userData) => dispatch => {
 		if (!res.ok) {
 				throw new Error(res.statusText);
 		}
-		console.log('THIS IS BEING SENT TO UDER DATA ENDPOINT ', res);
-		return res.json();
+		console.log('helllllo')
+		return res.json()
+	})
+	.then(user => {
+		return dispatch(saveProfileToStore(user))
 	})
 	.catch(error => {
 		return error;
 	})
 }
-
 
 export const loadEvents = () => dispatch => {
 	return fetch(`http://${host}:${port}/events`, {
@@ -190,17 +195,18 @@ export const loadEvents = () => dispatch => {
 	})
 	.then(res => {
 		if (!res.ok) {
-				throw new Error(res.statusText);
+			throw new Error(res.statusText);
 		}
-		console.log('ARE THESE EVENTS???', res);
-		dispatch(saveEventsToStore(res))
 		return res.json();
+	})
+	.then(events => {
+		console.log('ARE THESE EVENTS???',events)
+		return dispatch(saveEventsToStore(events))
 	})
 	.catch(error => {
 		return error;
 	})
 }
-
 
 export const createEvent = (event) => dispatch => {
 	return fetch(`http://${host}:${port}/events`, {
@@ -216,7 +222,6 @@ export const createEvent = (event) => dispatch => {
 				throw new Error(res.statusText);
 		}
 		console.log('ARE THESE EVENTS???', res);
-	//	dispatch(saveEventsToStore(res))
 		return res.json();
 	})
 	.catch(error => {
