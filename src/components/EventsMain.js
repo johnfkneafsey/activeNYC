@@ -17,6 +17,31 @@ export class EventsMain extends React.Component {
         this.renderNewEventView = this.renderNewEventView.bind(this);    
         this.renderViewEventView = this.renderViewEventView.bind(this); 
         this.passUpFacilityName = this.passUpFacilityName.bind(this);
+        this.swipe = this.swipe.bind(this)
+    }
+
+    componentDidMount () {
+        let cardIndex = this.props.currentCardIndex;
+        let paramsVenues = {
+            "ll": this.props.markers[cardIndex].lat + "," + this.props.markers[cardIndex].lon,
+            "query": this.props.markers[cardIndex].Name,
+            "venuePhotos": 1
+        };
+        this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        console.log('PREV PROPS', prevProps)
+        console.log('PREV STATE', prevState)
+        if (prevProps.selectedVenue === this.props.selectedVenue) {
+            let cardIndex = this.props.currentCardIndex;
+            let paramsVenues = {
+                "ll": this.props.markers[cardIndex].lat + "," + this.props.markers[cardIndex].lon,
+                "query": this.props.markers[cardIndex].Name,
+                "venuePhotos": 1
+            };
+            this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
+        }
     }
 
     renderEventsView() {
@@ -56,12 +81,42 @@ export class EventsMain extends React.Component {
         this.props.dispatch(actions.currentCard(facility))
     }
 
-    // load events into markers
-    // load the calendar and the events into the card itself. i.e. one big component
-    // call all events for each facility, filter them using the calendar
-    //  
+
+    // getFacilityPicture (facility) {
+    //     // let paramsVenues = {
+    //     //     "ll": facility.lat + "," + facility.lon,
+    //     //     "query": facility.Name,
+    //     //     "venuePhotos": 1
+    //     // };
+        
+    //     // this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
+
+    // }
+
+
+    swipe () {
+        if (this.props.markers.length === this.props.currentCardIndex) {
+            this.props.dispatch(actions.setCurrentCardIndexToZero())
+        } else {
+            this.props.dispatch(actions.incrementCurrentCardIndex())
+        }
+    }
+
 
     render() {
+
+
+    
+        let facilityThumbnail =  <View></View>  
+
+        let prefix = this.props.selectedVenue.featuredPhotos.items[0].prefix;
+        let suffix = this.props.selectedVenue.featuredPhotos.items[0].suffix;
+        let size = "height300"
+        let photoURL = prefix + size + suffix;
+
+        facilityThumbnail = <Thumbnail source={{uri: photoURL}} />
+            
+        
 
         const nameObj = {
             basketball: "Basketball",
@@ -84,8 +139,6 @@ export class EventsMain extends React.Component {
         let eventList = this.props.events.map(event => {
 
             let name = event.eventName
-            console.log('NAME' ,name)
-            console.log('EVENT PICTURE ', event.eventOrganizer.picture)
             
             return (
                     <Card key={event.eventName}>
@@ -144,11 +197,13 @@ export class EventsMain extends React.Component {
                 <View>
                     <DeckSwiper
                         dataSource={this.props.markers}
+                        onSwipeLeft={this.swipe}
+                        onSwipeRight={this.swipe}
                         renderItem={item =>
                             <Card style={{ elevation: 3 }}>
                                 <CardItem>
                                     <Left>
-                                        <Thumbnail source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                        {facilityThumbnail}
                                     </Left>
                                     <Body>
                                         <Text>{item.Name}</Text>
@@ -213,7 +268,9 @@ const mapStateToProps = (state, props) => ({
     icons: state.icons,
     globalEventsFAKE: state.globalEventsFAKE,
     events: state.events,
-    currentCard: state.currentCard
+    currentCard: state.currentCard,
+    selectedVenue: state.selectedVenue,
+    currentCardIndex: state.currentCardIndex
 });
 
 

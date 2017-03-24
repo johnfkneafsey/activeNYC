@@ -39,7 +39,7 @@ const initialState = {
     userSelectedEvent: null,
     userSelectedEventTitle: null,
     userSelectedEventDescription: null,
-    currentCard: null,
+    currentCardIndex: 0,
 
 /*
 Title USER                                     Organizer: 
@@ -342,12 +342,22 @@ export const mainReducer = (state= initialState, action) => {
         })
     }
 
-    if (action.type === actions.CURRENT_CARD) { 
 
-        setTimeout(()=> { console.log(store.getState(), "THIS IS THE CURRENT_CARD GETSTATE()")}, 3000);
+    if (action.type === actions.INCREMENT_CURRENT_CARD_INDEX) { 
 
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE INCREMENT_CURRENT_CARD_INDEX GETSTATE()")}, 3000);
+        
         return update(state, {
-            currentCard: {$set: action.facility}
+            currentCardIndex: {$apply: function(x) {return x + 1;}}
+        })
+    }
+
+    if (action.type === actions.SET_CURRENT_CARD_INDEX_TO_ZERO) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE SET_CURRENT_CARD_INDEX_TO_ZERO GETSTATE()")}, 3000);
+        
+        return update(state, {
+            currentCardIndex: {$set: 0}
         })
     }
 

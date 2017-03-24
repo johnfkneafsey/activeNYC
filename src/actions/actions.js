@@ -143,10 +143,15 @@ export const userSelectedEventDescription = (description) => ({
 	description: description
 })
 
-export const CURRENT_CARD = 'CURRENT_CARD'
-export const currentCard = (facility) => ({
-	type: CURRENT_CARD,
-	facility: facility
+
+export const INCREMENT_CURRENT_CARD_INDEX = 'INCREMENT_CURRENT_CARD_INDEX'
+export const incrementCurrentCardIndex = () => ({
+	type: INCREMENT_CURRENT_CARD_INDEX,
+})
+
+export const SET_CURRENT_CARD_INDEX_TO_ZERO = 'SET_CURRENT_CARD_INDEX_TO_ZERO'
+export const setCurrentCardIndexToZero = () => ({
+	type: SET_CURRENT_CARD_INDEX_TO_ZERO,
 })
 
 export const asyncSaveVenueToStore = (params) => dispatch => {
