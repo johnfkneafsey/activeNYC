@@ -73,6 +73,8 @@ export class NewEvent extends React.Component {
         }
         console.log('ITS THE EVENT OBJ', eventObj);
         this.props.dispatch(actions.createEvent(eventObj));
+        this.props.dispatch(actions.loadEvents());
+        this.props.dispatch(actions.renderNewEventView());
     }
 
     render() {
@@ -112,9 +114,9 @@ export class NewEvent extends React.Component {
                     <View>
                         <DatePickerIOS
                             date={this.props.userSelectedEventStartTime}
-                            mode="time"
+                            mode="datetime"
                             onDateChange={this.onDateChange}
-                            minuteInterval={15}
+                            minuteInterval={10}
                         />
                     </View>
                     <View style={{flexDirection: "row" }}>

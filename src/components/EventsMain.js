@@ -17,7 +17,7 @@ export class EventsMain extends React.Component {
         this.renderNewEventView = this.renderNewEventView.bind(this);    
         this.renderViewEventView = this.renderViewEventView.bind(this); 
         this.passUpFacilityName = this.passUpFacilityName.bind(this);
-        this.swipe = this.swipe.bind(this)
+        this.swipe = this.swipe.bind(this);
     }
 
     componentDidMount () {
@@ -54,8 +54,8 @@ export class EventsMain extends React.Component {
     }
 
     selectedDate(e) {
-        console.log('SELECTED DATE', moment(e).format().slice(0, moment(e).format().indexOf('T')));
-        let selectedDate = moment(e).format().slice(0, moment(e).format().indexOf('T'));
+        console.log('EVENT E', moment(e)._d)
+        let selectedDate = moment(e)._d;
         this.props.dispatch(actions.selectedDate(selectedDate))
     }
 
@@ -67,34 +67,19 @@ export class EventsMain extends React.Component {
     renderViewEventView(event) {
         console.log('are we here yet. here is event', event)
         let selectedEvent;
-        for (i = 0; i < this.props.globalEventsFAKE.length; i ++) {
-            console.log('are we iterating')
-            if (this.props.globalEventsFAKE[i].eventName === event) {
-                console.log('are we true?')
-                this.props.dispatch(actions.renderViewEventView(this.props.globalEventsFAKE[i]));
+        for (i = 0; i < this.props.events.length; i ++) {
+            if (this.props.events[i].eventName === event) {
+                this.props.dispatch(actions.renderViewEventView(this.props.events[i]));
             }
         }
     }
 
-    passUpFacilityName (facility) {
+    passUpFacilityName(facility) {
         console.log('FACILITY ', facility)
         this.props.dispatch(actions.currentCard(facility))
     }
 
-
-    // getFacilityPicture (facility) {
-    //     // let paramsVenues = {
-    //     //     "ll": facility.lat + "," + facility.lon,
-    //     //     "query": facility.Name,
-    //     //     "venuePhotos": 1
-    //     // };
-        
-    //     // this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
-
-    // }
-
-
-    swipe () {
+    swipe() {
         if (this.props.markers.length === this.props.currentCardIndex) {
             this.props.dispatch(actions.setCurrentCardIndexToZero())
         } else {
@@ -102,11 +87,56 @@ export class EventsMain extends React.Component {
         }
     }
 
+    getFormattedTime(event) {
+        let dateObj = new Date(Date.parse(event.eventStartTime));
+        let hours;
+        if (dateObj.getHours() > 12) {
+            hours = dateObj.getHours() - 12;
+        } else {
+            hours = dateObj.getHours();
+        }
+        let minutes = dateObj.getMinutes()
+        let formattedTime = `${hours}:${minutes}`
+        console.log(formattedTime)
+        return formattedTime
+    }
+
+    getFormattedDate(event) {
+       let dateObj = new Date(Date.parse(event.eventStartTime));
+       const days = {
+           0: "Sunday",
+           1: "Monday",
+           2: "Tuesday",
+           3: "Wednesday",
+           4: "Thursday",
+           5: "Friday",
+           6: "Saturday"
+       }
+       const months = {
+           0: "January",
+           1: "February",
+           2: "March",
+           3: "April",
+           4: "May",
+           5: "June",
+           6: "July",
+           7: "August",
+           8: "September",
+           9: "October",
+           10: "November",
+           11: "December"
+       }
+       let weekdayValue = dateObj.getDay();
+       let weekday = days[weekdayValue];
+       let monthValue = dateObj.getMonth();
+       let month = months[monthValue];
+       let date = dateObj.getDate();
+       let formattedDate = `${weekday}, ${month} ${date}`;
+       return formattedDate;
+    }
 
     render() {
 
-
-    
         let facilityThumbnail =  <View></View>  
 
         let prefix = this.props.selectedVenue.featuredPhotos.items[0].prefix;
@@ -116,8 +146,6 @@ export class EventsMain extends React.Component {
 
         facilityThumbnail = <Thumbnail source={{uri: photoURL}} />
             
-        
-
         const nameObj = {
             basketball: "Basketball",
             soccerAndFootball: "Soccer",
@@ -130,49 +158,48 @@ export class EventsMain extends React.Component {
             kayak: "Kayak and Canoe ",
             iceskating: "Ice Skating"
         }      
-
         
         let displayTitle = nameObj[this.props.parkType];
         let typeIcon = this.props.icons[this.props.parkType];
         
-
         let eventList = this.props.events.map(event => {
-
-            let name = event.eventName
             
             return (
-                    <Card key={event.eventName}>
-                        <CardItem>
-                            <Left>
-                                <View style={{flex: 1, flexDirection: 'column'}}>
-                                    <Title>{event.eventTime}</Title>
-                                    <Text>{event.eventName}</Text>
-                                    <Text></Text>
+                <Card key={event.eventName}>
+                    <CardItem>
+                        <Left>
+                            <View style={{flex: 1, flexDirection: 'column'}}>
+                                <Title>{event.eventName}</Title>
+                                <Text>{this.getFormattedDate(event)}</Text>
+                                <Text>{this.getFormattedTime(event)}</Text>                                
+                                <Text>{event.eventDuration} hour</Text>
+                                <Text>{event.eventDescription}</Text>
+                                <Text></Text>
 
-                                        <Thumbnail circle source={{uri: event.eventOrganizer.picture}} />
-                                        <Text>{event.eventOrganizer.name}</Text>
-                                </View>
-                            </Left>
-                            <Right>
-                                <View style={{flex: 1, flexDirection: 'column'}}>
-                                    <Button transparent onPress={() => { this.addEvent()}}>
-                                        <Icon name='ios-person-add' />
-                                        <Text>Join Event</Text>   
-                                    </Button>  
-                                    <Button transparent onPress={() => { this.renderViewEventView(name)}}>
-                                        <Icon name='ios-information-circle' />
-                                        <Text>  Info and Chat</Text>
-                                    </Button>  
-                                    <View style={{flex: 1, flexDirection: 'row'}}>
-                                        <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                        <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                        <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                    </View>  
-                                        <Text>and {event.eventParticipants} others... </Text>
-                                </View>                                     
-                            </Right>
-                        </CardItem>
-                    </Card>
+                                    <Thumbnail circle source={{uri: event.eventOrganizer.picture}} />
+                                    <Text>{event.eventOrganizer.name}</Text>
+                            </View>
+                        </Left>
+                        <Right>
+                            <View style={{flex: 1, flexDirection: 'column'}}>
+                                <Button transparent onPress={() => { this.addEvent()}}>
+                                    <Icon name='ios-person-add' />
+                                    <Text>Join Event</Text>   
+                                </Button>  
+                                <Button transparent onPress={() => { this.renderViewEventView(event.eventName)}}>
+                                    <Icon name='ios-information-circle' />
+                                    <Text>Info and Chat</Text>
+                                </Button>  
+                                <View style={{flex: 1, flexDirection: 'row'}}>
+                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                </View>  
+                                    <Text>and {event.eventParticipants} others... </Text>
+                            </View>                                     
+                        </Right>
+                    </CardItem>
+                </Card>
             )
         })
 
@@ -210,13 +237,10 @@ export class EventsMain extends React.Component {
                                         <Text note>{item.Location}</Text>
                                     </Body>
                                 </CardItem>
-                                <CardItem cardBody>
-                                    <Image style={{  width: 50, flex: 1, height: 100 }} source={{uri: "https://unsplash.it/200/200/?random"}} />
-                                </CardItem>
                                 <CardItem>
                                     <Left>
-                                            <Icon name={typeIcon} style={{ color: '#ED4A6A' }} />
-                                            <Text>What's happening?</Text>
+                                        <Icon name={typeIcon} style={{ color: '#ED4A6A' }} />
+                                        <Text>What's happening?</Text>
                                     </Left>
                                     <Right>
                                         <Button transparent onPress={() => { this.renderNewEventView()}}>
@@ -238,7 +262,7 @@ export class EventsMain extends React.Component {
                                         dateNameStyle={{color: 'white'}}
                                         borderHighlightColor={'white'}
                                         iconContainer={{flex: 0.1}}
-                                        onDateSelected={ () => {this.selectedDate(); this.passUpFacilityName(item)}}
+                                        onDateSelected={ () => {this.selectedDate(); }}
                                     />
                                     <ScrollView>
                                         {eventList}

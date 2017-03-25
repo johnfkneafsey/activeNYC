@@ -8,14 +8,13 @@ import {
     InteractionManager,
     TouchableHighlight,
     Linking,
-    ScrollView,
+    ScrollView
 } from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
 import { Container, Card, Thumbnail, CardItem, Content, Icon, Button, Footer, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
-
 
 const foursquare = require('react-native-foursquare-api')({
   clientID: 'XFP50ZHK1ADEQXMZVRPT3GNVLRZJVIELIJVE2WS4T3ZTI3FL',
@@ -35,7 +34,6 @@ export class GeolocationExample extends React.Component {
     }
 
     componentDidMount() {
-        console.log('EVENTS LOADED')
         this.props.dispatch(actions.loadEvents());
     }
 
@@ -119,7 +117,7 @@ export class GeolocationExample extends React.Component {
             let size = "height300"
             let photoURL = prefix + size + suffix;
 
-            console.log('PHOTO URL ', photoURL);
+
             
             cardView = 
                 <Card style={{flex: .4}}>

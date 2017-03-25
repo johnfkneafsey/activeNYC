@@ -342,7 +342,6 @@ export const mainReducer = (state= initialState, action) => {
         })
     }
 
-
     if (action.type === actions.INCREMENT_CURRENT_CARD_INDEX) { 
 
         setTimeout(()=> { console.log(store.getState(), "THIS IS THE INCREMENT_CURRENT_CARD_INDEX GETSTATE()")}, 3000);

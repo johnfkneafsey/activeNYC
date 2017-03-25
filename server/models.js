@@ -45,7 +45,7 @@ const eventSchema = mongoose.Schema({
     }],
     eventFacilityName: {type: String, required: true},
     eventDescription: {type: String, required: true},
-    eventDate: {type: String, required: true},
+    eventDate: {type: Date, required: true},
     eventStartTime: {type: Date, required: true},
     eventDuration: {type: Number, required: true},
     eventChat: [{
@@ -66,8 +66,10 @@ eventSchema.methods.apiRepr = function () {
         eventOrganizer: this.eventOrganizer,
         eventAttendees: this.eventAttendees,
         eventFacilityName: this.eventFacilityName,
+        eventDescription: this.eventDescription,
         eventDate: this.eventDate,
-        eventTime: this.eventTime,
+        eventStartTime: this.eventStartTime,
+        eventDuration: this.eventDuration,
         eventChat: this.eventChat,
   };
 };
