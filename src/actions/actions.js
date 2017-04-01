@@ -154,6 +154,37 @@ export const setCurrentCardIndexToZero = () => ({
 	type: SET_CURRENT_CARD_INDEX_TO_ZERO,
 })
 
+export const asyncJoinEvent = (_userdata , _eventidentifier) => dispatch => {
+
+	let dataObj = {
+		user: _userdata,
+		eventId: _eventidentifier
+	}
+	console.log('HELLO USER ', _userdata)
+	console.log('HELLO  EVENTID ', _eventidentifier)
+	console.log('JSON DATAOBJ' , JSON.stringify(dataObj));
+
+	return fetch(`http://${host}:${port}/events/join`, {
+		method: 'PUT',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(dataObj)
+	})
+	.then(res => {
+		if (!res.ok) {
+				throw new Error(res.statusText);
+		}
+		console.log('helllllo res ', res)
+		return res.json()
+	})
+	.catch(error => {
+		return error;
+	})
+}
+
+
 export const asyncSaveVenueToStore = (params) => dispatch => {
 	return foursquare.venues.explore(params)
 		.then(function(venues) {

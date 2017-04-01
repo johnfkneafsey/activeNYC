@@ -163,6 +163,12 @@ export class EventsMain extends React.Component {
         let typeIcon = this.props.icons[this.props.parkType];
         
         let eventList = this.props.events.map(event => {
+
+            let attendees = event.eventAttendees.map(attendee => {
+                return (
+                    <Thumbnail  key={event.first_name} circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: attendee.picture}} />  
+                )
+            })
             
             return (
                 <Card key={event.eventName}>
@@ -182,18 +188,12 @@ export class EventsMain extends React.Component {
                         </Left>
                         <Right>
                             <View style={{flex: 1, flexDirection: 'column'}}>
-                                <Button transparent onPress={() => { this.addEvent()}}>
-                                    <Icon name='ios-person-add' />
-                                    <Text>Join Event</Text>   
-                                </Button>  
                                 <Button transparent onPress={() => { this.renderViewEventView(event.eventName)}}>
                                     <Icon name='ios-information-circle' />
-                                    <Text>Info and Chat</Text>
+                                    <Text>View Event</Text>
                                 </Button>  
                                 <View style={{flex: 1, flexDirection: 'row'}}>
-                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
-                                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: "https://unsplash.it/40/40/?random"}} />
+                                    {attendees}
                                 </View>  
                                     <Text>and {event.eventParticipants} others... </Text>
                             </View>                                     

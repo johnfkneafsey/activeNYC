@@ -23,16 +23,12 @@ app.use(function(req, res, next) {
 
 app.post('/users', jsonParser, (req, res) => {
     res.status(200)
-  
-    console.log('USERS REQ ', req);
     
     User
         .findOne({id: req.body.id})
         .exec()
         .then(user => {
             if (!user) {
-                console.log('BUILDING NEW USER')
-                console.log('IS THIS PICTURE URL??? ', req.body)
                 var newUser = {
                     first_name: req.body.first_name,
                     gender: req.body.gender,
@@ -59,7 +55,7 @@ app.post('/users', jsonParser, (req, res) => {
 
 app.get('/events', jsonParser, (req, res) => {
     res.status(200)
-  
+
     console.log('events get REQ')
 
     Event
@@ -76,9 +72,6 @@ app.get('/events', jsonParser, (req, res) => {
 
 app.post('/events', jsonParser, (req, res) => {
     res.status(200)
-  
-    console.log('events create REQ ', req.body);
-
     Event
         .create(req.body)
         .then(event => {
@@ -87,6 +80,33 @@ app.post('/events', jsonParser, (req, res) => {
         .catch(err => {
             console.log(err);
         })
+});
+
+app.put('/events/join', jsonParser, (req, res) => {
+
+    Event
+    .findOneAndUpdate({"eventStartTime" : req.body.eventId}, {$push:
+        {
+            'eventAttendees' :         
+                {   
+                    '_id': req.body.user._id,
+                    'first_name': req.body.user.first_name,
+                    'gender': req.body.user.gender,
+                    'id': req.body.user.id,
+                    'last_name': req.body.user.last_name,
+                    'link': req.body.user.link,
+                    'name': req.body.user.name,
+                    'picture': req.body.user.picture
+                }
+            }
+        } , {new: true})
+    // .findOne({"eventStartTime" : req.body.eventId},{new: true})
+    .then(event => {
+        console.log('ATTENDEE ADDED ', event)
+    })
+    .catch(err => {
+        console.log(err);
+    })
 });
 
 //SERVER
@@ -123,4 +143,7 @@ if (require.main === module) {
 module.exports = {
     app, runServer, closeServer
 };
+
+
+
 

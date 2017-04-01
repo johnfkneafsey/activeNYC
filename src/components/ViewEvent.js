@@ -11,6 +11,7 @@ export class ViewEvent extends React.Component {
         super(props);
         this.cancelViewEvent = this.cancelViewEvent.bind(this); 
         this.getFormattedTime = this.getFormattedTime.bind(this);
+        this.joinEvent = this.joinEvent.bind(this);
     }
 
 
@@ -71,6 +72,10 @@ export class ViewEvent extends React.Component {
        return formattedDate;
     }
 
+    joinEvent() {
+        this.props.dispatch(actions.asyncJoinEvent(this.props.user, this.props.userSelectedEvent.eventStartTime));
+    }
+
     render() {
 
         return (
@@ -88,7 +93,7 @@ export class ViewEvent extends React.Component {
                             <Icon name="ios-backspace" />
                         </Button>
                     </Right>
-                </Header>  
+                </Header>
 
                 <Content>
                     <Title>Event Name</Title>
@@ -112,7 +117,11 @@ export class ViewEvent extends React.Component {
                     <Title>Event Participants</Title>
                     <Text>{this.props.userSelectedEvent.eventParticipants}</Text>
                     <Button transparent onPress={() => { this.eventChatView()}} >
-                        <Text>Event Discussion</Text>
+                        <Text>Discuss!</Text>
+                        <Icon name="ios-chatbubbles" />
+                    </Button>
+                    <Button transparent onPress={() => { this.joinEvent(); this.cancelViewEvent()}} >
+                        <Text>Join!</Text>
                         <Icon name="ios-chatbubbles" />
                     </Button>
                 </Content>
@@ -138,7 +147,8 @@ const mapStateToProps = (state, props) => ({
     userSelectedEventStartTime: state.userSelectedEventStartTime,
     userSelectedEventEndTime: state.userSelectedEventEndTime,
     userSelectedEventDuration: state.userSelectedEventDuration,
-    userSelectedEvent: state.userSelectedEvent
+    userSelectedEvent: state.userSelectedEvent,
+    user: state.user
 });
 
 
