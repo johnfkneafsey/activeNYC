@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, DatePickerIOS, View, ScrollView, StyleSheet } from 'react-native';
+import { Image, DatePickerIOS, View, ScrollView, StyleSheet, Linking } from 'react-native';
 import { Container, Content, Form, Item, Input, Thumbnail, Label, Header, Left, Right, Button, Icon, Body, Title, Text } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
@@ -13,7 +13,6 @@ export class ViewEvent extends React.Component {
         this.getFormattedTime = this.getFormattedTime.bind(this);
         this.joinEvent = this.joinEvent.bind(this);
     }
-
 
     cancelViewEvent() {
         this.props.dispatch(actions.renderViewEventView());
@@ -33,7 +32,6 @@ export class ViewEvent extends React.Component {
         }
         let minutes = dateObj.getMinutes()
         let formattedTime = `${hours}:${minutes}`
-        console.log(formattedTime)
         return formattedTime
     }
 
@@ -67,7 +65,6 @@ export class ViewEvent extends React.Component {
        let monthValue = dateObj.getMonth();
        let month = months[monthValue];
        let date = dateObj.getDate();
-
        let formattedDate = `${weekday}, ${month} ${date}`;
        return formattedDate;
     }
@@ -78,11 +75,24 @@ export class ViewEvent extends React.Component {
 
     render() {
 
+        let attendees = this.props.userSelectedEvent.eventAttendees.map(attendee => {
+            return (
+                <View key={attendee.name}>
+                    <Thumbnail circle source={{uri: attendee.picture}} />                
+                    <Text>Name: {attendee.name} </Text>
+                    <Text>Gender: {attendee.gender} </Text>
+                    <Text style={{color: 'blue'}}
+                        onPress={() => Linking.openURL(attendee.link)}>
+                        Profile
+                    </Text>                    
+                </View>
+            )
+        })
+
         return (
             <Container>
                 <Header>
                     <Left>
-
                     </Left>
                     <Body>
                         <Title>Event</Title>
@@ -115,7 +125,7 @@ export class ViewEvent extends React.Component {
                     <Title>Event Organizer Imae</Title>
                     <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />                    
                     <Title>Event Participants</Title>
-                    <Text>{this.props.userSelectedEvent.eventParticipants}</Text>
+                    {attendees}
                     <Button transparent onPress={() => { this.eventChatView()}} >
                         <Text>Discuss!</Text>
                         <Icon name="ios-chatbubbles" />
@@ -129,7 +139,6 @@ export class ViewEvent extends React.Component {
         );
     }
 }
-
 
 
 const mapStateToProps = (state, props) => ({
@@ -154,37 +163,3 @@ const mapStateToProps = (state, props) => ({
 
 export default connect(mapStateToProps)(ViewEvent);
 
-
-/*
-Title USER                                     Organizer: 
-                                            [           ]
-Description:  USER                          [           ] FB
-~~~~~~~~~~~~~~~~~~~~~~~~~~                  [           ]
-~~~~~~~~~~~~~~~~~~~~~~~~~~                  Beyonce Knowles FB
-~~~~~~~~~~~~~~~~~~~~~~~~~~                   
-
-Time: USER
-
-Location: CURRENTPARK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Attending:  EVENTATTENDEES  
-[  ][  ][  ][  ][  ]
-[  ][  ][  ][  ][  ]   ... and 3 others
-
-
-Chat:
-|
-|
-|
-|
-|
-|
-|
-|
-|
-
-
-
-
-*/

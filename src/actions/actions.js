@@ -83,14 +83,12 @@ export const renderNewEventView = () => ({
 
 })
 
-
 export const USER_SELECTED_EVENT_START_TIME = 'USER_SELECTED_EVENT_START_TIME'
 export const userSelectedEventStartTime = (time, duration) => ({
 	type: USER_SELECTED_EVENT_START_TIME,
 	time: time,
 	duration: duration
 })
-
 
 export const ADD_HOUR = 'ADD_HOUR'
 export const addHour = () => ({
@@ -153,6 +151,14 @@ export const SET_CURRENT_CARD_INDEX_TO_ZERO = 'SET_CURRENT_CARD_INDEX_TO_ZERO'
 export const setCurrentCardIndexToZero = () => ({
 	type: SET_CURRENT_CARD_INDEX_TO_ZERO,
 })
+
+export const USER_SELECTED_EVENT = 'USER_SELECTED_EVENT'
+export const userSelectedEvent = (event) => ({
+	type: USER_SELECTED_EVENT,
+	event: event
+})
+
+
 
 export const asyncJoinEvent = (_userdata , _eventidentifier) => dispatch => {
 
@@ -265,5 +271,38 @@ export const createEvent = (event) => dispatch => {
 	})
 }
 
+export const asyncPutMessage = (_messages , _eventidentifier) => dispatch => {
 
+	console.log(_messages[0])
 
+	let dataObj = {
+		messages: _messages[0],
+		eventId: _eventidentifier
+	}
+
+	console.log('HELLO USER ', _messages)
+	console.log('HELLO  EVENTID ', _eventidentifier)
+	console.log('JSON DATAOBJ' , JSON.stringify(dataObj));
+
+	return fetch(`http://${host}:${port}/events/messages`, {
+		method: 'PUT',
+		headers: {
+			Accept: 'application/json',
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(dataObj)
+	})
+	.then(res => {
+		if (!res.ok) {
+				throw new Error(res.statusText);
+		}
+		return res.json()
+	})
+	.then(event => {
+		console.log('RES MESSAGES READY TO RSEND TO STORE???? ', event)
+		return dispatch(userSelectedEvent(event))		
+	})
+	.catch(error => {
+		return error;
+	})
+}

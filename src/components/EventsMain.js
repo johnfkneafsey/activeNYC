@@ -163,7 +163,6 @@ export class EventsMain extends React.Component {
         let typeIcon = this.props.icons[this.props.parkType];
         
         let eventList = this.props.events.map(event => {
-
             let attendees = event.eventAttendees.map(attendee => {
                 return (
                     <Thumbnail  key={event.first_name} circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: attendee.picture}} />  
@@ -181,7 +180,6 @@ export class EventsMain extends React.Component {
                                 <Text>{event.eventDuration} hour</Text>
                                 <Text>{event.eventDescription}</Text>
                                 <Text></Text>
-
                                     <Thumbnail circle source={{uri: event.eventOrganizer.picture}} />
                                     <Text>{event.eventOrganizer.name}</Text>
                             </View>

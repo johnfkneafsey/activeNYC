@@ -49,12 +49,13 @@ const eventSchema = mongoose.Schema({
     eventStartTime: {type: Date, required: true},
     eventDuration: {type: Number, required: true},
     eventChat: [{
-        _id: {type: Number},
+        _id: {type: String},
         text: {type: String},
         createdAt: {type: Date},
         user: {
-            _id: {type: Number},
-            name: {type: String}
+            _id: {type: String},
+            avatar: {type: String},
+            name:  {type: String},
         }
     }]
 })

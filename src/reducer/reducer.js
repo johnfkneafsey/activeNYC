@@ -6,7 +6,7 @@ import { findNearest } from '../algorithms/displayNearest';
 
 
 const initialState = {
-    user: null,                 //
+    user: null,                 
     parkType: null,             
     facilityData: null,
     markers: null,
@@ -40,93 +40,7 @@ const initialState = {
     userSelectedEventTitle: null,
     userSelectedEventDescription: null,
     currentCardIndex: 0,
-
-/*
-Title USER                                     Organizer: 
-                                            [           ]
-Description:  USER                          [           ] FB
-~~~~~~~~~~~~~~~~~~~~~~~~~~                  [           ]
-~~~~~~~~~~~~~~~~~~~~~~~~~~                  Beyonce Knowles FB
-~~~~~~~~~~~~~~~~~~~~~~~~~~                   
-
-Time: USER
-
-Location: CURRENTPARK
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Attending:  EVENTATTENDEES  
-[  ][  ][  ][  ][  ]
-[  ][  ][  ][  ][  ]   ... and 3 others
-
-
-Chat:
-|
-|
-|
-|
-|
-|
-|
-|
-|
-
-
-*/
-
-    // EVENTS DB - THIS WILL GO TO BACK END
     events: null,
-    globalEventsFAKE: [{
-        eventName: "2 vs. 2 this Afternoon",
-        eventOrganizerName: "James Freedman",
-        eventLocation: "McCaffrey Playground",
-        eventDescription: "former DIII player looking to play 2 on 2",
-        eventParticipantProfileImage: 'https://unsplash.it/30/30/?random',
-        //this is naive
-        eventOrganizerProfileImage: 'https://unsplash.it/50/50/?random',
-        eventDate: "Date XYZ",
-        eventTime: "1:00 - 2:00 PM",
-        eventParticipants: 4
-    }, 
-    {
-        eventName: "Horse after Lunch",
-        eventOrganizerName: "Pete West",
-        eventLocation: "Godfrey Place Courts",
-        eventDescription: "Husband/wife pair looking for another couple to play horse with",
-        eventParticipantProfileImage: 'https://unsplash.it/30/30/?random',
-        //this is naive
-        eventOrganizerProfileImage: 'https://unsplash.it/50/50/?random',
-        eventDate: "Date XYZ",
-        eventTime: "2:00 - 2:30 PM",
-        eventParticipants: 2
-    },
-    {
-        eventName: "Someone to shoot around with",
-        eventOrganizerName: "Beyonce Knowles",
-        eventLocation: "Westwood High School",
-        eventDescription: "I'll be shooting around after work at WHS, feel free to join me",
-        eventParticipantProfileImage: 'https://unsplash.it/30/30/?random',
-        //this is naive
-        eventOrganizerProfileImage: 'https://unsplash.it/50/50/?random',
-        eventDate: "Date XYZ",
-        eventTime: "5:00 - 6:00 PM",
-        eventParticipants: 1
-    }, 
-    {
-        eventName: "Youth basketball team looking for volunteer coaches",
-        eventOrganizerName: "Ray Allen",
-        eventLocation: "Peter's District Basketball Courts",
-        eventDescription: "U13 team looking for volunteer coaches every Sunday from 10am-12pm.",
-        eventParticipantProfileImage: 'https://unsplash.it/30/30/?random',
-        //this is naive
-        eventOrganizerProfileImage: 'https://unsplash.it/50/50/?random',
-        eventDate: "Date XYZ",
-        eventTime: "10:00 - 12:00 PM",
-        eventParticipants: 3
-    }
-
-    ]
-
-    // END BACKEND
 
 }
 
@@ -357,6 +271,15 @@ export const mainReducer = (state= initialState, action) => {
         
         return update(state, {
             currentCardIndex: {$set: 0}
+        })
+    }
+
+    if (action.type === actions.USER_SELECTED_EVENT) { 
+
+        setTimeout(()=> { console.log(store.getState(), "THIS IS THE USER_SELECTED_EVENT GETSTATE()")}, 3000);
+        
+        return update(state, {
+            userSelectedEvent: {$set: action.event}
         })
     }
 

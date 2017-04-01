@@ -100,10 +100,31 @@ app.put('/events/join', jsonParser, (req, res) => {
                 }
             }
         } , {new: true})
-    // .findOne({"eventStartTime" : req.body.eventId},{new: true})
     .then(event => {
         console.log('ATTENDEE ADDED ', event)
     })
+    .catch(err => {
+        console.log(err);
+    })
+});
+
+app.put('/events/messages', jsonParser, (req, res) => {
+    Event
+    .findOneAndUpdate({"eventStartTime" : req.body.eventId}, {$push:
+        {
+            'eventChat' :         
+                {   
+                    '_id': req.body.messages._id,
+                    'createdAt': req.body.messages.createdAt,
+                    'text': req.body.messages.text,
+                    'user': req.body.messages.user
+                }
+            }
+        } , {new: true})
+	.then(event => {
+		console.log('helllllo')
+		return res.json(event)
+	})
     .catch(err => {
         console.log(err);
     })

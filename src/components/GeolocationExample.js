@@ -29,7 +29,7 @@ export class GeolocationExample extends React.Component {
 		this.markerPress = this.markerPress.bind(this);
         this.navigateToFacility = this.navigateToFacility.bind(this);
         this.facilityTypeView = this.facilityTypeView.bind(this);
-        this.renderListView = this.renderListView.bind(this);       
+        this.renderListView = this.renderListView.bind(this);
         this.renderEventsView = this.renderEventsView.bind(this);
     }
 
@@ -44,7 +44,6 @@ export class GeolocationExample extends React.Component {
                 let facilityObj = this.props.markers[i];
                 let facility = JSON.stringify(this.props.markers[i])
                 console.log('FACILITY HEEEYA' , facilityObj)
-
                 let paramsVenues = {
                     "ll": facilityObj.lat + "," + facilityObj.lon,
                     "query": facilityObj.Name,
@@ -63,7 +62,6 @@ export class GeolocationExample extends React.Component {
     renderListView() {
         this.props.dispatch(actions.renderListView());
     }
-
 
     facilityTypeView() {
         this.props.dispatch(actions.facilityTypeView());
@@ -117,8 +115,6 @@ export class GeolocationExample extends React.Component {
             let size = "height300"
             let photoURL = prefix + size + suffix;
 
-
-            
             cardView = 
                 <Card style={{flex: .4}}>
                     <CardItem>       
@@ -140,7 +136,6 @@ export class GeolocationExample extends React.Component {
             }
         }
 
-
         if (this.props.selectedFacility) {
             footer = 
                 <Footer>
@@ -158,7 +153,6 @@ export class GeolocationExample extends React.Component {
                     </FooterTab>
                 </Footer>
         }
-
 
         if (this.props.markers) {
             return (
@@ -214,7 +208,6 @@ export class GeolocationExample extends React.Component {
             )
         }
 
-
         return (
             <View style = {styles.container}>
                 <MapView
@@ -233,7 +226,6 @@ export class GeolocationExample extends React.Component {
         )
     }
 }
-
 
 const styles = StyleSheet.create({
     container: {
@@ -264,6 +256,5 @@ const mapStateToProps = (state, props) => ({
     renderEventsView: state.renderEventsView,
     selectedVenue: state.selectedVenue
 });
-
 
 export default connect(mapStateToProps)(GeolocationExample);
