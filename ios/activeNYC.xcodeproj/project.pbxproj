@@ -32,6 +32,8 @@
 		1A1705C068514FA9870E5323 /* Microsoft Sans Serif.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E1564F67B7648D7AB7DF9C9 /* Microsoft Sans Serif.ttf */; };
 		1A28A0CF03B74843A6593F80 /* Rubik-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 30E0882F98344814B077593F /* Rubik-Italic.ttf */; };
 		1D289E7E734641369E766FB3 /* Roboto_medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7AF3E85AC625448DBCB31CEF /* Roboto_medium.ttf */; };
+		1E21D1AD1E9190CD00156D73 /* bungee_regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E21D1AB1E9190CD00156D73 /* bungee_regular.otf */; };
+		1E21D1AE1E9190CD00156D73 /* bungee_shade.otf in Resources */ = {isa = PBXBuildFile; fileRef = 1E21D1AC1E9190CD00156D73 /* bungee_shade.otf */; };
 		1E75BFBC1E7DACAC00576B2A /* libRCTFBLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFA31E7DAC7600576B2A /* libRCTFBLogin.a */; };
 		1E75BFEF1E7DB18E00576B2A /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFEE1E7DB18E00576B2A /* FBSDKLoginKit.framework */; };
 		1E75BFF11E7DB87300576B2A /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E75BFF01E7DB87300576B2A /* FBSDKCoreKit.framework */; };
@@ -407,6 +409,8 @@
 		189A2CCCBAEB4ABA977AE948 /* libRCTFBSDK.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRCTFBSDK.a; sourceTree = "<group>"; };
 		1C2236A30CC44307B5E0816E /* Rubik-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Rubik-Light.ttf"; path = "../node_modules/native-base/Fonts/Rubik-Light.ttf"; sourceTree = "<group>"; };
 		1E1564F67B7648D7AB7DF9C9 /* Microsoft Sans Serif.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Microsoft Sans Serif.ttf"; path = "../node_modules/native-base/Fonts/Microsoft Sans Serif.ttf"; sourceTree = "<group>"; };
+		1E21D1AB1E9190CD00156D73 /* bungee_regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bungee_regular.otf; sourceTree = "<group>"; };
+		1E21D1AC1E9190CD00156D73 /* bungee_shade.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = bungee_shade.otf; sourceTree = "<group>"; };
 		1E75BF9A1E7DAC7600576B2A /* RCTFBLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBLogin.xcodeproj; path = "../node_modules/react-native-facebook-login/RCTFBLogin.xcodeproj"; sourceTree = "<group>"; };
 		1E75BFEE1E7DB18E00576B2A /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		1E75BFF01E7DB87300576B2A /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FBSDKCoreKit.framework; sourceTree = "<group>"; };
@@ -819,6 +823,8 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				1E21D1AB1E9190CD00156D73 /* bungee_regular.otf */,
+				1E21D1AC1E9190CD00156D73 /* bungee_shade.otf */,
 				13B07FAE1A68108700A75B9A /* activeNYC */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* activeNYCTests */,
@@ -1377,6 +1383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E21D1AD1E9190CD00156D73 /* bungee_regular.otf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 				9F504A58F9A34F8FB0B66CF3 /* Andale Mono.ttf in Resources */,
@@ -1411,6 +1418,7 @@
 				38B1761CA32048C9990F2A02 /* SanFrancisco.ttf in Resources */,
 				03CB660DD96641FF91C40CE8 /* SanFranciscoBold.ttf in Resources */,
 				6948B06730524710AC9E4F83 /* SanFranciscoThin.ttf in Resources */,
+				1E21D1AE1E9190CD00156D73 /* bungee_shade.otf in Resources */,
 				BD9A1465CF4F4B74AD3E7F58 /* SF-UI-Text-Regular.otf in Resources */,
 				CF58514D203A48F99572247A /* Skia.ttf in Resources */,
 				76D2C129FCBD4F49A6AE5875 /* Times New Roman.ttf in Resources */,

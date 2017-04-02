@@ -131,13 +131,13 @@ export class GeolocationExample extends React.Component {
                 <Footer>
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon name="ios-walk-outline" />
+                            <Icon style={{fontColor: 'black', color: 'black'}} name="ios-walk-outline" />
                             <Text>Take me there</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon name="ios-people" />
+                            <Icon style={{fontColor: 'black', color: 'black'}} name="ios-people" />
                             <Text>Matches and Events</Text>
                         </Button>
                     </FooterTab>
@@ -150,7 +150,7 @@ export class GeolocationExample extends React.Component {
                     <Header>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
-                                <Icon name='arrow-back' />
+                                <Icon style={{fontColor: 'black', color: 'black'}} name='arrow-back' />
                                 <Text></Text>
                             </Button>
                         </Left>
@@ -159,7 +159,7 @@ export class GeolocationExample extends React.Component {
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
-                                <Icon name={iconToggle} />
+                                <Icon style={{fontColor: 'black', color: 'black'}} name={iconToggle} />
                             </Button>
                         </Right>
                     </Header>
@@ -230,6 +230,9 @@ const styles = StyleSheet.create({
         left: 0,
         right: 0,
         bottom: 0,
+    },
+    iconStyle: {
+
     }
 })
 

@@ -77,7 +77,7 @@ export class ParkSelection extends React.Component {
                 source={{ uri: facilities.image.url }}
                 >
                 <Tile>
-                    <Title styleName="md-gutter-bottom">{facilities.name}</Title>
+                    <Title style={{fontFamily: 'Avenir'}} styleName="md-gutter-bottom">{facilities.name}</Title>
                     {/*<Subtitle styleName="sm-gutter-horizontal">{facilities.address}</Subtitle>*/}
                 </Tile>
                 </Image>
