@@ -126,6 +126,10 @@ android {
 }
 
 dependencies {
+    compile project(':react-native-facebook-login')
+    compile project(':react-native-photo-view')
+    compile project(':react-native-share')
+    compile project(':react-native-linear-gradient')
     compile project(':react-native-splash-screen')
     compile project(':react-native-fbsdk')
     compile project(':react-native-material-kit')

@@ -1,15 +1,5 @@
 import React, { Component } from 'react';
-import {
-    Modal,
-    View,
-    StyleSheet,
-    Text,
-    Dimensions,
-    InteractionManager,
-    TouchableHighlight,
-    Linking,
-    ScrollView
-} from 'react-native';
+import { Modal, View, StyleSheet, Text, Dimensions, InteractionManager, TouchableHighlight, Linking, ScrollView} from 'react-native';
 import MapView, { Marker } from 'react-native-maps'
 import { Container, Card, Thumbnail, CardItem, Content, Icon, Button, Footer, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';

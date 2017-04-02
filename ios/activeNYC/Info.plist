@@ -18,48 +18,27 @@
     <string>1.0</string>
     <key>CFBundleSignature</key>
     <string>????</string>
-    
-    
     <key>CFBundleURLTypes</key>
-      <array>
-        <dict>
-          <key>CFBundleURLSchemes</key>
-          <array>
-            <string>fb646549128881241</string>
-          </array>
-        </dict>
-      </array>
-      
-      <key>FacebookAppID</key>
-      <string>646549128881241</string>
-      <key>FacebookDisplayName</key>
-      <string>John Kneafsey</string>
-      
-    
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>com.googleusercontent.apps.94216888701-gsmfameuhk6ar1optj84li3vjudaa2j3</string>
+    <array>
+      <dict>
         <key>CFBundleURLSchemes</key>
         <array>
-          <string>com.googleusercontent.apps.94216888701-gsmfameuhk6ar1optj84li3vjudaa2j3</string>
+          <string>fb646549128881241</string>
         </array>
-
-      
-
-        <key>CFBundleTypeRole</key>
-        <string>Editor</string>
-        <key>CFBundleURLName</key>
-        <string>f557148</string>
-        <key>CFBundleURLSchemes</key>
-        <array>
-          <string>f557148</string>
-        </array>
-
-    
-    
-
-
+      </dict>
+    </array>
+    <key>FacebookAppID</key>
+    <string>646549128881241</string>
+    <key>FacebookDisplayName</key>
+    <string>John Kneafsey</string>
+    <key>CFBundleTypeRole</key>
+    <string>Editor</string>
+    <key>CFBundleURLName</key>
+    <string>f557148</string>
+    <key>CFBundleURLSchemes</key>
+    <array>
+      <string>f557148</string>
+    </array>
     <key>LSApplicationQueriesSchemes</key>
     <array>
       <string>fbapi</string>
@@ -67,8 +46,6 @@
       <string>fbauth2</string>
       <string>fbshareextension</string>
     </array>
-    
-    
     <key>CFBundleVersion</key>
     <string>1</string>
     <key>LSRequiresIPhoneOS</key>
@@ -76,7 +53,6 @@
     <key>NSAppTransportSecurity</key>
     <dict>
       <key>NSExceptionDomains</key>
-      
       <dict>
         <key>localhost</key>
         <dict>
@@ -85,31 +61,31 @@
         </dict>
         <key>facebook.com</key>
         <dict>
-          <key>NSIncludesSubdomains</key> <true/>
-          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key> <false/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+          <false/>
         </dict>
         <key>fbcdn.net</key>
         <dict>
-          <key>NSIncludesSubdomains</key> <true/>
-          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>  <false/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+          <false/>
         </dict>
         <key>akamaihd.net</key>
         <dict>
-          <key>NSIncludesSubdomains</key> <true/>
-          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key> <false/>
-        </dict>
-        <key>localhost</key>
-        <dict>
-          <key>NSExceptionAllowsInsecureHTTPLoads</key> <true/>
+          <key>NSIncludesSubdomains</key>
+          <true/>
+          <key>NSThirdPartyExceptionRequiresForwardSecrecy</key>
+          <false/>
         </dict>
         <key>api.mydomain.com</key>
         <dict>
-          <key>NSExceptionAllowsInsecureHTTPLoads</key> <true/>
+          <key>NSExceptionAllowsInsecureHTTPLoads</key>
+          <true/>
         </dict>
       </dict>
-      
-      
-      
     </dict>
     <key>NSLocationWhenInUseUsageDescription</key>
     <string/>
@@ -159,6 +135,17 @@
       <string>Octicons.ttf</string>
       <string>SimpleLineIcons.ttf</string>
       <string>Zocial.ttf</string>
+      <string>rubicon-icon-font.ttf</string>
+      <string>Rubik-Black.ttf</string>
+      <string>Rubik-BlackItalic.ttf</string>
+      <string>Rubik-Bold.ttf</string>
+      <string>Rubik-BoldItalic.ttf</string>
+      <string>Rubik-Italic.ttf</string>
+      <string>Rubik-Light.ttf</string>
+      <string>Rubik-LightItalic.ttf</string>
+      <string>Rubik-Medium.ttf</string>
+      <string>Rubik-MediumItalic.ttf</string>
+      <string>Rubik-Regular.ttf</string>
     </array>
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>
