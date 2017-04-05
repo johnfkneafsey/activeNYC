@@ -14,12 +14,12 @@ exports.examples = [
   {
     title: 'navigator.geolocation',
     render: function(): React.Element<any> {
-      return <GeolocationExample />;
+      return <Geolocation />;
     },
   }
 ];
 
-class GeolocationExample extends React.Component {
+class Geolocation extends React.Component {
   state = {
     initialPosition: 'unknown',
     lastPosition: 'unknown',

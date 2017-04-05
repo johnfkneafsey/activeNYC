@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Modal, View, StyleSheet, Text, Dimensions, InteractionManager, TouchableHighlight, Linking, ScrollView} from 'react-native';
-import MapView, { Marker, UrlTile, PROVIDER_GOOGLE } from 'react-native-maps'
+import MapView, { Marker, UrlTile, PROVIDER_GOOGLE } from 'react-native-maps';
+import CustomCallout from './CustomCallout';
 import { Container, Card, Thumbnail, CardItem, Content, Icon, Button, Footer, FooterTab, Header, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
@@ -273,7 +274,7 @@ const foursquare = require('react-native-foursquare-api')({
   version: '20161016' //  default: '20140806' 
 });
 
-export class GeolocationExample extends React.Component {
+export class Geolocation extends React.Component {
     constructor(props) {
         super(props);
 		this.markerPress = this.markerPress.bind(this);
@@ -368,16 +369,18 @@ export class GeolocationExample extends React.Component {
             let photoURL = prefix + size + suffix;
 
             cardView = 
-                <Card style={{flex: .4}}>
-                    <CardItem>       
-                            <Body>
-                                <Thumbnail style={{width: 100, height: 100}}  source={{uri: photoURL}} />
+            <View style={{flex: .4, backgroundColor: '#333533', margin: 10}}>
+                <Card >
+                    <CardItem style={{flex: .2, backgroundColor: 'rgb(245, 203, 92)'}}>       
+                            <Body >
+                                <Thumbnail style={{width: 60, height: 60}}  source={{uri: photoURL}} />
                                 <Title>{this.props.selectedFacility.Name}</Title>
                                 <Text>Location: {this.props.selectedFacility.Location}</Text>
                                 <Text>Status: {this.props.selectedVenue.hours.status}</Text>
                             </Body>
                     </CardItem>
                 </Card> 
+            </View>
                     
         } else {
 
@@ -390,16 +393,16 @@ export class GeolocationExample extends React.Component {
 
         if (this.props.selectedFacility) {
             footer = 
-                <Footer>
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)'}} >
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon style={{color: 'black'}} name="ios-walk-outline" />
+                            <Icon style={{color: 'rgb(36, 36, 35)'}} name="ios-walk-outline" />
                             <Text>Take me there</Text>
                         </Button>
                     </FooterTab>
-                    <FooterTab>
+                    <FooterTab style={{borderLeftColor: 'rgb(36, 36, 35)', borderLeftWidth: 1, borderStyle: 'solid'}}>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon style={{color: 'black'}} name="ios-people" />
+                            <Icon style={{color: 'rgb(36, 36, 35)'}} name="ios-people" />
                             <Text>Matches and Events</Text>
                         </Button>
                     </FooterTab>
@@ -409,10 +412,10 @@ export class GeolocationExample extends React.Component {
         if (this.props.markers) {
             return (
                 <Container>
-                    <Header>
+                    <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
-                                <Icon style={{color: 'black'}} name='arrow-back' />
+                                <Icon style={{color: 'rgb(36, 36, 35)'}} name='arrow-back' />
                                 <Text></Text>
                             </Button>
                         </Left>
@@ -421,7 +424,7 @@ export class GeolocationExample extends React.Component {
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
-                                <Icon style={{color: 'black'}} name={iconToggle} />
+                                <Icon style={{color: 'rgb(36, 36, 35)'}} name={iconToggle} />
                             </Button>
                         </Right>
                     </Header>
@@ -439,10 +442,10 @@ export class GeolocationExample extends React.Component {
                                 longitudeDelta: 0.0201,
                             }}
                         >
-                 
+
                         {this.props.markers.map(marker => {
                             return (
-                            <Marker
+                            <MapView.Marker
                                 onPress={this.markerPress}
                                 key={marker.Prop_ID}                        
                                 coordinate={{
@@ -452,8 +455,15 @@ export class GeolocationExample extends React.Component {
                                 title={marker.Name}
                                 description={marker.Location}
                                 identifier={marker.Prop_ID}
-                            />
-
+                                pinColor={'rgb(245, 203, 92)'}
+                            >
+                            <MapView.Callout tooltip style={styles.customView}>
+                              <CustomCallout>
+                                <Text style={styles.parkTitleText} >{marker.Name}</Text>
+                                <Text style={styles.parkLocationText} >{marker.Location}</Text>                                                              
+                              </CustomCallout>
+                            </MapView.Callout>
+                            </MapView.Marker>
                             )})}
                         </MapView>
                     </View>
@@ -489,7 +499,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#F5FCFF',
+        backgroundColor: '#333533',
     },
     map: {
         position: 'absolute',
@@ -500,7 +510,14 @@ const styles = StyleSheet.create({
     },
     iconStyle: {
 
-    }
+    },
+    parkTitleText: {
+        fontWeight: 'bold',
+        fontSize: 14
+    },
+    parkLocationText: {
+         fontSize: 12
+    },
 })
 
 const mapStateToProps = (state, props) => ({
@@ -517,4 +534,4 @@ const mapStateToProps = (state, props) => ({
     selectedVenue: state.selectedVenue
 });
 
-export default connect(mapStateToProps)(GeolocationExample);
+export default connect(mapStateToProps)(Geolocation);

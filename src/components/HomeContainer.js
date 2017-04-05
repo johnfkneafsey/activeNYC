@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import GeolocationExample from './GeolocationExample'
+import Geolocation from './Geolocation'
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -41,7 +41,7 @@ export class HomeContainer extends React.Component {
    render() {
       return (
 
-                <GeolocationExample
+                <Geolocation
                 initialPosition = {this.state.initialPosition}
                 lastPosition = {this.state.lastPosition}
                 />
