@@ -288,6 +288,7 @@ export class GeolocationExample extends React.Component {
     }
 
     markerPress(e) {
+               console.log('MARKER PRESSED SELECTED')
         let bestMatch = null;
         for (i = 0; i < this.props.markers.length; i ++) {
             if (e.nativeEvent.id === this.props.markers[i].Prop_ID) {
@@ -314,6 +315,7 @@ export class GeolocationExample extends React.Component {
     }
 
     facilityTypeView() {
+ 
         this.props.dispatch(actions.facilityTypeView());
     }
 
@@ -391,13 +393,13 @@ export class GeolocationExample extends React.Component {
                 <Footer>
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon style={{fontColor: 'black', color: 'black'}} name="ios-walk-outline" />
+                            <Icon style={{color: 'black'}} name="ios-walk-outline" />
                             <Text>Take me there</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon style={{fontColor: 'black', color: 'black'}} name="ios-people" />
+                            <Icon style={{color: 'black'}} name="ios-people" />
                             <Text>Matches and Events</Text>
                         </Button>
                     </FooterTab>
@@ -410,7 +412,7 @@ export class GeolocationExample extends React.Component {
                     <Header>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
-                                <Icon style={{fontColor: 'black', color: 'black'}} name='arrow-back' />
+                                <Icon style={{color: 'black'}} name='arrow-back' />
                                 <Text></Text>
                             </Button>
                         </Left>
@@ -419,7 +421,7 @@ export class GeolocationExample extends React.Component {
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
-                                <Icon style={{fontColor: 'black', color: 'black'}} name={iconToggle} />
+                                <Icon style={{color: 'black'}} name={iconToggle} />
                             </Button>
                         </Right>
                     </Header>
@@ -441,7 +443,7 @@ export class GeolocationExample extends React.Component {
                         {this.props.markers.map(marker => {
                             return (
                             <Marker
-                                onSelect={this.markerPress}
+                                onPress={this.markerPress}
                                 key={marker.Prop_ID}                        
                                 coordinate={{
                                     latitude: Number(marker.lat),
