@@ -369,18 +369,24 @@ export class Geolocation extends React.Component {
             let photoURL = prefix + size + suffix;
 
             cardView = 
-            <View style={{flex: .4, backgroundColor: '#333533', margin: 10}}>
-                <Card >
-                    <CardItem style={{flex: .2, backgroundColor: 'rgb(245, 203, 92)'}}>       
-                            <Body >
-                                <Thumbnail style={{width: 60, height: 60}}  source={{uri: photoURL}} />
-                                <Title>{this.props.selectedFacility.Name}</Title>
-                                <Text>Location: {this.props.selectedFacility.Location}</Text>
-                                <Text>Status: {this.props.selectedVenue.hours.status}</Text>
-                            </Body>
-                    </CardItem>
-                </Card> 
-            </View>
+                <View style={{flex: .30, backgroundColor: 'rgb(51,53,51)', justifyContent: 'center'}}>
+                  <Card style={{ padding: 10, backgroundColor: 'rgb(51,53,51)'}}>
+                      <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
+                              <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
+                                  <View>
+                                    <Text style={{fontWeight: 'bold', fontSize: 18}}>{this.props.selectedFacility.Name}</Text>
+                                    <Text>Location: {this.props.selectedFacility.Location}</Text>
+                                    <Text>Status: {this.props.selectedVenue.hours.status}</Text>
+                                    <Text></Text>
+                                    <Text></Text>
+                                  </View>
+                                  <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
+
+                              </Body>
+                      </CardItem>
+                  </Card> 
+                </View>
+
                     
         } else {
 
@@ -411,7 +417,7 @@ export class Geolocation extends React.Component {
 
         if (this.props.markers) {
             return (
-                <Container>
+                <Container style={styles.blackBackground}>
                     <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
@@ -467,7 +473,9 @@ export class Geolocation extends React.Component {
                             )})}
                         </MapView>
                     </View>
+
                     {cardView}
+
                     {footer}
                 </Container>
             )
@@ -499,7 +507,11 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#333533',
+        backgroundColor: 'rgb(51,53,51)',
+    },
+    blackBackground: {
+        flex: 1,
+        backgroundColor: 'rgb(51,53,51)',
     },
     map: {
         position: 'absolute',
