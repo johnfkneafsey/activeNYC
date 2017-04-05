@@ -91,6 +91,7 @@
 
 //  AppDelegate.m
 #import <FBSDKCoreKit/FBSDKCoreKit.h>
+@import GoogleMaps;
 
 @implementation AppDelegate
 
@@ -98,7 +99,7 @@
 {
  //   [SplashScreen show];  // here
   NSURL *jsCodeLocation;
-  
+ [GMSServices provideAPIKey:@"AIzaSyD-EJJlCnxbkR65dXtLQ7ItklDyrGBtm9Q"];
   /**
    * Facebook SDK
    *

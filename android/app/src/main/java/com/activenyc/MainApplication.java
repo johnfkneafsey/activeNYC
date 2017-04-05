@@ -3,14 +3,14 @@ package com.activenyc;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.facebook.reactnative.androidsdk.FBSDKPackage;
 import com.brentvatne.react.ReactVideoPackage;
 import com.magus.fblogin.FacebookLoginPackage;
 import com.reactnative.photoview.PhotoViewPackage;
 import cl.json.RNSharePackage;
 import com.BV.LinearGradient.LinearGradientPackage;
 import com.cboy.rn.splashscreen.SplashScreenReactPackage;
-import com.facebook.reactnative.androidsdk.FBSDKPackage;
-import com.airbnb.android.react.maps.MapsPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
@@ -32,14 +32,14 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new MapsPackage(),
+            new FBSDKPackage(),
             new ReactVideoPackage(),
             new FacebookLoginPackage(),
             new PhotoViewPackage(),
             new RNSharePackage(),
             new LinearGradientPackage(),
             new SplashScreenReactPackage(),
-            new FBSDKPackage(),
-            new MapsPackage(),
             new VectorIconsPackage()
       );
     }

@@ -12,7 +12,6 @@ import {
     ScrollView,
     Image
 } from 'react-native';
-import MapView, { Marker } from 'react-native-maps'
 import { Container, Header, Card, Thumbnail, CardItem, Content, Button, Footer, Icon, FooterTab, Title, Left, Right, Body } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
