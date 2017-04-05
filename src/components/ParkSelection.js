@@ -77,8 +77,10 @@ export class ParkSelection extends React.Component {
                 source={{ uri: facilities.image.url }}
                 >
                 <Tile>
-                    <Title style={{fontFamily: 'Avenir'}} styleName="md-gutter-bottom">{facilities.name}</Title>
-                    {/*<Subtitle styleName="sm-gutter-horizontal">{facilities.address}</Subtitle>*/}
+                    <View style={{backgroundColor: 'rgb(51,53,51)',  height: 15, alignItems: 'center', justifyContent: 'center'}} >
+                        <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', alignItems: 'center', justifyContent: 'center'}} styleName="md-gutter-bottom">{facilities.name}</Text>
+                        {/*<Subtitle styleName="sm-gutter-horizontal">{facilities.address}</Subtitle>*/}
+                    </View>
                 </Tile>
                 </Image>
                 <Divider styleName="line" />

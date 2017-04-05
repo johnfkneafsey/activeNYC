@@ -381,7 +381,6 @@ export class Geolocation extends React.Component {
                                     <Text></Text>
                                   </View>
                                   <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
-
                               </Body>
                       </CardItem>
                   </Card> 
