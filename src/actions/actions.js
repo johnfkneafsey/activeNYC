@@ -5,6 +5,7 @@ const foursquare = require('react-native-foursquare-api')({
   style: 'foursquare', // default: 'foursquare' 
   version: '20161016' //  default: '20140806' 
 });
+
 const HOST = process.env.HOST;
 const config = require('../../server/config');
 const host = config.HOST;
@@ -161,7 +162,6 @@ export const userSelectedEvent = (event) => ({
 
 
 export const asyncJoinEvent = (_userdata , _eventidentifier) => dispatch => {
-
 	let dataObj = {
 		user: _userdata,
 		eventId: _eventidentifier

@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import store from '../store/store';
 var moment = require('moment');
 import CalendarStrip from 'react-native-calendar-strip';
-import { Image } from '@shoutem/ui';
+import { Image, Overlay, Tile, Subtitle } from '@shoutem/ui';
 
 export class EventsMain extends React.Component {
     constructor(props) {
@@ -140,10 +140,9 @@ export class EventsMain extends React.Component {
 
         let prefix = this.props.selectedVenue.featuredPhotos.items[0].prefix;
         let suffix = this.props.selectedVenue.featuredPhotos.items[0].suffix;
-        let size = "height300"
+        let size = "height500"
         let photoURL = prefix + size + suffix;
 
-            
         const nameObj = {
             basketball: "Basketball",
             soccerAndFootball: "Soccer",
@@ -166,35 +165,46 @@ export class EventsMain extends React.Component {
                     <Thumbnail  key={event.first_name} circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: attendee.picture}} />  
                 )
             })
+
+            /*<View style={{flex: 1, flexDirection: 'row'}}>
+                {attendees}
+            </View> */
+
+            let hrs = 'hour';
+            if (event.eventDuration > 1) {
+                hrs = 'hours'
+            }
             
             return (
-                <Card key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)'}}>
-                    <CardItem style={{backgroundColor: 'rgb(245, 203, 92)'}} >
-                        <Left>
-                            <View style={{flex: 1, flexDirection: 'column'}}>
-                                <Title>{event.eventName}</Title>
-                                <Text>{this.getFormattedDate(event)}</Text>
-                                <Text>{this.getFormattedTime(event)}</Text>                                
-                                <Text>{event.eventDuration} hour</Text>
-                                <Text>{event.eventDescription}</Text>
-                                <Text></Text>
-                                    <Thumbnail circle source={{uri: event.eventOrganizer.picture}} />
-                                    <Text>{event.eventOrganizer.name}</Text>
-                            </View>
-                        </Left>
-                        <Right>
-                            <View style={{flex: 1, flexDirection: 'column'}}>
-                                <Button transparent onPress={() => { this.renderViewEventView(event.eventName)}}>
-                                    <Icon name='ios-information-circle' />
-                                    <Text>View Event</Text>
-                                </Button>  
-                                <View style={{flex: 1, flexDirection: 'row'}}>
-                                    {attendees}
-                                </View>  
-                                    <Text>and {event.eventParticipants} others... </Text>
-                            </View>                                     
-                        </Right>
-                    </CardItem>
+                <Card key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10}} >
+                    <Text style={{fontFamily: 'Bungee-Regular', marginTop: 5, alignSelf: 'center', }}>{event.eventName}</Text> 
+                    <Text></Text>
+                    <View style={{flexDirection: 'row'}} >                       
+                        <View style={{flex: 1, flexDirection: 'column', alignItems: 'flex-start'}}>                          
+                            {/*<Text>{this.getFormattedDate(event)}</Text>*/}
+                            <Text style={{marginLeft: 5, }} ><Text style={{fontWeight: 'bold'}} >Time:</Text> {this.getFormattedTime(event)}</Text> 
+                            <Text></Text>                               
+                            <Text style={{marginLeft: 5, }} ><Text style={{fontWeight: 'bold'}} >Duration:</Text> {event.eventDuration} {hrs}</Text>
+                            <Text></Text>
+                            <Text style={{fontWeight: 'bold', marginLeft: 5}}>Attendees: {event.eventAttendees.length + 1}</Text>
+                            <Text></Text>
+                            <Text style={{marginLeft: 5, fontWeight: 'bold'}} >Description</Text>
+                            <Text style={{marginLeft: 5, }} >{event.eventDescription}</Text>                          
+                        </View>                                           
+                        <View style={{flex: .6, flexDirection: 'column', alignItems: 'flex-end'}}>
+                            <Text style={{fontWeight: 'bold', marginRight: 5}}>Event Organizer</Text>
+                            <Thumbnail square style={{marginRight: 25}} source={{uri: event.eventOrganizer.picture}} />
+                            <Text style={{marginRight: 5}}>{event.eventOrganizer.name}</Text>
+                            <Text></Text>
+
+                            <View style={{marginRight: 5, marginBottom: 10}}>
+                                <Button style={{backgroundColor: 'rgb(51,53,51)', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
+                                    <Icon style={{color: 'rgb(48,188,237)', }} name='ios-information-circle' />
+                                    <Text style={{fontFamily: 'Bungee-Regular', color: 'rgb(245, 203, 92)', }} >View Event</Text>
+                                </Button>           
+                            </View>                  
+                        </View>  
+                    </View>                 
                 </Card>
             )
         })
@@ -224,22 +234,19 @@ export class EventsMain extends React.Component {
                     onSwipeRight={this.swipe}
                     renderItem={item =>
                         <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
-                            <CardItem style={{ backgroundColor: 'rgb(51,53,51)'}} >
-                                <Body style={{ backgroundColor: 'rgb(51,53,51)', flex: .1, alignItems: 'center', justifyContent: 'center'}}>
-                                    <View style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
-                                        <Image styleName='medium-wide rounded-corners' source={{uri: photoURL}} />
-                                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular',}} >{item.Name}</Text>                                                           
-                                        <Button transparent onPress={() => { this.renderNewEventView()}}>
+
+                            <Image styleName='large-banner' source={{uri: photoURL}} >
+                                <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
+                                    <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>
+                                    <View style={{position: 'absolute', bottom: 2, justifyContent: 'center',}}>
+                                        <Button rounded style={{   width: 220, height: 30, backgroundColor: 'rgb(51,53,51)'}} onPress={() => { this.renderNewEventView()}}>
                                             <Icon style={{ color: 'rgb(48,188,237)'}} name='ios-add-circle' />
-                                            <Text style={{ color: 'rgb(245, 203, 92)'}}>Create New Event</Text>
-                                        </Button>                                 
-                                        <View style={{ alignItems: 'center', justifyContent: 'center'}} >                            
-                                            <Text style={{ color: 'rgb(245, 203, 92)'}}>What's happening?</Text>
-                                        </View>                                         
-                                    </View>
-                                </Body>
-                            </CardItem>
-                        
+                                            <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
+                                        </Button>  
+                                    </View>     
+                                </Tile>
+                            </Image>
+
                             <CalendarStrip
                                 calendarAnimation={{type: 'sequence', duration: 30}}
                                 selection={'border'}

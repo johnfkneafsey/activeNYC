@@ -277,7 +277,7 @@ const foursquare = require('react-native-foursquare-api')({
 export class Geolocation extends React.Component {
     constructor(props) {
         super(props);
-		this.markerPress = this.markerPress.bind(this);
+		    this.markerPress = this.markerPress.bind(this);
         this.navigateToFacility = this.navigateToFacility.bind(this);
         this.facilityTypeView = this.facilityTypeView.bind(this);
         this.renderListView = this.renderListView.bind(this);
@@ -371,18 +371,18 @@ export class Geolocation extends React.Component {
             cardView = 
                 <View style={{flex: .30, backgroundColor: 'rgb(51,53,51)', justifyContent: 'center'}}>
                   <Card style={{ padding: 10, backgroundColor: 'rgb(51,53,51)'}}>
-                      <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
-                        <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
-                            <View style={{flex:1}} >
-                              <Text style={{fontFamily: 'Bungee-Regular',}}>{this.props.selectedFacility.Name}</Text>
-                              <Text>Location: {this.props.selectedFacility.Location}</Text>
-                              <Text>Status: {this.props.selectedVenue.hours.status}</Text>
-                            </View>
-                            <View style={{flex:.5, alignItems: 'center', justifyContent: 'center'}} >
-                              <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
-                            </View>
+                    <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
+                      <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
+                          <View style={{flex:1}} >
+                            <Text style={{fontFamily: 'Bungee-Regular',}}>{this.props.selectedFacility.Name}</Text>
+                            <Text><Text style={{fontWeight: 'bold'}}>Location:</Text> {this.props.selectedFacility.Location}</Text>
+                            <Text><Text style={{fontWeight: 'bold'}}>Status:</Text> {this.props.selectedVenue.hours.status}</Text>
+                          </View>
+                          <View style={{flex:.5, alignItems: 'center', justifyContent: 'center'}} >
+                            <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
+                          </View>
                         </Body>
-                      </CardItem>
+                    </CardItem>
                   </Card> 
                 </View>
   
@@ -517,7 +517,9 @@ const styles = StyleSheet.create({
     },
     parkTitleText: {
         fontFamily: 'Bungee-Regular',
-        fontSize: 14
+        fontSize: 14,
+        alignSelf: 'center',
+        justifyContent: 'center',        
     },
     parkLocationText: {
          fontSize: 12
