@@ -1,12 +1,13 @@
 
 import React, { Component } from 'react';
-import { Image, View, ScrollView } from 'react-native';
+import { View, ScrollView } from 'react-native';
 import { Container, Button, Right, Title, DeckSwiper, Card, Icon, Header, CardItem, Left, Body, Thumbnail, Text } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
 var moment = require('moment');
 import CalendarStrip from 'react-native-calendar-strip';
+import { Image } from '@shoutem/ui';
 
 export class EventsMain extends React.Component {
     constructor(props) {
@@ -137,14 +138,11 @@ export class EventsMain extends React.Component {
 
     render() {
 
-        let facilityThumbnail =  <View></View>  
-
         let prefix = this.props.selectedVenue.featuredPhotos.items[0].prefix;
         let suffix = this.props.selectedVenue.featuredPhotos.items[0].suffix;
         let size = "height300"
         let photoURL = prefix + size + suffix;
 
-        facilityThumbnail = <Thumbnail source={{uri: photoURL}} />
             
         const nameObj = {
             basketball: "Basketball",
@@ -170,8 +168,8 @@ export class EventsMain extends React.Component {
             })
             
             return (
-                <Card key={event.eventName}>
-                    <CardItem>
+                <Card key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)'}}>
+                    <CardItem style={{backgroundColor: 'rgb(245, 203, 92)'}} >
                         <Left>
                             <View style={{flex: 1, flexDirection: 'column'}}>
                                 <Title>{event.eventName}</Title>
@@ -202,74 +200,69 @@ export class EventsMain extends React.Component {
         })
 
         return (
-            <Container>
-                <Header>
+            <Container style={{backgroundColor: 'rgb(51,53,51)'}} >
+                <Header style={{backgroundColor: 'rgb(245, 203, 92)'}} > 
                     <Left>
                         <Button transparent onPress={() => { this.facilityTypeView()}}>
-                            <Icon name='arrow-back' />
+                            <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
                             <Text></Text>
                         </Button>
                     </Left>
                     <Body>
-                        <Title>{displayTitle}</Title>
+                        <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
                     </Body>
                     <Right>
                         <Button transparent onPress={() => { this.renderEventsView()}} >
-                            <Icon name="ios-map" />
+                            <Icon style={{color: 'rgb(48,188,237)'}} name="ios-map" />
                         </Button>
                     </Right>
-                </Header>               
-                <View>
-                    <DeckSwiper
-                        dataSource={this.props.markers}
-                        onSwipeLeft={this.swipe}
-                        onSwipeRight={this.swipe}
-                        renderItem={item =>
-                            <Card style={{ elevation: 3 }}>
-                                <CardItem>
-                                    <Left>
-                                        {facilityThumbnail}
-                                    </Left>
-                                    <Body>
-                                        <Text>{item.Name}</Text>
-                                        <Text note>{item.Location}</Text>
-                                    </Body>
-                                </CardItem>
-                                <CardItem>
-                                    <Left>
-                                        <Icon name={typeIcon} style={{ color: '#ED4A6A' }} />
-                                        <Text>What's happening?</Text>
-                                    </Left>
-                                    <Right>
+                </Header>     
+
+                <DeckSwiper
+                    dataSource={this.props.markers}
+                    onSwipeLeft={this.swipe}
+                    onSwipeRight={this.swipe}
+                    renderItem={item =>
+                        <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
+                            <CardItem style={{ backgroundColor: 'rgb(51,53,51)'}} >
+                                <Body style={{ backgroundColor: 'rgb(51,53,51)', flex: .1, alignItems: 'center', justifyContent: 'center'}}>
+                                    <View style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}}>
+                                        <Image styleName='medium-wide rounded-corners' source={{uri: photoURL}} />
+                                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular',}} >{item.Name}</Text>                                                           
                                         <Button transparent onPress={() => { this.renderNewEventView()}}>
-                                            <Icon name='ios-add-circle' />
-                                            <Text>New Event</Text>
-                                        </Button>                                        
-                                    </Right>
-                                </CardItem>
-                                <View>
-                                    <CalendarStrip
-                                        calendarAnimation={{type: 'sequence', duration: 30}}
-                                        selection={'border'}
-                                        selectionAnimation={{duration: 300, borderWidth: 1}}
-                                        style={{paddingTop: 20, paddingBottom: 10}}
-                                        calendarHeaderStyle={{color: 'white'}}
-                                        calendarColor={'#7743CE'}
-                                        highlightColor={'#9265DC'}
-                                        dateNumberStyle={{color: 'white'}}
-                                        dateNameStyle={{color: 'white'}}
-                                        borderHighlightColor={'white'}
-                                        iconContainer={{flex: 0.1}}
-                                        onDateSelected={ () => {this.selectedDate(); }}
-                                    />
-                                    <ScrollView>
-                                        {eventList}
-                                    </ScrollView>
-                                </View>
-                            </Card>
-                        }
-                    />
-                </View>
+                                            <Icon style={{ color: 'rgb(48,188,237)'}} name='ios-add-circle' />
+                                            <Text style={{ color: 'rgb(245, 203, 92)'}}>Create New Event</Text>
+                                        </Button>                                 
+                                        <View style={{ alignItems: 'center', justifyContent: 'center'}} >                            
+                                            <Text style={{ color: 'rgb(245, 203, 92)'}}>What's happening?</Text>
+                                        </View>                                         
+                                    </View>
+                                </Body>
+                            </CardItem>
+                        
+                            <CalendarStrip
+                                calendarAnimation={{type: 'sequence', duration: 30}}
+                                selection={'border'}
+                                selectionAnimation={{duration: 300, borderWidth: 1}}
+                                style={{paddingTop: 20, paddingBottom: 10}}
+                                calendarHeaderStyle={{color: 'rgb(51,53,51)'}}
+                                calendarColor={'rgb(245, 203, 92)'}
+                                highlightColor={'rgb(51,53,51)'}
+                                dateNumberStyle={{color: 'white'}}
+                                dateNameStyle={{color: 'white'}}
+                                borderHighlightColor={'rgb(51,53,51)'}
+                                iconContainer={{flex: 0.1}}
+                                onDateSelected={ () => {this.selectedDate(); }}
+                            />
+
+                            <ScrollView>
+                                {eventList}
+                            </ScrollView>
+                        
+                        </Card>
+                    }
+                />
+            
             </Container>
         );
     }
