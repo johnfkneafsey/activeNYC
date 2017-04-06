@@ -289,7 +289,7 @@ export class Geolocation extends React.Component {
     }
 
     markerPress(e) {
-               console.log('MARKER PRESSED SELECTED')
+        console.log('MARKER PRESSED SELECTED')
         let bestMatch = null;
         for (i = 0; i < this.props.markers.length; i ++) {
             if (e.nativeEvent.id === this.props.markers[i].Prop_ID) {
@@ -373,20 +373,19 @@ export class Geolocation extends React.Component {
                   <Card style={{ padding: 10, backgroundColor: 'rgb(51,53,51)'}}>
                       <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
                               <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
-                                  <View>
-                                    <Text style={{fontWeight: 'bold', fontSize: 18}}>{this.props.selectedFacility.Name}</Text>
+                                  <View style={{flex:1}} >
+                                    <Text style={{fontFamily: 'Bungee-Regular',}}>{this.props.selectedFacility.Name}</Text>
                                     <Text>Location: {this.props.selectedFacility.Location}</Text>
                                     <Text>Status: {this.props.selectedVenue.hours.status}</Text>
-                                    <Text></Text>
-                                    <Text></Text>
                                   </View>
-                                  <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
+                                  <View style={{flex:.5, alignItems: 'center', justifyContent: 'center'}} >
+                                    <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
+                                  </View>
                               </Body>
                       </CardItem>
                   </Card> 
                 </View>
-
-                    
+  
         } else {
 
             let cardView = () => {
@@ -401,14 +400,14 @@ export class Geolocation extends React.Component {
                 <Footer style={{backgroundColor: 'rgb(245, 203, 92)'}} >
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon style={{color: 'rgb(36, 36, 35)'}} name="ios-walk-outline" />
-                            <Text>Take me there</Text>
+                            <Icon style={{color: 'rgb(48,188,237)'}} name="ios-walk-outline" />
+                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
                         </Button>
                     </FooterTab>
-                    <FooterTab style={{borderLeftColor: 'rgb(36, 36, 35)', borderLeftWidth: 1, borderStyle: 'solid'}}>
+                    <FooterTab style={{borderLeftColor: 'rgb(51,53,51)', borderLeftWidth: 1, borderStyle: 'solid'}}>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon style={{color: 'rgb(36, 36, 35)'}} name="ios-people" />
-                            <Text>Matches and Events</Text>
+                            <Icon style={{color: 'rgb(48,188,237)'}} name="ios-people" />
+                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
@@ -420,16 +419,16 @@ export class Geolocation extends React.Component {
                     <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
-                                <Icon style={{color: 'rgb(36, 36, 35)'}} name='arrow-back' />
+                                <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
                                 <Text></Text>
                             </Button>
                         </Left>
                         <Body>
-                            <Title>{displayTitle}</Title>
+                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
-                                <Icon style={{color: 'rgb(36, 36, 35)'}} name={iconToggle} />
+                                <Icon style={{color: 'rgb(48,188,237)'}} name={iconToggle} />
                             </Button>
                         </Right>
                     </Header>
@@ -460,21 +459,18 @@ export class Geolocation extends React.Component {
                                 title={marker.Name}
                                 description={marker.Location}
                                 identifier={marker.Prop_ID}
-                                pinColor={'rgb(245, 203, 92)'}
+                                pinColor={'rgb(48,188,237)'}
                             >
                             <MapView.Callout tooltip style={styles.customView}>
                               <CustomCallout>
-                                <Text style={styles.parkTitleText} >{marker.Name}</Text>
-                                <Text style={styles.parkLocationText} >{marker.Location}</Text>                                                              
+                                <Text style={styles.parkTitleText} >{marker.Name}</Text>                                                         
                               </CustomCallout>
                             </MapView.Callout>
                             </MapView.Marker>
                             )})}
                         </MapView>
                     </View>
-
                     {cardView}
-
                     {footer}
                 </Container>
             )
@@ -519,11 +515,8 @@ const styles = StyleSheet.create({
         right: 0,
         bottom: 0,
     },
-    iconStyle: {
-
-    },
     parkTitleText: {
-        fontWeight: 'bold',
+        fontFamily: 'Bungee-Regular',
         fontSize: 14
     },
     parkLocationText: {
