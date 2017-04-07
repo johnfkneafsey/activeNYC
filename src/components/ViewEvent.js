@@ -90,49 +90,48 @@ export class ViewEvent extends React.Component {
         })
 
         return (
-            <Container>
-                <Header>
+            <Container style={{backgroundColor:  'rgb(51,53,51)'}} >
+                <Header style={{backgroundColor:  'rgb(51,53,51)'}} >
                     <Left>
+                        <Button transparent onPress={() => { this.cancelViewEvent()}} >
+                            <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                        </Button>
                     </Left>
                     <Body>
-                        <Title>Event</Title>
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Event</Text>
                     </Body>
                     <Right>
-                        <Button transparent onPress={() => { this.cancelViewEvent()}} >
-                            <Text>Close </Text>
-                            <Icon name="ios-backspace" />
-                        </Button>
                     </Right>
                 </Header>
 
                 <Content>
-                    <Title>Event Name</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}} >Event Name</Text>
                     <Text>{this.props.userSelectedEvent.eventName}</Text>
-                    <Title>Event Category</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Category</Text>
                     <Text>{this.props.userSelectedEvent.eventType}</Text>                    
-                    <Title>Event Description</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Description</Text>
                     <Text>{this.props.userSelectedEvent.eventDescription}</Text>
-                    <Title>EventLocation</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>EventLocation</Text>
                     <Text>{this.props.userSelectedEvent.eventFacilityName}</Text>
-                    <Title>Event Date</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Date</Text>
                     <Text>{this.getFormattedDate()}</Text>
-                    <Title>Event Time</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Time</Text>
                     <Text>{this.getFormattedTime()}</Text>
-                    <Title>Event Duration</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Duration</Text>
                     <Text>{this.props.userSelectedEvent.eventDuration}</Text>
-                    <Title>Event Organizer Name</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Name</Text>
                     <Text>{this.props.userSelectedEvent.eventOrganizer.name}</Text>
-                    <Title>Event Organizer Imae</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Imae</Text>
                     <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />                    
-                    <Title>Event Participants</Title>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Participants</Text>
                     {attendees}
-                    <Button transparent onPress={() => { this.eventChatView()}} >
-                        <Text>Discuss!</Text>
-                        <Icon name="ios-chatbubbles" />
+                    <Button style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.eventChatView()}} >
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Event Chat</Text>
+                        <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-chatbubbles" />
                     </Button>
-                    <Button transparent onPress={() => { this.joinEvent(); this.cancelViewEvent()}} >
-                        <Text>Join!</Text>
-                        <Icon name="ios-chatbubbles" />
+                    <Button style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.joinEvent(); this.cancelViewEvent()}} >
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Join</Text>
+                        <Icon style={{color: 'rgb(245, 203, 92)' }} name="ios-chatbubbles" />
                     </Button>
                 </Content>
             </Container>

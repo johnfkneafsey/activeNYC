@@ -96,18 +96,19 @@ export class EventChat extends React.Component {
   
     return (
       <Container>
-        <Header>
+        <Header style={{backgroundColor:  'rgb(51,53,51)'}} >
           <Left>
+              <Button transparent onPress={() => { this.renderEventChatView()}} >
+                  <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+              </Button>
           </Left>
           <Body>
-              <Title>{displayTitle}</Title>
+              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Event</Text>
           </Body>
           <Right>
-              <Button transparent onPress={() => { this.renderEventChatView()}} >
-                <Icon name="ios-backspace" />
-              </Button>
           </Right>
-        </Header>  
+        </Header>
+
         <GiftedChat
           messages={this.props.userSelectedEvent.eventChat.reverse()}
           onSend={this.onSend}
@@ -124,7 +125,7 @@ export class EventChat extends React.Component {
     );
   }
 }
-
+// styles!!!!
 
 const styles = StyleSheet.create({
   footerContainer: {

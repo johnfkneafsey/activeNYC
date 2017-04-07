@@ -75,8 +75,8 @@ export class NewEvent extends React.Component {
     render() {
 
         return (
-            <Container style={{backgroundColor: 'rgb(245, 203, 92)', alignItems: 'center', justifyContent: 'center'}}> 
-                <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
+            <Container style={{backgroundColor: 'rgb(245, 203, 92)',  }}> 
+                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 1, borderBottomStyle: 'solid' }}>
                     <Left>
                         <Button transparent onPress={() => { this.cancelNewEvent()}} >
                             <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
@@ -84,12 +84,12 @@ export class NewEvent extends React.Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Create</Text>
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Create</Text>
                     </Body>
                     <Right>
-
                     </Right>
-                </Header>                
+                </Header>    
+                            
                 <Content>
                     <Form>
                         <Item >
@@ -110,18 +110,18 @@ export class NewEvent extends React.Component {
                         />
                     </View>
                     <View style={{flexDirection: "row" }}>
-                        <Button iconLeft light onPress={() => { this.subtractHour() }}>
-                            <Icon name='arrow-back' />
+                        <Button iconLeft style={{backgroundColor: 'rgb(51,53,51)'}}  light onPress={() => { this.subtractHour() }}>
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                         </Button>
                         <Text>{this.props.userSelectedEventDuration} Hours </Text> 
-                        <Button iconRight light onPress={() => { this.addHour() }}>      
-                            <Icon name='arrow-forward' />
+                        <Button iconRight light style={{backgroundColor: 'rgb(51,53,51)'}}  onPress={() => { this.addHour() }}>      
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-forward' />
                         </Button>                   
                     </View>
                     <View>
-                        <Button  light onPress={() => { this.createEvent() }}>
-                            <Text>Create</Text>
-                            <Icon name='checkbox' />
+                        <Button  style={{backgroundColor: 'rgb(51,53,51)'}} light onPress={() => { this.createEvent() }}>
+                            <Text style={{color: 'rgb(245, 203, 92)', fontStyle: 'Bungee-Regular'}} >Create</Text>
+                            <Icon style={{color: 'rgb(245, 203, 92)'}}  name='checkbox' />
                         </Button>
                     </View>
                 </Content>
