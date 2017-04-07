@@ -74,6 +74,12 @@ export class NewEvent extends React.Component {
 
     render() {
 
+        let hourModifier = 'hour';
+
+        if (this.props.userSelectedEventDuration > 1) {
+            hourModifier = 'hours';
+        }        
+
         return (
             <Container style={{backgroundColor: 'rgb(245, 203, 92)',  }}> 
                 <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 1, borderBottomStyle: 'solid' }}>
@@ -113,7 +119,7 @@ export class NewEvent extends React.Component {
                         <Button iconLeft style={{backgroundColor: 'rgb(51,53,51)'}}  light onPress={() => { this.subtractHour() }}>
                             <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                         </Button>
-                        <Text>{this.props.userSelectedEventDuration} Hours </Text> 
+                        <Text  style={{color: 'rgb(245, 203, 92)'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
                         <Button iconRight light style={{backgroundColor: 'rgb(51,53,51)'}}  onPress={() => { this.addHour() }}>      
                             <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-forward' />
                         </Button>                   

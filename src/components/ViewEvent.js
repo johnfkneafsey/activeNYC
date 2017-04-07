@@ -104,7 +104,7 @@ export class ViewEvent extends React.Component {
                     </Right>
                 </Header>
 
-                <Content>
+                <View style={{flexDirection: 'column', alignItems: 'center', }}>
                     <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}} >Event Name</Text>
                     <Text>{this.props.userSelectedEvent.eventName}</Text>
                     <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Category</Text>
@@ -121,7 +121,7 @@ export class ViewEvent extends React.Component {
                     <Text>{this.props.userSelectedEvent.eventDuration}</Text>
                     <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Name</Text>
                     <Text>{this.props.userSelectedEvent.eventOrganizer.name}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Imae</Text>
+                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Image</Text>
                     <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />                    
                     <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Participants</Text>
                     {attendees}
@@ -133,7 +133,7 @@ export class ViewEvent extends React.Component {
                         <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Join</Text>
                         <Icon style={{color: 'rgb(245, 203, 92)' }} name="ios-chatbubbles" />
                     </Button>
-                </Content>
+                </View>
             </Container>
         );
     }
