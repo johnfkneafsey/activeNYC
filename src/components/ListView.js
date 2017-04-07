@@ -101,7 +101,6 @@ export class ListView extends React.Component {
       imageSource = (function() {
         return _this.getPhoto(facility)
       })();
-      console.log('IMAGE SOURCE ', imageSource)
 
       return (
           <Card key={facility.Prop_ID} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10, alignItems: 'center', justifyItems: 'center'}}>                 

@@ -47,20 +47,11 @@ export class EventChat extends React.Component {
   }
 
   renderEventChatView() {
-        this.props.dispatch(actions.renderEventChatView());
+    this.props.dispatch(actions.renderEventChatView());
   }
 
   onSend(messages = []) {
-    console.log('WTF IS THIS ',GiftedChat)
-    console.log('AND THIS IS THIS ',messages)
     this.props.dispatch(actions.asyncPutMessage(messages, this.props.userSelectedEvent.eventStartTime))
-
-    // this.setState((previousState) => {
-    //   return {
-    //     messages: GiftedChat.append(previousState.messages, message),
-    //   };
-    // });
-
   }
 
   renderBubble(props) {
@@ -86,8 +77,6 @@ export class EventChat extends React.Component {
     return null;
   }
   render() {
-
-    console.log('EVENTS LOADING WITH CHAT ', this.props.events)
 
     const nameObj = {
         basketball: "Basketball",

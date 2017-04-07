@@ -32,8 +32,6 @@ export class EventsMain extends React.Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        console.log('PREV PROPS', prevProps)
-        console.log('PREV STATE', prevState)
         if (prevProps.selectedVenue === this.props.selectedVenue) {
             let cardIndex = this.props.currentCardIndex;
             let paramsVenues = {
@@ -55,18 +53,15 @@ export class EventsMain extends React.Component {
     }
 
     selectedDate(e) {
-        console.log('EVENT E', moment(e)._d)
         let selectedDate = moment(e)._d;
         this.props.dispatch(actions.selectedDate(selectedDate))
     }
 
     renderNewEventView() {
-        console.log('add event triggered')
         this.props.dispatch(actions.renderNewEventView());
     }
 
     renderViewEventView(event) {
-        console.log('are we here yet. here is event', event)
         let selectedEvent;
         for (i = 0; i < this.props.events.length; i ++) {
             if (this.props.events[i].eventName === event) {
@@ -76,7 +71,6 @@ export class EventsMain extends React.Component {
     }
 
     passUpFacilityName(facility) {
-        console.log('FACILITY ', facility)
         this.props.dispatch(actions.currentCard(facility))
     }
 
@@ -98,7 +92,6 @@ export class EventsMain extends React.Component {
         }
         let minutes = dateObj.getMinutes()
         let formattedTime = `${hours}:${minutes}`
-        console.log(formattedTime)
         return formattedTime
     }
 
@@ -142,7 +135,6 @@ export class EventsMain extends React.Component {
         let suffix = this.props.selectedVenue.featuredPhotos.items[0].suffix;
         let size = "height500"
         let photoURL = prefix + size + suffix;
-
         const nameObj = {
             basketball: "Basketball",
             soccerAndFootball: "Soccer",
@@ -165,10 +157,6 @@ export class EventsMain extends React.Component {
                     <Thumbnail  key={event.first_name} circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: attendee.picture}} />  
                 )
             })
-
-            /*<View style={{flex: 1, flexDirection: 'row'}}>
-                {attendees}
-            </View> */
 
             let hrs = 'hour';
             if (event.eventDuration > 1) {
@@ -196,7 +184,6 @@ export class EventsMain extends React.Component {
                             <Thumbnail square style={{marginRight: 25}} source={{uri: event.eventOrganizer.picture}} />
                             <Text style={{marginRight: 5}}>{event.eventOrganizer.name}</Text>
                             <Text></Text>
-
                             <View style={{marginRight: 5, marginBottom: 10}}>
                                 <Button style={{backgroundColor: 'rgb(51,53,51)', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
                                     <Icon style={{color: 'rgb(48,188,237)', }} name='ios-information-circle' />
@@ -227,14 +214,12 @@ export class EventsMain extends React.Component {
                         </Button>
                     </Right>
                 </Header>     
-
                 <DeckSwiper
                     dataSource={this.props.markers}
                     onSwipeLeft={this.swipe}
                     onSwipeRight={this.swipe}
                     renderItem={item =>
                         <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
-
                             <Image styleName='large-banner' source={{uri: photoURL}} >
                                 <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
                                     <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>
@@ -246,7 +231,6 @@ export class EventsMain extends React.Component {
                                     </View>     
                                 </Tile>
                             </Image>
-
                             <CalendarStrip
                                 calendarAnimation={{type: 'sequence', duration: 30}}
                                 selection={'border'}
@@ -261,15 +245,12 @@ export class EventsMain extends React.Component {
                                 iconContainer={{flex: 0.1}}
                                 onDateSelected={ () => {this.selectedDate(); }}
                             />
-
                             <ScrollView>
                                 {eventList}
-                            </ScrollView>
-                        
+                            </ScrollView>                     
                         </Card>
                     }
-                />
-            
+                />      
             </Container>
         );
     }

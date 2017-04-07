@@ -266,12 +266,11 @@ const customMapStyle = [
   }
 ]
 
-
 const foursquare = require('react-native-foursquare-api')({
   clientID: 'XFP50ZHK1ADEQXMZVRPT3GNVLRZJVIELIJVE2WS4T3ZTI3FL',
   clientSecret: '50UNQ5MPQIYJASBURHQ1EQRCM02SK3T2F403ZDRZZ240IXMF',
-  style: 'foursquare', // default: 'foursquare' 
-  version: '20161016' //  default: '20140806' 
+  style: 'foursquare', 
+  version: '20161016'
 });
 
 export class Geolocation extends React.Component {
@@ -289,13 +288,11 @@ export class Geolocation extends React.Component {
     }
 
     markerPress(e) {
-        console.log('MARKER PRESSED SELECTED')
         let bestMatch = null;
         for (i = 0; i < this.props.markers.length; i ++) {
             if (e.nativeEvent.id === this.props.markers[i].Prop_ID) {
                 let facilityObj = this.props.markers[i];
                 let facility = JSON.stringify(this.props.markers[i])
-                console.log('FACILITY HEEEYA' , facilityObj)
                 let paramsVenues = {
                     "ll": facilityObj.lat + "," + facilityObj.lon,
                     "query": facilityObj.Name,
@@ -432,6 +429,7 @@ export class Geolocation extends React.Component {
                             </Button>
                         </Right>
                     </Header>
+                    
                     <View style = {styles.container}>
                         <MapView
                             showsUserLocation = {true}

@@ -21,17 +21,14 @@ export class NewEvent extends React.Component {
     }
 
     setTitle(title) {
-        console.log('INPUT title', title)
         this.props.dispatch(actions.userSelectedEventTitle(title));
     }
 
     setDescription(description) {
-        console.log('INPUT description', description)
         this.props.dispatch(actions.userSelectedEventDescription(description));
     }
 
     onDateChange = (startTime) => {
-        console.log('THIS IS START TIME ' , startTime);
         this.props.dispatch(actions.userSelectedEventStartTime(startTime, this.props.userSelectedEventDuration));
     };
 
@@ -58,7 +55,6 @@ export class NewEvent extends React.Component {
         let create_eventDuration = this.props.userSelectedEventDuration;
         let create_eventChat = [];
         let create_eventFacilityName = this.props.selectedFacility.Name;
-
         let eventObj = {
             eventName: create_eventName,
             eventType: create_eventType,
@@ -71,7 +67,6 @@ export class NewEvent extends React.Component {
             eventChat: create_eventChat,
             eventFacilityName: create_eventFacilityName
         }
-        console.log('ITS THE EVENT OBJ', eventObj);
         this.props.dispatch(actions.createEvent(eventObj));
         this.props.dispatch(actions.loadEvents());
         this.props.dispatch(actions.renderNewEventView());
@@ -80,21 +75,21 @@ export class NewEvent extends React.Component {
     render() {
 
         return (
-            <Container>
-                <Header>
+            <Container style={{backgroundColor: 'rgb(245, 203, 92)', alignItems: 'center', justifyContent: 'center'}}> 
+                <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
                     <Left>
-
+                        <Button transparent onPress={() => { this.cancelNewEvent()}} >
+                            <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                            <Text></Text>
+                        </Button>
                     </Left>
                     <Body>
-                        <Title>Create</Title>
+                        <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Create</Text>
                     </Body>
                     <Right>
-                        <Button transparent onPress={() => { this.cancelNewEvent()}} >
-                            <Text>Cancel </Text>
-                            <Icon name="ios-backspace" />
-                        </Button>
+
                     </Right>
-                </Header>  
+                </Header>                
                 <Content>
                     <Form>
                         <Item >
@@ -104,11 +99,6 @@ export class NewEvent extends React.Component {
                         <Item  last>
                             <Label>Description: </Label>
                             <Input  onChangeText={(description) => {this.setDescription(description); }}/>
-                        </Item>
-                        <Item>
-                            <View>
-
-                            </View>
                         </Item>
                     </Form>
                     <View>
@@ -120,18 +110,13 @@ export class NewEvent extends React.Component {
                         />
                     </View>
                     <View style={{flexDirection: "row" }}>
-                        
                         <Button iconLeft light onPress={() => { this.subtractHour() }}>
-                            
                             <Icon name='arrow-back' />
                         </Button>
                         <Text>{this.props.userSelectedEventDuration} Hours </Text> 
-
-                        <Button iconRight light onPress={() => { this.addHour() }}>
-                            
+                        <Button iconRight light onPress={() => { this.addHour() }}>      
                             <Icon name='arrow-forward' />
-                        </Button>
-                   
+                        </Button>                   
                     </View>
                     <View>
                         <Button  light onPress={() => { this.createEvent() }}>
@@ -144,8 +129,6 @@ export class NewEvent extends React.Component {
         );
     }
 }
-
-
 
 const mapStateToProps = (state, props) => ({
     parkType: state.parkType,

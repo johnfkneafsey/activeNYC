@@ -30,27 +30,27 @@ export class Login extends React.Component {
     }
 
     onLoadStart () {
-        console.log('loading started ')
+
     }
 
     onLoad () {
-        console.log('video loaded')
+   
     }
 
     onProgress () {
-        console.log('progress')
+      
     }
 
     onEnd () {
-        console.log('video ended')
+     
     }
 
     onBuffer () {
-        console.log('buffered')
+    
     }
 
     onError() {
-        console.log('error!!!')
+   
     }    
 
     render() {
