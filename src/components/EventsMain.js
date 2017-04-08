@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
-import { Container, Button, Right, Title, DeckSwiper, Card, Icon, Header, CardItem, Left, Body, Thumbnail, Text } from 'native-base';
+import { Container, Button, Right, Title, DeckSwiper, Card, Icon, Header, CardItem, Left, Body, Thumbnail, Text, Footer, FooterTab } from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -197,6 +197,7 @@ export class EventsMain extends React.Component {
         })
 
         return (
+            <View style={{flex: 1}}>
             <Container style={{backgroundColor: 'rgb(51,53,51)'}} >
                 <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
                     <Left>
@@ -222,13 +223,7 @@ export class EventsMain extends React.Component {
                             
                             <Image styleName='large-banner' source={{uri: photoURL}} >
                                 <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
-                                    <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>
-                                    <View style={{position: 'absolute', bottom: 2, justifyContent: 'center',}}>
-                                        <Button rounded style={{   width: 220, height: 30, backgroundColor: 'rgb(51,53,51)'}} onPress={() => { this.renderNewEventView()}}>
-                                            <Icon style={{ color: 'rgb(245, 203, 92)'}} name='ios-add-circle' />
-                                            <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
-                                        </Button>  
-                                    </View>     
+                                    <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>    
                                 </Tile>
                             </Image>
                             <CalendarStrip
@@ -253,8 +248,20 @@ export class EventsMain extends React.Component {
                             </ScrollView>                     
                         </Card>
                     }
-                />      
+                />   
+         
             </Container>
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid' }} >
+                    <FooterTab>
+                        <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.renderNewEventView()}}>
+                            <Icon style={{ color: 'rgb(51,53,51)'}} name='ios-add-circle' />
+                            <Text style={{ color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>  
+                </View>
+         
+
         );
     }
 }

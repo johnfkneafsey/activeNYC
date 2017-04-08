@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { Image, DatePickerIOS, View, ScrollView, StyleSheet } from 'react-native';
-import { Container, Content, Form, Item, Input, Label, Header, Left, Right, Button, Icon, Body, Title, Text } from 'native-base';
+import { Container, Content, Item, Header, Left, Right, Icon, Body, Title, Text, Input, Label, Button, Form, FormGroup, Footer, FooterTab} from 'native-base';
+import FontAwesomeIcon from 'react-native-vector-icons/FontAwesome';
+import { Sae } from 'react-native-textinput-effects';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -95,17 +97,34 @@ export class NewEvent extends React.Component {
                     <Right>
                     </Right>
                 </Header>    
-                <View style={{flexDirection: 'column'}} >
-                    <Form >
-                        <Item >
-                            <Label style={{color: 'rgb(51,53,51)'}} >Event Title: </Label>
-                            <Input onChangeText={(title) => {this.setTitle(title); }}/>
-                        </Item>
-                        <Item  last>
-                            <Label style={{color: 'rgb(51,53,51)'}} >Description: </Label>
-                            <Input onChangeText={(description) => {this.setDescription(description); }}/>
-                        </Item>
-                    </Form>
+                <View style={{flexDirection: 'column', marginHorizontal: 20,}} >
+                    <Sae
+                        label={'Event Title'}
+                        iconClass={FontAwesomeIcon}
+                        iconName={'pencil'}
+                        iconColor={'rgb(245, 203, 92)'}  
+                        labelStyle={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular' }}  
+                        inputStyle={{ color: 'rgb(245, 203, 92)' }}                    
+                        // TextInput props
+                        autoCapitalize={'none'}
+                        autoCorrect={false}
+                        onChangeText={(title) => {this.setTitle(title); }}
+                    />
+                    <Text></Text>
+                    <Sae
+                        label={'Description'}
+                        iconClass={FontAwesomeIcon}
+                        iconName={'pencil'}
+                        iconColor={'rgb(245, 203, 92)'}              
+                        labelStyle={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular' }}  
+                        inputStyle={{ color: 'rgb(245, 203, 92)',  }}        
+                        // TextInput props
+                        autoCapitalize={'none'}
+                        autoCorrect={false}
+                        onChangeText={(description) => {this.setDescription(description); }}
+                    />
+                    <View style={{marginTop: 20, marginBottom: 20, padding: 20}} ></View>
+                    <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Date and Time</Text>
                     <View style={{backgroundColor: 'rgb(245, 203, 92)', paddingHrizontal: 8, borderRadius: 6, borderColor: 'rgb(245, 203, 92)', borderWidth: 2, borderStyle: 'solid',  justifyContent: 'center'}} >
                         <DatePickerIOS
                             date={this.props.userSelectedEventStartTime}
@@ -114,24 +133,29 @@ export class NewEvent extends React.Component {
                             minuteInterval={10}
                         />
                     </View>
+                    <Text></Text>   
                     <View style={{flexDirection: 'column', alignItems: 'center'}} >
-                        <View style={{flexDirection: "row" }}>
-                            <Button iconLeft style={{backgroundColor: 'rgb(245, 203, 92)'}}  light onPress={() => { this.subtractHour() }}>
-                                <Icon style={{color:  'rgb(51,53,51)'}} name='arrow-back' />
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Duration</Text>
+                        <Text></Text>
+                        <View style={{flexDirection: "row" ,justifyContent: 'center', alignItems: 'center' }}>
+                            <Button iconLeft style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.subtractHour() }}>
+                                <Icon style={{color: 'rgb(51,53,51)'}} name='arrow-back' />
                             </Button>
-                            <Text  style={{color: 'rgb(245, 203, 92)'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
-                            <Button iconRight light style={{backgroundColor: 'rgb(245, 203, 92)'}}  onPress={() => { this.addHour() }}>      
-                                <Icon style={{color:  'rgb(51,53,51)'}} name='arrow-forward' />
+                            <Text  style={{color: 'rgb(245, 203, 92)', justifyContent: 'center', alignItems: 'center', marginLeft: 15, marginRight: 15, fontFamily: 'Bungee-Regular'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
+                            <Button iconRight style={{backgroundColor: 'rgb(245, 203, 92)'}}  onPress={() => { this.addHour() }}>      
+                                <Icon style={{color: 'rgb(51,53,51)'}} name='arrow-forward' />
                             </Button>                   
-                        </View>
-                        <View>
-                            <Button  style={{backgroundColor: 'rgb(245, 203, 92)'}} light onPress={() => { this.createEvent() }}>
-                                <Text style={{color:  'rgb(51,53,51)', fontFamily: 'Bungee-Regular'}} >Create</Text>
-                                <Icon style={{color:  'rgb(51,53,51)'}}  name='checkbox' />
-                            </Button>
-                        </View>
+                        </View>                    
                     </View>
                 </View>
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
+                    <FooterTab>
+                        <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.createEvent()}}>
+                            <Icon style={{color:  'rgb(51,53,51)'}}  name='checkbox' />
+                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular'}} >Submit</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>                  
             </Container>
         );
     }
