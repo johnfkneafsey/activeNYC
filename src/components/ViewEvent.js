@@ -90,11 +90,11 @@ export class ViewEvent extends React.Component {
         })
 
         return (
-            <Container style={{backgroundColor:  'rgb(51,53,51)'}} >
-                <Header style={{backgroundColor:  'rgb(51,53,51)'}} >
+            <Container style={{backgroundColor: 'rgb(51,53,51)'}} >
+                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
                     <Left>
                         <Button transparent onPress={() => { this.cancelViewEvent()}} >
-                            <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                         </Button>
                     </Left>
                     <Body>
@@ -103,8 +103,34 @@ export class ViewEvent extends React.Component {
                     <Right>
                     </Right>
                 </Header>
-
+                <Text></Text>
                 <View style={{flexDirection: 'column', alignItems: 'center', }}>
+                    <View style={{flexDirection: 'row'}}>
+                        <View style={{flexDirection: 'column', alignItems: 'center', }}>
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >What</Text>                        
+                            <View style={{height: 150, width: 190, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                <Text> </Text>
+                            </View>
+                        </View>
+                        <View style={{flexDirection: 'column', alignItems: 'center', }}>                        
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >When</Text>                        
+                            <View style={{height: 150, width: 190, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                <Text> </Text>
+                            </View>
+                        </View>
+                    </View>
+                    <Text></Text>                    
+                    <View style={{flexDirection: 'column', alignItems: 'center', }}>                    
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Who</Text>                    
+                        <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                            <Text> </Text>
+                        </View>
+                    </View>
+                </View>
+
+
+
+                <View>
                     <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}} >Event Name</Text>
                     <Text>{this.props.userSelectedEvent.eventName}</Text>
                     <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Category</Text>
