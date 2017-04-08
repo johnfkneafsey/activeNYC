@@ -397,13 +397,13 @@ export class Geolocation extends React.Component {
                 <Footer style={{backgroundColor: 'rgb(245, 203, 92)'}} >
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon style={{color: 'rgb(48,188,237)'}} name="ios-walk-outline" />
+                            <Icon style={{color: 'rgb(51,53,51)'}} name="ios-walk-outline" />
                             <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab style={{borderLeftColor: 'rgb(51,53,51)', borderLeftWidth: 1, borderStyle: 'solid'}}>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon style={{color: 'rgb(48,188,237)'}} name="ios-people" />
+                            <Icon style={{color: 'rgb(51,53,51)'}} name="ios-people" />
                             <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
                         </Button>
                     </FooterTab>
@@ -413,19 +413,19 @@ export class Geolocation extends React.Component {
         if (this.props.markers) {
             return (
                 <Container style={styles.blackBackground}>
-                    <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
+                    <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }}>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
-                                <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                                <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                                 <Text></Text>
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
-                                <Icon style={{color: 'rgb(48,188,237)'}} name={iconToggle} />
+                                <Icon style={{color: 'rgb(245, 203, 92)'}} name={iconToggle} />
                             </Button>
                         </Right>
                     </Header>

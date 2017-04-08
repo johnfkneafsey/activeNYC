@@ -110,11 +110,11 @@ export class ListView extends React.Component {
               <Text>{facility.Location}</Text>
               <View style={{flexDirection: 'row'}}>
                 <Button transparent button onPress={() => { this.renderEventsView()}}>
-                  <Icon style={{color: 'rgb(48,188,237)'}} name="ios-people" />
+                  <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-people" />
                   <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
                 </Button>
                 <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.markers.lat + ',' + this.props.markers.lon)}}>
-                  <Icon style={{color: 'rgb(48,188,237)'}} name="ios-walk-outline" />
+                  <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-walk-outline" />
                   <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
                 </Button>  
               </View>
@@ -125,15 +125,15 @@ export class ListView extends React.Component {
 
       return(
         <Container style={{backgroundColor: 'rgb(51,53,51)'}}>
-          <Header style={{backgroundColor: 'rgb(245, 203, 92)'}}>
+          <Header style={{backgroundColor: 'rgb(51,53,51)'}}>
             <Left>
               <Button transparent onPress={() => { this.renderListView()}} >
-                <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                 <Text></Text>
               </Button>
             </Left>
             <Body>
-              <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
+              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
             </Body>
             <Right>
             </Right>

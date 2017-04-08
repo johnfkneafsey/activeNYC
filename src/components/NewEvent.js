@@ -81,11 +81,11 @@ export class NewEvent extends React.Component {
         }        
 
         return (
-            <Container style={{backgroundColor: 'rgb(245, 203, 92)',  }}> 
-                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 1, borderBottomStyle: 'solid' }}>
+            <Container style={{backgroundColor: 'rgb(51,53,51)',  }}> 
+                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }}>
                     <Left>
                         <Button transparent onPress={() => { this.cancelNewEvent()}} >
-                            <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                             <Text></Text>
                         </Button>
                     </Left>
@@ -95,19 +95,18 @@ export class NewEvent extends React.Component {
                     <Right>
                     </Right>
                 </Header>    
-                            
-                <Content>
-                    <Form>
+                <View style={{flexDirection: 'column'}} >
+                    <Form >
                         <Item >
-                            <Label>Event Title: </Label>
-                            <Input   onChangeText={(title) => {this.setTitle(title); }}/>
+                            <Label style={{color: 'rgb(51,53,51)'}} >Event Title: </Label>
+                            <Input onChangeText={(title) => {this.setTitle(title); }}/>
                         </Item>
                         <Item  last>
-                            <Label>Description: </Label>
-                            <Input  onChangeText={(description) => {this.setDescription(description); }}/>
+                            <Label style={{color: 'rgb(51,53,51)'}} >Description: </Label>
+                            <Input onChangeText={(description) => {this.setDescription(description); }}/>
                         </Item>
                     </Form>
-                    <View>
+                    <View style={{backgroundColor: 'rgb(245, 203, 92)', paddingHrizontal: 8, borderRadius: 6, borderColor: 'rgb(245, 203, 92)', borderWidth: 2, borderStyle: 'solid',  justifyContent: 'center'}} >
                         <DatePickerIOS
                             date={this.props.userSelectedEventStartTime}
                             mode="datetime"
@@ -115,22 +114,24 @@ export class NewEvent extends React.Component {
                             minuteInterval={10}
                         />
                     </View>
-                    <View style={{flexDirection: "row" }}>
-                        <Button iconLeft style={{backgroundColor: 'rgb(51,53,51)'}}  light onPress={() => { this.subtractHour() }}>
-                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
-                        </Button>
-                        <Text  style={{color: 'rgb(245, 203, 92)'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
-                        <Button iconRight light style={{backgroundColor: 'rgb(51,53,51)'}}  onPress={() => { this.addHour() }}>      
-                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-forward' />
-                        </Button>                   
+                    <View style={{flexDirection: 'column', alignItems: 'center'}} >
+                        <View style={{flexDirection: "row" }}>
+                            <Button iconLeft style={{backgroundColor: 'rgb(245, 203, 92)'}}  light onPress={() => { this.subtractHour() }}>
+                                <Icon style={{color:  'rgb(51,53,51)'}} name='arrow-back' />
+                            </Button>
+                            <Text  style={{color: 'rgb(245, 203, 92)'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
+                            <Button iconRight light style={{backgroundColor: 'rgb(245, 203, 92)'}}  onPress={() => { this.addHour() }}>      
+                                <Icon style={{color:  'rgb(51,53,51)'}} name='arrow-forward' />
+                            </Button>                   
+                        </View>
+                        <View>
+                            <Button  style={{backgroundColor: 'rgb(245, 203, 92)'}} light onPress={() => { this.createEvent() }}>
+                                <Text style={{color:  'rgb(51,53,51)', fontFamily: 'Bungee-Regular'}} >Create</Text>
+                                <Icon style={{color:  'rgb(51,53,51)'}}  name='checkbox' />
+                            </Button>
+                        </View>
                     </View>
-                    <View>
-                        <Button  style={{backgroundColor: 'rgb(51,53,51)'}} light onPress={() => { this.createEvent() }}>
-                            <Text style={{color: 'rgb(245, 203, 92)', fontStyle: 'Bungee-Regular'}} >Create</Text>
-                            <Icon style={{color: 'rgb(245, 203, 92)'}}  name='checkbox' />
-                        </Button>
-                    </View>
-                </Content>
+                </View>
             </Container>
         );
     }

@@ -177,16 +177,16 @@ export class EventsMain extends React.Component {
                             <Text style={{fontWeight: 'bold', marginLeft: 5}}>Attendees: {event.eventAttendees.length + 1}</Text>
                             <Text></Text>
                             <Text style={{marginLeft: 5, fontWeight: 'bold'}} >Description</Text>
-                            <Text style={{marginLeft: 5, }} >{event.eventDescription}</Text>                          
+                            <Text style={{marginLeft: 5, marginBottom: 10 }} >{event.eventDescription}</Text>                          
                         </View>                                           
                         <View style={{flex: .6, flexDirection: 'column', alignItems: 'flex-end'}}>
                             <Text style={{fontWeight: 'bold', marginRight: 5}}>Event Organizer</Text>
                             <Thumbnail square style={{marginRight: 25}} source={{uri: event.eventOrganizer.picture}} />
                             <Text style={{marginRight: 5}}>{event.eventOrganizer.name}</Text>
                             <Text></Text>
-                            <View style={{marginRight: 5, marginBottom: 10}}>
+                            <View style={{marginRight: 5, }}>
                                 <Button style={{backgroundColor: 'rgb(51,53,51)', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
-                                    <Icon style={{color: 'rgb(48,188,237)', }} name='ios-information-circle' />
+                                    <Icon style={{color: 'rgb(245, 203, 92)', }} name='ios-information-circle' />
                                     <Text style={{fontFamily: 'Bungee-Regular', color: 'rgb(245, 203, 92)', }} >View Event</Text>
                                 </Button>           
                             </View>                  
@@ -198,19 +198,18 @@ export class EventsMain extends React.Component {
 
         return (
             <Container style={{backgroundColor: 'rgb(51,53,51)'}} >
-                <Header style={{backgroundColor: 'rgb(245, 203, 92)'}} > 
+                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
                     <Left>
                         <Button transparent onPress={() => { this.facilityTypeView()}}>
-                            <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
-                            <Text></Text>
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
                         </Button>
                     </Left>
                     <Body>
-                        <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
                     </Body>
                     <Right>
                         <Button transparent onPress={() => { this.renderEventsView()}} >
-                            <Icon style={{color: 'rgb(48,188,237)'}} name="ios-map" />
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-map" />
                         </Button>
                     </Right>
                 </Header>     
@@ -220,12 +219,13 @@ export class EventsMain extends React.Component {
                     onSwipeRight={this.swipe}
                     renderItem={item =>
                         <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
+                            
                             <Image styleName='large-banner' source={{uri: photoURL}} >
                                 <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
                                     <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>
                                     <View style={{position: 'absolute', bottom: 2, justifyContent: 'center',}}>
                                         <Button rounded style={{   width: 220, height: 30, backgroundColor: 'rgb(51,53,51)'}} onPress={() => { this.renderNewEventView()}}>
-                                            <Icon style={{ color: 'rgb(48,188,237)'}} name='ios-add-circle' />
+                                            <Icon style={{ color: 'rgb(245, 203, 92)'}} name='ios-add-circle' />
                                             <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
                                         </Button>  
                                     </View>     
@@ -233,17 +233,20 @@ export class EventsMain extends React.Component {
                             </Image>
                             <CalendarStrip
                                 calendarAnimation={{type: 'sequence', duration: 30}}
+                                daySelectionAnimation={{type: 'border', duration: 200, borderWidth: 1, borderHighlightColor: 'rgb(245, 203, 92)'}}
                                 selection={'border'}
                                 selectionAnimation={{duration: 300, borderWidth: 1}}
-                                style={{paddingTop: 20, paddingBottom: 10}}
-                                calendarHeaderStyle={{color: 'rgb(51,53,51)'}}
-                                calendarColor={'rgb(245, 203, 92)'}
-                                highlightColor={'rgb(51,53,51)'}
-                                dateNumberStyle={{color: 'white'}}
-                                dateNameStyle={{color: 'white'}}
-                                borderHighlightColor={'rgb(51,53,51)'}
-                                iconContainer={{flex: 0.1}}
-                                onDateSelected={ () => {this.selectedDate(); }}
+                                style={{paddingTop: 20, paddingBottom: 10, borderColor: 'rgb(245, 203, 92)', borderStyle: 'solid', borderTopWidth: 2, borderBottomWidth: 2}}
+                                calendarHeaderStyle={{color: 'rgb(245, 203, 92)'}}
+                                calendarColor={'rgb(51,53,51)'}
+                                highlightColor={'rgb(245, 203, 92)'}
+                                dateNumberStyle={{color: 'rgb(245, 203, 92)'}}
+                                dateNameStyle={{color: 'rgb(245, 203, 92)'}}
+                                borderHighlightColor={'rgb(245, 203, 92)'}
+                                highlightDateNumberStyle={{color: 'rgb(245, 203, 92)'}}
+                                highlightDateNameStyle={{color: 'rgb(245, 203, 92)'}}
+                                iconLeftStyle={{backgroundColor: 'rgb(245, 203, 92)', color: 'rgb(245, 203, 92)', borderWidth: 3, borderColor: 'rgb(245, 203, 92)', borderRadius: 6, borderStyle: 'solid', marginLeft: 3}}
+                                iconRightStyle={{backgroundColor: 'rgb(245, 203, 92)', color: 'rgb(245, 203, 92)', borderWidth: 3, borderColor: 'rgb(245, 203, 92)', borderRadius: 6, borderStyle: 'solid', marginRight: 7}}
                             />
                             <ScrollView>
                                 {eventList}
