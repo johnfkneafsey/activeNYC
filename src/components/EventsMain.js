@@ -164,7 +164,7 @@ export class EventsMain extends React.Component {
             }
             
             return (
-                <View key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10}} >
+                <View key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10, marginVertical: 10, borderRadius: 10}} >
                     <Text style={{fontFamily: 'Bungee-Regular', marginTop: 5, alignSelf: 'center', }}>{event.eventName}</Text> 
                     <Text></Text>
                     <View style={{flexDirection: 'row'}} >                       
@@ -230,9 +230,9 @@ export class EventsMain extends React.Component {
                                     daySelectionAnimation={{type: 'border', duration: 200, borderWidth: 1, borderHighlightColor: 'rgb(245, 203, 92)'}}
                                     selection={'border'}
                                     selectionAnimation={{duration: 300, borderWidth: 1}}
-                                    style={{paddingTop: 20, paddingBottom: 10, borderColor: 'rgb(245, 203, 92)', borderStyle: 'solid', borderTopWidth: 2, borderBottomWidth: 2}}
+                                    style={{paddingTop: 20, paddingBottom: 10, marginBottom: 10, borderColor: 'rgb(245, 203, 92)', borderStyle: 'solid', borderTopWidth: 2, borderBottomWidth: 2}}
                                     calendarHeaderStyle={{color: 'rgb(245, 203, 92)'}}
-                                    calendarColor={'rgb(51,53,51)'}
+                                    calendarColor={'black'}
                                     highlightColor={'rgb(245, 203, 92)'}
                                     dateNumberStyle={{color: 'rgb(245, 203, 92)'}}
                                     dateNameStyle={{color: 'rgb(245, 203, 92)'}}

@@ -109,13 +109,13 @@ export class ListView extends React.Component {
               <Text style={{fontFamily: 'Bungee-Regular',}}>{facility.Name}</Text>
               <Text>{facility.Location}</Text>
               <View style={{flexDirection: 'row'}}>
-                <Button transparent button onPress={() => { this.renderEventsView()}}>
+                <Button style={{backgroundColor: 'black'}}  onPress={() => { this.renderEventsView()}}>
                   <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-people" />
-                  <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
+                  <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
                 </Button>
-                <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.markers.lat + ',' + this.props.markers.lon)}}>
+                <Button style={{backgroundColor: 'black'}} onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.markers.lat + ',' + this.props.markers.lon)}}>
                   <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-walk-outline" />
-                  <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
+                  <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
                 </Button>  
               </View>
             </View>

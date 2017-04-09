@@ -148,7 +148,7 @@ export class NewEvent extends React.Component {
                         </View>                    
                     </View>
                 </View>
-                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'black', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
                     <FooterTab>
                         <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.createEvent()}}>
                             <Icon style={{color:  'black'}}  name='checkbox' />

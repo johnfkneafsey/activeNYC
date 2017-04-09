@@ -166,7 +166,7 @@ export class ViewEvent extends React.Component {
                         </View>
                     </View>
                 </ScrollView>
-                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 2, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 5, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
                     <FooterTab>
                         <Button transparent onPress={() => { this.joinEvent(); this.cancelViewEvent()}} >
                             <Icon style={{color: 'black'}} name='checkbox' />

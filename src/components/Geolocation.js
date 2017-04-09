@@ -367,7 +367,7 @@ export class Geolocation extends React.Component {
 
             cardView = 
                 <View style={{flex: .30, backgroundColor: 'rgb(51,53,51)', justifyContent: 'center'}}>
-                  <Card style={{ padding: 10, backgroundColor: 'rgb(51,53,51)'}}>
+                  <View style={{ padding: 10, backgroundColor: 'rgb(51,53,51)' }}>
                     <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
                       <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
                           <View style={{flex:1}} >
@@ -380,7 +380,7 @@ export class Geolocation extends React.Component {
                           </View>
                         </Body>
                     </CardItem>
-                  </Card> 
+                  </View> 
                 </View>
   
         } else {
