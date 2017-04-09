@@ -164,7 +164,7 @@ export class EventsMain extends React.Component {
             }
             
             return (
-                <Card key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10}} >
+                <View key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10}} >
                     <Text style={{fontFamily: 'Bungee-Regular', marginTop: 5, alignSelf: 'center', }}>{event.eventName}</Text> 
                     <Text></Text>
                     <View style={{flexDirection: 'row'}} >                       
@@ -185,21 +185,21 @@ export class EventsMain extends React.Component {
                             <Text style={{marginRight: 5}}>{event.eventOrganizer.name}</Text>
                             <Text></Text>
                             <View style={{marginRight: 5, }}>
-                                <Button style={{backgroundColor: 'rgb(51,53,51)', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
+                                <Button style={{backgroundColor: 'black', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
                                     <Icon style={{color: 'rgb(245, 203, 92)', }} name='ios-information-circle' />
                                     <Text style={{fontFamily: 'Bungee-Regular', color: 'rgb(245, 203, 92)', }} >View Event</Text>
                                 </Button>           
                             </View>                  
                         </View>  
                     </View>                 
-                </Card>
+                </View>
             )
         })
 
         return (
             <View style={{flex: 1}}>
                 <Container style={{backgroundColor: 'rgb(51,53,51)'}} >
-                    <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
+                    <Header style={{backgroundColor: 'black', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
                                 <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
@@ -220,7 +220,6 @@ export class EventsMain extends React.Component {
                         onSwipeRight={this.swipe}
                         renderItem={item =>
                             <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
-                                
                                 <Image styleName='large-banner' source={{uri: photoURL}} >
                                     <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
                                         <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>    
@@ -253,8 +252,8 @@ export class EventsMain extends React.Component {
                 <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid' }} >
                     <FooterTab>
                         <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.renderNewEventView()}}>
-                            <Icon style={{ color: 'rgb(51,53,51)'}} name='ios-add-circle' />
-                            <Text style={{ color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
+                            <Icon style={{ color: 'black'}} name='ios-add-circle' />
+                            <Text style={{ color: 'black', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
                         </Button>
                     </FooterTab>
                 </Footer>  

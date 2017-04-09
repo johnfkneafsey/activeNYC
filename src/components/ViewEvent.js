@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Image, DatePickerIOS, View, ScrollView, StyleSheet, Linking } from 'react-native';
-import { Container, Content, Form, Item, Input, Thumbnail, Label, Header, Left, Right, Button, Icon, Body, Title, Text } from 'native-base';
+import { Container, Content, Form, Item, Input, Thumbnail, Label, Header, Left, Right, Button, Icon, Body, Title, Text, Footer, FooterTab} from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
@@ -73,94 +73,114 @@ export class ViewEvent extends React.Component {
         this.props.dispatch(actions.asyncJoinEvent(this.props.user, this.props.userSelectedEvent.eventStartTime));
     }
 
+    navigateToFacility(url) {
+        Linking.openURL(url);
+    }    
+
     render() {
+
+        let hrs = 'hour';
+        if (this.props.userSelectedEventDuration > 1) {
+            hrs = 'hours'
+        }
 
         let attendees = this.props.userSelectedEvent.eventAttendees.map(attendee => {
             return (
-                <View key={attendee.name}>
-                    <Thumbnail circle source={{uri: attendee.picture}} />                
-                    <Text>Name: {attendee.name} </Text>
-                    <Text>Gender: {attendee.gender} </Text>
-                    <Text style={{color: 'blue'}}
+                <View key={attendee.name} style={{marginHorizontal: 6}}>
+                    <Thumbnail square source={{uri: attendee.picture}} />                
+                    <Text>{attendee.name} </Text>
+                    <Text style={{color: 'black'}}
                         onPress={() => Linking.openURL(attendee.link)}>
-                        Profile
+                        View Profile
                     </Text>                    
                 </View>
             )
         })
 
         return (
-            <Container style={{backgroundColor: 'rgb(51,53,51)'}} >
-                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
-                    <Left>
-                        <Button transparent onPress={() => { this.cancelViewEvent()}} >
-                            <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
+            <View style={{flex: 1}} > 
+                <ScrollView style={{backgroundColor: 'rgb(51,53,51)'}} >
+                    <Header style={{backgroundColor: 'black', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
+                        <Left>
+                            <Button transparent onPress={() => { this.cancelViewEvent()}} >
+                                <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
+                            </Button>
+                        </Left>
+                        <Body>
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >View Event</Text>
+                        </Body>
+                        <Right>
+                        </Right>
+                    </Header>
+                    <Text></Text>
+                    <View style={{flexDirection: 'column', alignItems: 'center', }}>
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >What</Text>                        
+                        <View style={{height: 150, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                            <Text style={{fontFamily: 'Bungee-Regular', marginHorizontal: 6, marginTop: 6}} >Event Name:</Text>
+                            <Text style={{ marginHorizontal: 6}} >{this.props.userSelectedEvent.eventName}</Text>
+                            <Text></Text>
+                            <Text style={{ marginHorizontal: 6, fontFamily: 'Bungee-Regular'}} >Description:</Text>
+                            <Text style={{ marginHorizontal: 6}}>{this.props.userSelectedEvent.eventDescription}</Text>
+                        </View> 
+                        <Text></Text>                   
+                        <View style={{flexDirection: 'row'}}>
+                            <View style={{flexDirection: 'column', alignItems: 'center', }}>
+                                <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', }} >When</Text>                        
+                                <View style={{height: 150, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                    <Text style={{ fontFamily: 'Bungee-Regular',  marginHorizontal: 6, marginTop: 6}} >Date:</Text>
+                                    <Text style={{ marginHorizontal: 6}} >{this.getFormattedDate()}</Text>
+                                    <Text></Text>
+                                    <Text style={{fontFamily: 'Bungee-Regular',  marginHorizontal: 6}} >Time:</Text>
+                                    <Text style={{ marginHorizontal: 6}} >{this.getFormattedTime()}</Text>
+                                    <Text></Text>
+                                    <Text style={{fontFamily: 'Bungee-Regular',  marginHorizontal: 6}} >Duration:</Text>
+                                    <Text style={{ marginHorizontal: 6}}>{this.props.userSelectedEvent.eventDuration} {hrs}</Text>
+                                </View>
+                            </View>
+                            <View style={{flexDirection: 'column', alignItems: 'center', }}>                        
+                                <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Where</Text>                        
+                                <View style={{height: 150, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                    <Text style={{fontFamily: 'Bungee-Regular',  marginHorizontal: 6, marginTop: 6}} >Facility:</Text>
+                                    <Text style={{ marginHorizontal: 6}} >{this.props.userSelectedEvent.eventFacilityName}</Text>
+                                    <Text></Text>
+                                    <View style={{justifyContent: 'center', alignItems: 'center'}} >
+                                        <Button transparent style={{backgroundColor: 'black', marginLeft: 35}} onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
+                                            <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-walk-outline" />
+                                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 12, }}>Show me</Text>
+                                        </Button>
+                                    </View>
+                                </View>
+                            </View>
+                        </View>
+                        <Text></Text>                    
+                        <View style={{flexDirection: 'column', alignItems: 'center', }}>                    
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Who</Text>                    
+                            <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                <Text style={{ fontFamily: 'Bungee-Regular',  marginHorizontal: 6, marginTop: 6}} >Event Organizer:</Text>
+                                <Text style={{  marginHorizontal: 6}} >{this.props.userSelectedEvent.eventOrganizer.name}</Text>
+                                <Thumbnail  square style={{width: 30, height: 30, marginLeft: 6}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />
+                                <Text></Text>
+                                <Text style={{fontFamily: 'Bungee-Regular',  marginHorizontal: 6}} >Participants:</Text>
+                                {attendees}
+                            </View>
+                        </View>
+                    </View>
+                </ScrollView>
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 2, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
+                    <FooterTab>
+                        <Button transparent onPress={() => { this.joinEvent(); this.cancelViewEvent()}} >
+                            <Icon style={{color: 'black'}} name='checkbox' />
+                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Join Event</Text>
                         </Button>
-                    </Left>
-                    <Body>
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Event</Text>
-                    </Body>
-                    <Right>
-                    </Right>
-                </Header>
-                <Text></Text>
-                <View style={{flexDirection: 'column', alignItems: 'center', }}>
-                    <View style={{flexDirection: 'row'}}>
-                        <View style={{flexDirection: 'column', alignItems: 'center', }}>
-                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >What</Text>                        
-                            <View style={{height: 150, width: 190, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
-                                <Text> </Text>
-                            </View>
-                        </View>
-                        <View style={{flexDirection: 'column', alignItems: 'center', }}>                        
-                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >When</Text>                        
-                            <View style={{height: 150, width: 190, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
-                                <Text> </Text>
-                            </View>
-                        </View>
-                    </View>
-                    <Text></Text>                    
-                    <View style={{flexDirection: 'column', alignItems: 'center', }}>                    
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Who</Text>                    
-                        <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
-                            <Text> </Text>
-                        </View>
-                    </View>
-                </View>
-
-
-
-                <View>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}} >Event Name</Text>
-                    <Text>{this.props.userSelectedEvent.eventName}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Category</Text>
-                    <Text>{this.props.userSelectedEvent.eventType}</Text>                    
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Description</Text>
-                    <Text>{this.props.userSelectedEvent.eventDescription}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>EventLocation</Text>
-                    <Text>{this.props.userSelectedEvent.eventFacilityName}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Date</Text>
-                    <Text>{this.getFormattedDate()}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Time</Text>
-                    <Text>{this.getFormattedTime()}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Duration</Text>
-                    <Text>{this.props.userSelectedEvent.eventDuration}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Name</Text>
-                    <Text>{this.props.userSelectedEvent.eventOrganizer.name}</Text>
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Organizer Image</Text>
-                    <Thumbnail  circle style={{width: 30, height: 30, borderRadius: 10}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />                    
-                    <Text style={{fontFamily: 'Bungee-Regular',color: 'rgb(245, 203, 92)'}}>Event Participants</Text>
-                    {attendees}
-                    <Button style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.eventChatView()}} >
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Event Chat</Text>
-                        <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-chatbubbles" />
-                    </Button>
-                    <Button style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.joinEvent(); this.cancelViewEvent()}} >
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular'}} >Join</Text>
-                        <Icon style={{color: 'rgb(245, 203, 92)' }} name="ios-chatbubbles" />
-                    </Button>
-                </View>
-            </Container>
+                    </FooterTab>
+                    <FooterTab style={{borderLeftColor: 'black', borderLeftWidth: 1, borderStyle: 'solid'}}>
+                        <Button transparent button onPress={() => { this.eventChatView()}} >
+                            <Icon style={{color: 'black'}} name="ios-chatbubbles" />
+                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Event Chat</Text>
+                        </Button>
+                    </FooterTab>
+                </Footer>    
+            </View>        
         );
     }
 }

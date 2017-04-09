@@ -397,14 +397,14 @@ export class Geolocation extends React.Component {
                 <Footer style={{backgroundColor: 'rgb(245, 203, 92)'}} >
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon style={{color: 'rgb(51,53,51)'}} name="ios-walk-outline" />
-                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
+                            <Icon style={{color: 'black'}} name="ios-walk-outline" />
+                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
                         </Button>
                     </FooterTab>
-                    <FooterTab style={{borderLeftColor: 'rgb(51,53,51)', borderLeftWidth: 1, borderStyle: 'solid'}}>
+                    <FooterTab style={{borderLeftColor: 'black', borderLeftWidth: 1, borderStyle: 'solid'}}>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon style={{color: 'rgb(51,53,51)'}} name="ios-people" />
-                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
+                            <Icon style={{color: 'black'}} name="ios-people" />
+                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
@@ -413,7 +413,7 @@ export class Geolocation extends React.Component {
         if (this.props.markers) {
             return (
                 <Container style={styles.blackBackground}>
-                    <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }}>
+                    <Header style={{backgroundColor: 'black', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }}>
                         <Left>
                             <Button transparent onPress={() => { this.facilityTypeView()}}>
                                 <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />

@@ -125,7 +125,7 @@ export class ListView extends React.Component {
 
       return(
         <Container style={{backgroundColor: 'rgb(51,53,51)'}}>
-          <Header style={{backgroundColor: 'rgb(51,53,51)'}}>
+          <Header style={{backgroundColor: 'black'}}>
             <Left>
               <Button transparent onPress={() => { this.renderListView()}} >
                 <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />

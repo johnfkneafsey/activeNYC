@@ -82,8 +82,7 @@ export class Login extends React.Component {
                 </View>
 
 
-            {/*<View style={{flexDirection: 'row', justifyContent: 'center' , backgroundColor: 'rgb(245, 203, 92)', height: 80, width: 400, borderStyle: 'solid', borderRadius: 25, borderColor: 'rgb(245, 203, 92)', borderWidth: 2, paddingHorizontal: 20, paddingVertical: 12, marginTop: 35, marginBottom: 550}}>*/}
-                    {/*<Text style={{ color: 'rgb(51,53,51)', fontFamily: 'BungeeShade-Regular', fontSize: 50 }} >Active </Text><Text style={{ justifyContent: 'center' , textAlign: 'center', color: 'rgb(48,188,237)', fontFamily: 'BungeeShade-Regular', fontSize: 50 }} >NYC</Text>*/}
+         
             <View style={{flexDirection: 'column', alignItems: 'center',  marginBottom: 350}} >  
                 <Image style={{ marginTop: 33, }} source={require('../data/Bungee-Active-Inline.png')}  />
                 <Image style={{ marginTop: -25, }} source={require('../data/Bungee-NYC-Inline.png')}  />                    

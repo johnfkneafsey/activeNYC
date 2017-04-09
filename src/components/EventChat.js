@@ -96,14 +96,14 @@ export class EventChat extends React.Component {
   
     return (
       <Container>
-        <Header style={{backgroundColor:  'rgb(51,53,51)'}} >
+        <Header style={{backgroundColor:  'black', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid'}} >
           <Left>
               <Button transparent onPress={() => { this.renderEventChatView()}} >
-                  <Icon style={{color: 'rgb(48,188,237)'}} name='arrow-back' />
+                  <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
               </Button>
           </Left>
           <Body>
-              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Event</Text>
+              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Event Chat</Text>
           </Body>
           <Right>
           </Right>

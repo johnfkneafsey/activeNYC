@@ -84,7 +84,7 @@ export class NewEvent extends React.Component {
 
         return (
             <Container style={{backgroundColor: 'rgb(51,53,51)',  }}> 
-                <Header style={{backgroundColor: 'rgb(51,53,51)', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }}>
+                <Header style={{backgroundColor: 'black', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }}>
                     <Left>
                         <Button transparent onPress={() => { this.cancelNewEvent()}} >
                             <Icon style={{color: 'rgb(245, 203, 92)'}} name='arrow-back' />
@@ -139,20 +139,20 @@ export class NewEvent extends React.Component {
                         <Text></Text>
                         <View style={{flexDirection: "row" ,justifyContent: 'center', alignItems: 'center' }}>
                             <Button iconLeft style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.subtractHour() }}>
-                                <Icon style={{color: 'rgb(51,53,51)'}} name='arrow-back' />
+                                <Icon style={{color: 'black'}} name='arrow-back' />
                             </Button>
                             <Text  style={{color: 'rgb(245, 203, 92)', justifyContent: 'center', alignItems: 'center', marginLeft: 15, marginRight: 15, fontFamily: 'Bungee-Regular'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
                             <Button iconRight style={{backgroundColor: 'rgb(245, 203, 92)'}}  onPress={() => { this.addHour() }}>      
-                                <Icon style={{color: 'rgb(51,53,51)'}} name='arrow-forward' />
+                                <Icon style={{color: 'black'}} name='arrow-forward' />
                             </Button>                   
                         </View>                    
                     </View>
                 </View>
-                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
+                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'black', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
                     <FooterTab>
                         <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.createEvent()}}>
-                            <Icon style={{color:  'rgb(51,53,51)'}}  name='checkbox' />
-                            <Text style={{color: 'rgb(51,53,51)', fontFamily: 'Bungee-Regular'}} >Submit</Text>
+                            <Icon style={{color:  'black'}}  name='checkbox' />
+                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular'}} >Submit</Text>
                         </Button>
                     </FooterTab>
                 </Footer>                  

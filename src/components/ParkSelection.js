@@ -77,7 +77,7 @@ export class ParkSelection extends React.Component {
                 source={{ uri: facilities.image.url }}
                 >
                 <Tile>
-                    <View style={{backgroundColor: 'rgb(51,53,51)',  height: 15, alignItems: 'center', justifyContent: 'center'}} >
+                    <View style={{backgroundColor: 'black',  height: 15, alignItems: 'center', justifyContent: 'center'}} >
                         <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', alignItems: 'center', justifyContent: 'center'}} styleName="md-gutter-bottom">{facilities.name}</Text>
                     </View>
                 </Tile>
