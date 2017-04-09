@@ -372,8 +372,8 @@ export class Geolocation extends React.Component {
                       <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
                           <View style={{flex:1}} >
                             <Text style={{fontFamily: 'Brother1816Printed-Black',}}>{this.props.selectedFacility.Name}</Text>
-                            <Text><Text style={{fontWeight: 'bold'}}>Location:</Text> {this.props.selectedFacility.Location}</Text>
-                            <Text><Text style={{fontWeight: 'bold'}}>Status:</Text> {this.props.selectedVenue.hours.status}</Text>
+                            <Text><Text style={{fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}}>Location:</Text> {this.props.selectedFacility.Location}</Text>
+                            <Text><Text style={{fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}}>Status:</Text> {this.props.selectedVenue.hours.status}</Text>
                           </View>
                           <View style={{flex:.5, alignItems: 'center', justifyContent: 'center'}} >
                             <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />

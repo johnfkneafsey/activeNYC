@@ -170,19 +170,19 @@ export class EventsMain extends React.Component {
                     <View style={{flexDirection: 'row'}} >                       
                         <View style={{flex: 1, flexDirection: 'column', alignItems: 'flex-start'}}>                          
                             {/*<Text>{this.getFormattedDate(event)}</Text>*/}
-                            <Text style={{marginLeft: 5, }} ><Text style={{fontWeight: 'bold'}} >Time:</Text> {this.getFormattedTime(event)}</Text> 
+                            <Text style={{marginLeft: 5, fontFamily: 'Brother1816Printed-Regular' }} ><Text style={{fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}} >Time:</Text> {this.getFormattedTime(event)}</Text> 
                             <Text></Text>                               
-                            <Text style={{marginLeft: 5, }} ><Text style={{fontWeight: 'bold'}} >Duration:</Text> {event.eventDuration} {hrs}</Text>
+                            <Text style={{marginLeft: 5, fontFamily: 'Brother1816Printed-Regular'}} ><Text style={{fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}} >Duration:</Text> {event.eventDuration} {hrs}</Text>
                             <Text></Text>
-                            <Text style={{fontWeight: 'bold', marginLeft: 5}}>Attendees: {event.eventAttendees.length + 1}</Text>
+                            <Text style={{fontWeight: 'bold', marginLeft: 5, fontFamily: 'Brother1816Printed-Regular'}}>Attendees: {event.eventAttendees.length + 1}</Text>
                             <Text></Text>
-                            <Text style={{marginLeft: 5, fontWeight: 'bold'}} >Description</Text>
+                            <Text style={{marginLeft: 5, fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}} >Description</Text>
                             <Text style={{marginLeft: 5, marginBottom: 10 }} >{event.eventDescription}</Text>                          
                         </View>                                           
                         <View style={{flex: .6, flexDirection: 'column', alignItems: 'flex-end'}}>
-                            <Text style={{fontWeight: 'bold', marginRight: 5}}>Event Organizer</Text>
+                            <Text style={{fontWeight: 'bold', marginRight: 5, fontFamily: 'Brother1816Printed-Regular'}}>Event Organizer</Text>
                             <Thumbnail square style={{marginRight: 25}} source={{uri: event.eventOrganizer.picture}} />
-                            <Text style={{marginRight: 5}}>{event.eventOrganizer.name}</Text>
+                            <Text style={{marginRight: 5, fontFamily: 'Brother1816Printed-Regular'}}>{event.eventOrganizer.name}</Text>
                             <Text></Text>
                             <View style={{marginRight: 5, }}>
                                 <Button style={{backgroundColor: 'black', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
@@ -249,7 +249,7 @@ export class EventsMain extends React.Component {
                         }
                     />
                 </Container>
-                <Footer style={{backgroundColor: 'black', borderColor: 'rgb(245, 203, 92)', borderTopWidth: 8, borderStyle: 'solid' }} >
+                <Footer style={{backgroundColor: 'black', borderColor: 'rgb(245, 203, 92)', borderTopWidth: 2, borderStyle: 'solid' }} >
                     <FooterTab>
                         <Button transparent style={{ backgroundColor: 'black'}} onPress={() => { this.renderNewEventView()}}>
                             <Icon style={{ color: 'rgb(245, 203, 92)'}} name='ios-add-circle' />

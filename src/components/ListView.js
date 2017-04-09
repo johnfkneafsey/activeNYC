@@ -107,7 +107,7 @@ export class ListView extends React.Component {
             <View style={{flexDirection: 'column', alignItems: 'center', justifyItems: 'center', marginTop: 10}}>
               <Image styleName='medium-banner' source={{uri: imageSource }} />
               <Text style={{fontFamily: 'Brother1816Printed-Black',}}>{facility.Name}</Text>
-              <Text>{facility.Location}</Text>
+              <Text style={{fontFamily: 'Brother1816Printed-Regular'}}>{facility.Location}</Text>
               <View style={{flexDirection: 'row'}}>
                 <Button style={{backgroundColor: 'black'}}  onPress={() => { this.renderEventsView()}}>
                   <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-people" />

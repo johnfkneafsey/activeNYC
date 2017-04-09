@@ -88,8 +88,8 @@ export class ViewEvent extends React.Component {
             return (
                 <View key={attendee.name} style={{marginHorizontal: 6}}>
                     <Thumbnail square source={{uri: attendee.picture}} />                
-                    <Text>{attendee.name} </Text>
-                    <Text style={{color: 'black'}}
+                    <Text style={{fontFamily: 'Brother1816Printed-Regular'}} >{attendee.name} </Text>
+                    <Text style={{color: 'black', fontFamily: 'Brother1816Printed-Regular'}}
                         onPress={() => Linking.openURL(attendee.link)}>
                         View Profile
                     </Text>                    
@@ -117,10 +117,10 @@ export class ViewEvent extends React.Component {
                         <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >What</Text>                        
                         <View style={{height: 150, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
                             <Text style={{fontFamily: 'Brother1816Printed-Black', marginHorizontal: 6, marginTop: 6}} >Event Name:</Text>
-                            <Text style={{ marginHorizontal: 6}} >{this.props.userSelectedEvent.eventName}</Text>
+                            <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventName}</Text>
                             <Text></Text>
                             <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Black'}} >Description:</Text>
-                            <Text style={{ marginHorizontal: 6}}>{this.props.userSelectedEvent.eventDescription}</Text>
+                            <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}}>{this.props.userSelectedEvent.eventDescription}</Text>
                         </View> 
                         <Text></Text>                   
                         <View style={{flexDirection: 'row'}}>
@@ -128,20 +128,20 @@ export class ViewEvent extends React.Component {
                                 <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', }} >When</Text>                        
                                 <View style={{height: 150, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
                                     <Text style={{ fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Date:</Text>
-                                    <Text style={{ marginHorizontal: 6}} >{this.getFormattedDate()}</Text>
+                                    <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.getFormattedDate()}</Text>
                                     <Text></Text>
                                     <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6}} >Time:</Text>
-                                    <Text style={{ marginHorizontal: 6}} >{this.getFormattedTime()}</Text>
+                                    <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.getFormattedTime()}</Text>
                                     <Text></Text>
                                     <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6}} >Duration:</Text>
-                                    <Text style={{ marginHorizontal: 6}}>{this.props.userSelectedEvent.eventDuration} {hrs}</Text>
+                                    <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}}>{this.props.userSelectedEvent.eventDuration} {hrs}</Text>
                                 </View>
                             </View>
                             <View style={{flexDirection: 'column', alignItems: 'center', }}>                        
                                 <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Where</Text>                        
                                 <View style={{height: 150, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
                                     <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Facility:</Text>
-                                    <Text style={{ marginHorizontal: 6}} >{this.props.userSelectedEvent.eventFacilityName}</Text>
+                                    <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventFacilityName}</Text>
                                     <Text></Text>
                                     <View style={{justifyContent: 'center', alignItems: 'center'}} >
                                         <Button transparent style={{backgroundColor: 'black', marginLeft: 35}} onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
@@ -157,7 +157,7 @@ export class ViewEvent extends React.Component {
                             <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Who</Text>                    
                             <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
                                 <Text style={{ fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Event Organizer:</Text>
-                                <Text style={{  marginHorizontal: 6}} >{this.props.userSelectedEvent.eventOrganizer.name}</Text>
+                                <Text style={{  marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventOrganizer.name}</Text>
                                 <Thumbnail  square style={{width: 30, height: 30, marginLeft: 6}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />
                                 <Text></Text>
                                 <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6}} >Participants:</Text>
