@@ -368,7 +368,7 @@ export class Geolocation extends React.Component {
             cardView = 
                 <View style={{flex: .30, backgroundColor: 'rgb(51,53,51)', justifyContent: 'center'}}>
                   <View style={{ padding: 10, backgroundColor: 'rgb(51,53,51)' }}>
-                    <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
+                    <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6, borderColor: 'black', borderWidth: 2}} >       
                       <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
                           <View style={{flex:1}} >
                             <Text style={{fontFamily: 'Brother1816Printed-Black',}}>{this.props.selectedFacility.Name}</Text>
@@ -376,7 +376,7 @@ export class Geolocation extends React.Component {
                             <Text><Text style={{fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}}>Status:</Text> {this.props.selectedVenue.hours.status}</Text>
                           </View>
                           <View style={{flex:.5, alignItems: 'center', justifyContent: 'center'}} >
-                            <Thumbnail style={{width: 90, height: 90}}  source={{uri: photoURL}} />
+                            <Thumbnail style={{width: 100, height: 100}}  source={{uri: photoURL}} />
                           </View>
                         </Body>
                     </CardItem>

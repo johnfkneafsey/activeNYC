@@ -164,7 +164,7 @@ export class EventsMain extends React.Component {
             }
             
             return (
-                <View key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10, marginVertical: 10, borderRadius: 10}} >
+                <View key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10, marginVertical: 10, borderRadius: 10, borderColor: 'black', borderWidth: 2 }} >
                     <Text style={{fontFamily: 'Brother1816Printed-Black', marginTop: 5, alignSelf: 'center', }}>{event.eventName}</Text> 
                     <Text></Text>
                     <View style={{flexDirection: 'row'}} >                       
@@ -174,7 +174,7 @@ export class EventsMain extends React.Component {
                             <Text></Text>                               
                             <Text style={{marginLeft: 5, fontFamily: 'Brother1816Printed-Regular'}} ><Text style={{fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}} >Duration:</Text> {event.eventDuration} {hrs}</Text>
                             <Text></Text>
-                            <Text style={{fontWeight: 'bold', marginLeft: 5, fontFamily: 'Brother1816Printed-Regular'}}>Attendees: {event.eventAttendees.length + 1}</Text>
+                            <Text style={{ marginLeft: 5, fontFamily: 'Brother1816Printed-Regular'}}><Text style={{fontWeight: 'bold',}}>Attendees:</Text> {event.eventAttendees.length + 1}</Text>
                             <Text></Text>
                             <Text style={{marginLeft: 5, fontWeight: 'bold', fontFamily: 'Brother1816Printed-Regular'}} >Description</Text>
                             <Text style={{marginLeft: 5, marginBottom: 10 }} >{event.eventDescription}</Text>                          

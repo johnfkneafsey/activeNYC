@@ -89,10 +89,10 @@ export class ViewEvent extends React.Component {
                 <View key={attendee.name} style={{marginHorizontal: 6}}>
                     <Thumbnail square source={{uri: attendee.picture}} />                
                     <Text style={{fontFamily: 'Brother1816Printed-Regular'}} >{attendee.name} </Text>
-                    <Text style={{color: 'black', fontFamily: 'Brother1816Printed-Regular'}}
+                    <Button style={{color: 'white', fontFamily: 'Brother1816Printed-Regular', fontSize: 12, backgroundColor: 'rgb(59,89,152)', height: 30, width: 85}}
                         onPress={() => Linking.openURL(attendee.link)}>
-                        View Profile
-                    </Text>                    
+                        <Text style={{color: 'white'}}>Profile</Text>
+                    </Button>                    
                 </View>
             )
         })
@@ -115,7 +115,7 @@ export class ViewEvent extends React.Component {
                     <Text></Text>
                     <View style={{flexDirection: 'column', alignItems: 'center', }}>
                         <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >What</Text>                        
-                        <View style={{height: 150, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                        <View style={{height: 150, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                             <Text style={{fontFamily: 'Brother1816Printed-Black', marginHorizontal: 6, marginTop: 6}} >Event Name:</Text>
                             <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventName}</Text>
                             <Text></Text>
@@ -126,7 +126,7 @@ export class ViewEvent extends React.Component {
                         <View style={{flexDirection: 'row'}}>
                             <View style={{flexDirection: 'column', alignItems: 'center', }}>
                                 <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', }} >When</Text>                        
-                                <View style={{height: 150, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                <View style={{height: 160, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                                     <Text style={{ fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Date:</Text>
                                     <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.getFormattedDate()}</Text>
                                     <Text></Text>
@@ -139,7 +139,7 @@ export class ViewEvent extends React.Component {
                             </View>
                             <View style={{flexDirection: 'column', alignItems: 'center', }}>                        
                                 <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Where</Text>                        
-                                <View style={{height: 150, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                                <View style={{height: 160, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                                     <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Facility:</Text>
                                     <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventFacilityName}</Text>
                                     <Text></Text>
@@ -155,7 +155,7 @@ export class ViewEvent extends React.Component {
                         <Text></Text>                    
                         <View style={{flexDirection: 'column', alignItems: 'center', }}>                    
                             <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Who</Text>                    
-                            <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6}}>
+                            <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                                 <Text style={{ fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Event Organizer:</Text>
                                 <Text style={{  marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventOrganizer.name}</Text>
                                 <Thumbnail  square style={{width: 30, height: 30, marginLeft: 6}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />
