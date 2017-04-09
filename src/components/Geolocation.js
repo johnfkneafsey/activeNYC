@@ -371,7 +371,7 @@ export class Geolocation extends React.Component {
                     <CardItem style={{ backgroundColor: 'rgb(245, 203, 92)', borderRadius: 6}} >       
                       <Body style={{ backgroundColor: 'rgb(245, 203, 92)', flexDirection: 'row'}}>
                           <View style={{flex:1}} >
-                            <Text style={{fontFamily: 'Bungee-Regular',}}>{this.props.selectedFacility.Name}</Text>
+                            <Text style={{fontFamily: 'Brother1816Printed-Black',}}>{this.props.selectedFacility.Name}</Text>
                             <Text><Text style={{fontWeight: 'bold'}}>Location:</Text> {this.props.selectedFacility.Location}</Text>
                             <Text><Text style={{fontWeight: 'bold'}}>Status:</Text> {this.props.selectedVenue.hours.status}</Text>
                           </View>
@@ -394,17 +394,17 @@ export class Geolocation extends React.Component {
 
         if (this.props.selectedFacility) {
             footer = 
-                <Footer style={{backgroundColor: 'rgb(245, 203, 92)'}} >
+                <Footer style={{backgroundColor: 'black', borderTopColor: 'rgb(245, 203, 92)', borderTopWidth: 2, borderStyle: 'solid',  }} >
                     <FooterTab>
                         <Button transparent onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.selectedFacility.lat + ',' + this.props.selectedFacility.lon)}}>
-                            <Icon style={{color: 'black'}} name="ios-walk-outline" />
-                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-walk-outline" />
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 12}}>Take me there</Text>
                         </Button>
                     </FooterTab>
                     <FooterTab style={{borderLeftColor: 'black', borderLeftWidth: 1, borderStyle: 'solid'}}>
                         <Button transparent button onPress={() => { this.renderEventsView()}}>
-                            <Icon style={{color: 'black'}} name="ios-people" />
-                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
+                            <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-people" />
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 12}}>Matches and Events</Text>
                         </Button>
                     </FooterTab>
                 </Footer>
@@ -421,7 +421,7 @@ export class Geolocation extends React.Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >{displayTitle.toUpperCase()}</Text>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderListView()}} >
@@ -514,7 +514,7 @@ const styles = StyleSheet.create({
         bottom: 0,
     },
     parkTitleText: {
-        fontFamily: 'Bungee-Regular',
+        fontFamily: 'Brother1816Printed-Black',
         fontSize: 14,
         alignSelf: 'center',
         justifyContent: 'center',        

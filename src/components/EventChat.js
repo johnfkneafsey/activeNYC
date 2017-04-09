@@ -103,7 +103,7 @@ export class EventChat extends React.Component {
               </Button>
           </Left>
           <Body>
-              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Event Chat</Text>
+              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >EVENT CHAT</Text>
           </Body>
           <Right>
           </Right>

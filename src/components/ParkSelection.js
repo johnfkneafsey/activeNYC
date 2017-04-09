@@ -14,47 +14,47 @@ export class ParkSelection extends React.Component {
         this.renderRow = this.renderRow.bind(this);
         this.state = {
             facilities: [{
-                "name": "Basketball Courts",
+                "name": "Basketball Courts".toUpperCase(),
                 "dbName": "basketball",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/VakRb6.jpg" },
                 }, 
                 {
-                "name": "Soccer Fields",
+                "name": "Soccer Fields".toUpperCase(),
                 "dbName": "soccerAndFootball",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/eFPz9U.jpg" }
                 }, 
                 {
-                "name": "Tennis Courts",
+                "name": "Tennis Courts".toUpperCase(),
                 "dbName": "tennis",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/924/mKdaLM.jpg" },
                 }, 
                 {
-                "name": "Handball Courts",
+                "name": "Handball Courts".toUpperCase(),
                 "dbName": "handball",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/924/vhYbjM.jpg" },
                 }, 
                 {
-                "name": "Cricket Fields",
+                "name": "Cricket Fields".toUpperCase(),
                 "dbName": "cricket",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/923/GlNzNV.jpg" },
                 },
                 {
-                "name": "Bocce Courts",
+                "name": "Bocce Courts".toUpperCase(),
                 "dbName": "bocce",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/923/KYBEVS.jpg" },
                 }, 
                 {
-                "name": "Swimming Pools",
+                "name": "Swimming Pools".toUpperCase(),
                 "dbName": "pools_indoor",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/924/nCXBsD.jpg" },
                 }, 
                 {
-                "name": "Kayak & Canoe Launches",
+                "name": "Kayak & Canoe Launches".toUpperCase(),
                 "dbName": "kayak",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/rfxi0E.jpg" },
                 }, 
                 {
-                "name": "Ice Skating Rinks",
+                "name": "Ice Skating Rinks".toUpperCase(),
                 "dbName": "iceskating",
                 "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/jrCku6.jpg" },
                 },                             
@@ -77,8 +77,8 @@ export class ParkSelection extends React.Component {
                 source={{ uri: facilities.image.url }}
                 >
                 <Tile>
-                    <View style={{backgroundColor: 'black',  height: 15, alignItems: 'center', justifyContent: 'center'}} >
-                        <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', alignItems: 'center', justifyContent: 'center'}} styleName="md-gutter-bottom">{facilities.name}</Text>
+                    <View style={{backgroundColor: 'black',  height: 13, alignItems: 'center', justifyContent: 'center'}} >
+                        <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', alignItems: 'center', justifyContent: 'center'}} styleName="md-gutter-bottom">{facilities.name}</Text>
                     </View>
                 </Tile>
                 </Image>

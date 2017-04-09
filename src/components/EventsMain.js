@@ -165,7 +165,7 @@ export class EventsMain extends React.Component {
             
             return (
                 <View key={event.eventName} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10, marginVertical: 10, borderRadius: 10}} >
-                    <Text style={{fontFamily: 'Bungee-Regular', marginTop: 5, alignSelf: 'center', }}>{event.eventName}</Text> 
+                    <Text style={{fontFamily: 'Brother1816Printed-Black', marginTop: 5, alignSelf: 'center', }}>{event.eventName}</Text> 
                     <Text></Text>
                     <View style={{flexDirection: 'row'}} >                       
                         <View style={{flex: 1, flexDirection: 'column', alignItems: 'flex-start'}}>                          
@@ -187,7 +187,7 @@ export class EventsMain extends React.Component {
                             <View style={{marginRight: 5, }}>
                                 <Button style={{backgroundColor: 'black', height: 30, width: 165, }} onPress={() => { this.renderViewEventView(event.eventName)}}>
                                     <Icon style={{color: 'rgb(245, 203, 92)', }} name='ios-information-circle' />
-                                    <Text style={{fontFamily: 'Bungee-Regular', color: 'rgb(245, 203, 92)', }} >View Event</Text>
+                                    <Text style={{fontFamily: 'Brother1816Printed-Black', color: 'rgb(245, 203, 92)', }} >View Event</Text>
                                 </Button>           
                             </View>                  
                         </View>  
@@ -206,7 +206,7 @@ export class EventsMain extends React.Component {
                             </Button>
                         </Left>
                         <Body>
-                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >{displayTitle.toUpperCase()}</Text>
                         </Body>
                         <Right>
                             <Button transparent onPress={() => { this.renderEventsView()}} >
@@ -222,7 +222,7 @@ export class EventsMain extends React.Component {
                             <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
                                 <Image styleName='large-banner' source={{uri: photoURL}} >
                                     <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
-                                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 24}} >{item.Name}</Text>    
+                                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 24}} >{item.Name}</Text>    
                                     </Tile>
                                 </Image>
                                 <CalendarStrip
@@ -249,11 +249,11 @@ export class EventsMain extends React.Component {
                         }
                     />
                 </Container>
-                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid' }} >
+                <Footer style={{backgroundColor: 'black', borderColor: 'rgb(245, 203, 92)', borderTopWidth: 8, borderStyle: 'solid' }} >
                     <FooterTab>
-                        <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.renderNewEventView()}}>
-                            <Icon style={{ color: 'black'}} name='ios-add-circle' />
-                            <Text style={{ color: 'black', fontFamily: 'Bungee-Regular'}}>Create New Event</Text>
+                        <Button transparent style={{ backgroundColor: 'black'}} onPress={() => { this.renderNewEventView()}}>
+                            <Icon style={{ color: 'rgb(245, 203, 92)'}} name='ios-add-circle' />
+                            <Text style={{ color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}}>Create New Event</Text>
                         </Button>
                     </FooterTab>
                 </Footer>  

@@ -106,16 +106,16 @@ export class ListView extends React.Component {
           <Card key={facility.Prop_ID} style={{backgroundColor: 'rgb(245, 203, 92)', marginLeft: 10, marginRight: 10, alignItems: 'center', justifyItems: 'center'}}>                 
             <View style={{flexDirection: 'column', alignItems: 'center', justifyItems: 'center', marginTop: 10}}>
               <Image styleName='medium-banner' source={{uri: imageSource }} />
-              <Text style={{fontFamily: 'Bungee-Regular',}}>{facility.Name}</Text>
+              <Text style={{fontFamily: 'Brother1816Printed-Black',}}>{facility.Name}</Text>
               <Text>{facility.Location}</Text>
               <View style={{flexDirection: 'row'}}>
                 <Button style={{backgroundColor: 'black'}}  onPress={() => { this.renderEventsView()}}>
                   <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-people" />
-                  <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Matches and Events</Text>
+                  <Text style={{color: 'black', fontFamily: 'Brother1816Printed-Black', fontSize: 12}}>Matches and Events</Text>
                 </Button>
                 <Button style={{backgroundColor: 'black'}} onPress={() => { this.navigateToFacility('http://maps.apple.com/?saddr=' + this.props.userLatitude + ',' + this.props.userLongitude + '&daddr=' + + this.props.markers.lat + ',' + this.props.markers.lon)}}>
                   <Icon style={{color: 'rgb(245, 203, 92)'}} name="ios-walk-outline" />
-                  <Text style={{color: 'black', fontFamily: 'Bungee-Regular', fontSize: 12}}>Take me there</Text>
+                  <Text style={{color: 'black', fontFamily: 'Brother1816Printed-Black', fontSize: 12}}>Take me there</Text>
                 </Button>  
               </View>
             </View>
@@ -133,7 +133,7 @@ export class ListView extends React.Component {
               </Button>
             </Left>
             <Body>
-              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >{displayTitle}</Text>
+              <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >{displayTitle.toUpperCase}</Text>
             </Body>
             <Right>
             </Right>

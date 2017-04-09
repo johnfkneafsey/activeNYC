@@ -163,6 +163,50 @@
       <string>Rubik-LightItalic.ttf</string>
       <string>Rubik-MediumItalic.ttf</string>
       <string>Rubik-Regular.ttf</string>
+      <string>Brandon_bld_it.otf</string>
+      <string>Brandon_bld.otf</string>
+      <string>Brandon_blk_it.otf</string>
+      <string>Brandon_blk.otf</string>
+      <string>Brandon_light_it.otf</string>
+      <string>Brandon_light.otf</string>
+      <string>Brandon_med_it.otf</string>
+      <string>Brandon_med.otf</string>
+      <string>Brandon_reg_it.otf</string>
+      <string>Brandon_reg.otf</string>
+      <string>Brandon_thin_it.otf</string>
+      <string>Brandon_thin.otf</string>
+      <string>TipoType - Brother-1816-Black-Italic.otf</string>
+      <string>TipoType - Brother-1816-Black.otf</string>
+      <string>TipoType - Brother-1816-Bold-Italic.otf</string>
+      <string>TipoType - Brother-1816-Bold.otf</string>
+      <string>TipoType - Brother-1816-Book-Italic.otf</string>
+      <string>TipoType - Brother-1816-Book.otf</string>
+      <string>TipoType - Brother-1816-ExtraBold-Italic.otf</string>
+      <string>TipoType - Brother-1816-ExtraBold.otf</string>
+      <string>TipoType - Brother-1816-Light-Italic.otf</string>
+      <string>TipoType - Brother-1816-Light.otf</string>
+      <string>TipoType - Brother-1816-Medium-Italic.otf</string>
+      <string>TipoType - Brother-1816-Medium.otf</string>
+      <string>TipoType - Brother-1816-Regular-Italic.otf</string>
+      <string>TipoType - Brother-1816-Regular.otf</string>
+      <string>TipoType - Brother-1816-Thin-Italic.otf</string>
+      <string>TipoType - Brother-1816-Thin.otf</string>
+      <string>TipoType - Brother1816Printed-Black-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Black.otf</string>
+      <string>TipoType - Brother1816Printed-Bold-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Bold.otf</string>
+      <string>TipoType - Brother1816Printed-Book-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Book.otf</string>
+      <string>TipoType - Brother1816Printed-ExtraBold-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-ExtraBold.otf</string>
+      <string>TipoType - Brother1816Printed-Light-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Light.otf</string>
+      <string>TipoType - Brother1816Printed-Medium-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Medium.otf</string>
+      <string>TipoType - Brother1816Printed-Regular-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Regular.otf</string>
+      <string>TipoType - Brother1816Printed-Thin-Italic.otf</string>
+      <string>TipoType - Brother1816Printed-Thin.otf</string>
     </array>
     <key>UILaunchStoryboardName</key>
     <string>LaunchScreen</string>

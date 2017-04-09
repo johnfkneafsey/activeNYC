@@ -92,7 +92,7 @@ export class NewEvent extends React.Component {
                         </Button>
                     </Left>
                     <Body>
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Create</Text>
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >CREATE</Text>
                     </Body>
                     <Right>
                     </Right>
@@ -103,7 +103,7 @@ export class NewEvent extends React.Component {
                         iconClass={FontAwesomeIcon}
                         iconName={'pencil'}
                         iconColor={'rgb(245, 203, 92)'}  
-                        labelStyle={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular' }}  
+                        labelStyle={{ color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black' }}  
                         inputStyle={{ color: 'rgb(245, 203, 92)' }}                    
                         // TextInput props
                         autoCapitalize={'none'}
@@ -116,7 +116,7 @@ export class NewEvent extends React.Component {
                         iconClass={FontAwesomeIcon}
                         iconName={'pencil'}
                         iconColor={'rgb(245, 203, 92)'}              
-                        labelStyle={{ color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular' }}  
+                        labelStyle={{ color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black' }}  
                         inputStyle={{ color: 'rgb(245, 203, 92)',  }}        
                         // TextInput props
                         autoCapitalize={'none'}
@@ -124,7 +124,7 @@ export class NewEvent extends React.Component {
                         onChangeText={(description) => {this.setDescription(description); }}
                     />
                     <View style={{marginTop: 20, marginBottom: 20, padding: 20}} ></View>
-                    <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Date and Time</Text>
+                    <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >Date and Time</Text>
                     <View style={{backgroundColor: 'rgb(245, 203, 92)', paddingHrizontal: 8, borderRadius: 6, borderColor: 'rgb(245, 203, 92)', borderWidth: 2, borderStyle: 'solid',  justifyContent: 'center'}} >
                         <DatePickerIOS
                             date={this.props.userSelectedEventStartTime}
@@ -135,24 +135,24 @@ export class NewEvent extends React.Component {
                     </View>
                     <Text></Text>   
                     <View style={{flexDirection: 'column', alignItems: 'center'}} >
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Bungee-Regular', fontSize: 18}} >Duration</Text>
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >Duration</Text>
                         <Text></Text>
                         <View style={{flexDirection: "row" ,justifyContent: 'center', alignItems: 'center' }}>
                             <Button iconLeft style={{backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.subtractHour() }}>
                                 <Icon style={{color: 'black'}} name='arrow-back' />
                             </Button>
-                            <Text  style={{color: 'rgb(245, 203, 92)', justifyContent: 'center', alignItems: 'center', marginLeft: 15, marginRight: 15, fontFamily: 'Bungee-Regular'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
+                            <Text  style={{color: 'rgb(245, 203, 92)', justifyContent: 'center', alignItems: 'center', marginLeft: 15, marginRight: 15, fontFamily: 'Brother1816Printed-Black'}} >{this.props.userSelectedEventDuration} {hourModifier} </Text> 
                             <Button iconRight style={{backgroundColor: 'rgb(245, 203, 92)'}}  onPress={() => { this.addHour() }}>      
                                 <Icon style={{color: 'black'}} name='arrow-forward' />
                             </Button>                   
                         </View>                    
                     </View>
                 </View>
-                <Footer style={{backgroundColor: 'rgb(245, 203, 92)', borderColor: 'rgb(51,53,51)', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
+                <Footer style={{backgroundColor: 'black', borderColor: 'rgb(245, 203, 92)', borderTopWidth: 8, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >
                     <FooterTab>
                         <Button transparent style={{ backgroundColor: 'rgb(245, 203, 92)'}} onPress={() => { this.createEvent()}}>
-                            <Icon style={{color:  'black'}}  name='checkbox' />
-                            <Text style={{color: 'black', fontFamily: 'Bungee-Regular'}} >Submit</Text>
+                            <Icon style={{color:  'rgb(245, 203, 92)'}}  name='checkbox' />
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Submit</Text>
                         </Button>
                     </FooterTab>
                 </Footer>                  
