@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Image, DatePickerIOS, View, ScrollView, StyleSheet, Linking } from 'react-native';
+import {  DatePickerIOS, View, ScrollView, StyleSheet, Linking, ListView } from 'react-native';
 import { Container, Content, Form, Item, Input, Thumbnail, Label, Header, Left, Right, Button, Icon, Body, Title, Text, Footer, FooterTab} from 'native-base';
 import * as actions from '../actions/actions';
 import { connect } from 'react-redux';
 import store from '../store/store';
+import {TouchableOpacity, Card, Image, Subtitle, GridRow } from '@shoutem/ui';
 
 
 export class ViewEvent extends React.Component {
@@ -75,7 +76,39 @@ export class ViewEvent extends React.Component {
 
     navigateToFacility(url) {
         Linking.openURL(url);
-    }    
+    }   
+
+
+    renderRow(rowData, sectionId, index) {     
+
+
+        const cellViews = rowData.map((attendee, id) => {
+            return (
+                <TouchableOpacity key={id} styleName="flexible">
+                    <Card styleName="flexible">
+                        <Image
+                        styleName="small"
+                        source={{uri: attendee.picture}}
+                        />
+                        <View styleName="content">
+                        <Subtitle numberOfLines={3}>{attendee.name}</Subtitle>
+                        <View styleName="horizontal">
+                            <Button style={{color: 'white', fontFamily: 'Brother1816Printed-Regular', fontSize: 12, backgroundColor: 'rgb(59,89,152)', height: 30, width: 85}}
+                                onPress={() => Linking.openURL(attendee.link)}>
+                                <Text style={{color: 'white'}}>Profile</Text>
+                            </Button>  
+                        </View>
+                        </View>
+                    </Card>
+                </TouchableOpacity>
+                );
+            });
+        return (
+        <GridRow columns={2}>
+            {cellViews}
+        </GridRow>
+        );
+    }
 
     render() {
 
@@ -83,12 +116,13 @@ export class ViewEvent extends React.Component {
         if (this.props.userSelectedEventDuration > 1) {
             hrs = 'hours'
         }
-
+        let attendeeKey = 0;
         let attendees = this.props.userSelectedEvent.eventAttendees.map(attendee => {
+            attendeeKey += 1;
             return (
-                <View key={attendee.name} style={{marginHorizontal: 6}}>
-                    <Thumbnail square source={{uri: attendee.picture}} />                
-                    <Text style={{fontFamily: 'Brother1816Printed-Regular'}} >{attendee.name} </Text>
+                <View key={attendeeKey} style={{marginHorizontal: 6, marginTop: 4, flexDirection: 'row'}}>
+                    <Thumbnail square source={{uri: attendee.picture}} style={{marginRight: 5}}/>                
+                    <Text style={{fontFamily: 'Brother1816Printed-Regular', marginRight: 5}} >{attendee.name} </Text>
                     <Button style={{color: 'white', fontFamily: 'Brother1816Printed-Regular', fontSize: 12, backgroundColor: 'rgb(59,89,152)', height: 30, width: 85}}
                         onPress={() => Linking.openURL(attendee.link)}>
                         <Text style={{color: 'white'}}>Profile</Text>
@@ -97,9 +131,13 @@ export class ViewEvent extends React.Component {
             )
         })
 
+        const groupedData = GridRow.groupByRows(this.props.userSelectedEvent.eventAttendees, 2, () => {
+            return 1;
+        });
+
+
         return (
             <View style={{flex: 1}} > 
-                <ScrollView style={{backgroundColor: 'rgb(51,53,51)'}} >
                     <Header style={{backgroundColor: 'black', borderBottomColor: 'rgb(245, 203, 92)', borderBottomWidth: 2, borderBottomStyle: 'solid' }} > 
                         <Left>
                             <Button transparent onPress={() => { this.cancelViewEvent()}} >
@@ -111,10 +149,11 @@ export class ViewEvent extends React.Component {
                         </Body>
                         <Right>
                         </Right>
-                    </Header>
+                    </Header>                
+                <ScrollView style={{backgroundColor: 'rgb(51,53,51)'}} >
                     <Text></Text>
                     <View style={{flexDirection: 'column', alignItems: 'center', }}>
-                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >What</Text>                        
+                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >What</Text>                        
                         <View style={{height: 150, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                             <Text style={{fontFamily: 'Brother1816Printed-Black', marginHorizontal: 6, marginTop: 6}} >Event Name:</Text>
                             <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventName}</Text>
@@ -125,7 +164,7 @@ export class ViewEvent extends React.Component {
                         <Text></Text>                   
                         <View style={{flexDirection: 'row'}}>
                             <View style={{flexDirection: 'column', alignItems: 'center', }}>
-                                <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', }} >When</Text>                        
+                                <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18 }} >When</Text>                        
                                 <View style={{height: 160, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                                     <Text style={{ fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Date:</Text>
                                     <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.getFormattedDate()}</Text>
@@ -138,7 +177,7 @@ export class ViewEvent extends React.Component {
                                 </View>
                             </View>
                             <View style={{flexDirection: 'column', alignItems: 'center', }}>                        
-                                <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Where</Text>                        
+                                <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >Where</Text>                        
                                 <View style={{height: 160, width: 180, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                                     <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Facility:</Text>
                                     <Text style={{ marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventFacilityName}</Text>
@@ -152,18 +191,31 @@ export class ViewEvent extends React.Component {
                                 </View>
                             </View>
                         </View>
+
+
                         <Text></Text>                    
                         <View style={{flexDirection: 'column', alignItems: 'center', }}>                    
-                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black'}} >Who</Text>                    
+                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 18}} >Who</Text>                    
                             <View style={{height: 600, width: 380, backgroundColor: 'rgb(245, 203, 92)', marginVertical: 10, marginHorizontal: 10, alignItems: 'flex-start', borderRadius: 6, borderTopLeftRadius: 6, borderWidth: 2, borderColor: 'black'}}>
                                 <Text style={{ fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6, marginTop: 6}} >Event Organizer:</Text>
-                                <Text style={{  marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventOrganizer.name}</Text>
-                                <Thumbnail  square style={{width: 30, height: 30, marginLeft: 6}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />
+                                <View style={{flexDirection: 'row', marginTop: 4}}>                        
+                                    <Thumbnail  square style={{ marginLeft: 6}} source={{uri: this.props.userSelectedEvent.eventOrganizer.picture}} />
+                                    <Text style={{  marginHorizontal: 6, fontFamily: 'Brother1816Printed-Regular'}} >{this.props.userSelectedEvent.eventOrganizer.name}</Text>
+                                    <Button style={{color: 'white', fontFamily: 'Brother1816Printed-Regular', fontSize: 12, backgroundColor: 'rgb(59,89,152)', height: 30, width: 85}}
+                                        onPress={() => Linking.openURL(this.props.userSelectedEvent.eventOrganizer.link)}>
+                                        <Text style={{color: 'white'}}>Profile</Text>
+                                    </Button>  
+                                </View>
                                 <Text></Text>
                                 <Text style={{fontFamily: 'Brother1816Printed-Black',  marginHorizontal: 6}} >Participants:</Text>
                                 {attendees}
+                                {/*<ListView
+                                    data={groupedData}
+                                    renderRow={this.renderRow}
+                                />*/}
                             </View>
                         </View>
+
                     </View>
                 </ScrollView>
                 <Footer style={{backgroundColor: 'black', borderColor: 'rgb(245, 203, 92)', borderTopWidth: 2, borderStyle: 'solid', position: 'absolute', bottom: 0 }} >

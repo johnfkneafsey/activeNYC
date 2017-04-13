@@ -16,47 +16,47 @@ export class ParkSelection extends React.Component {
             facilities: [{
                 "name": "Basketball Courts".toUpperCase(),
                 "dbName": "basketball",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/VakRb6.jpg" },
+                "image": { "url": require('../data/basketballcourts.png') },
                 }, 
                 {
                 "name": "Soccer Fields".toUpperCase(),
                 "dbName": "soccerAndFootball",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/eFPz9U.jpg" }
+                "image": { "url": require('../data/soccerfields.png') }
                 }, 
                 {
                 "name": "Tennis Courts".toUpperCase(),
                 "dbName": "tennis",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/924/mKdaLM.jpg" },
+                "image": { "url": require('../data/tenniscourts.png') },
                 }, 
                 {
                 "name": "Handball Courts".toUpperCase(),
                 "dbName": "handball",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/924/vhYbjM.jpg" },
+                "image": { "url": require('../data/handballcourts.png') },
                 }, 
                 {
                 "name": "Cricket Fields".toUpperCase(),
                 "dbName": "cricket",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/923/GlNzNV.jpg" },
+                "image": { "url": require('../data/cricketfields.png') },
                 },
                 {
                 "name": "Bocce Courts".toUpperCase(),
                 "dbName": "bocce",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/923/KYBEVS.jpg" },
+                "image": { "url": require('../data/boccecourts.png') },
                 }, 
                 {
                 "name": "Swimming Pools".toUpperCase(),
                 "dbName": "pools_indoor",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/924/nCXBsD.jpg" },
+                "image": { "url": require('../data/swimmingpools.png') },
                 }, 
                 {
                 "name": "Kayak & Canoe Launches".toUpperCase(),
                 "dbName": "kayak",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/rfxi0E.jpg" },
+                "image": { "url": require('../data/kayakandcanoe.png') },
                 }, 
                 {
                 "name": "Ice Skating Rinks".toUpperCase(),
                 "dbName": "iceskating",
-                "image": { "url": "https://imagizer.imageshack.us/v2/xq90/922/jrCku6.jpg" },
+                "image": { "url": require('../data/iceskatingrinks.png') },
                 },                             
             ]
         }   
@@ -74,7 +74,7 @@ export class ParkSelection extends React.Component {
             <TouchableOpacity onPress={() => { this.onPressButton(facilities.dbName) }} >
                 <Image
                 styleName="large-banner"
-                source={{ uri: facilities.image.url }}
+                source={facilities.image.url }
                 >
                 <Tile>
                     <View style={{backgroundColor: 'black',  height: 13, alignItems: 'center', justifyContent: 'center'}} >

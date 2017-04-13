@@ -84,7 +84,7 @@ export class Login extends React.Component {
 
          
             <View style={{flexDirection: 'column', alignItems: 'center',  marginBottom: 350}} >  
-                <Image style={{ marginTop: 33, }} source={require('../data/Bungee-Active-Inline.png')}  />
+                <Image style={{ marginTop: 33, }} source={require('../data/Bungee-Active-Red.png')}  />
                 <Image style={{ marginTop: -25, }} source={require('../data/Bungee-NYC-Inline.png')}  />                    
             </View>
 

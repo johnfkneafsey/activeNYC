@@ -222,7 +222,9 @@ export class EventsMain extends React.Component {
                             <Card key={item.Name} style={{ elevation: 3, backgroundColor: 'rgb(51,53,51)', paddingBottom: 0, paddingTop: 0, paddingLeft: 0, paddingRight: 0}}>
                                 <Image styleName='large-banner' source={{uri: photoURL}} >
                                     <Tile style={{flexDirection: 'column', alignItems: 'center', justifyContent: 'center'}} >
-                                        <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 24}} >{item.Name}</Text>    
+                                        <View style={{backgroundColor: 'black',  height: 12, alignItems: 'center', justifyContent: 'center'}} >
+                                            <Text style={{color: 'rgb(245, 203, 92)', fontFamily: 'Brother1816Printed-Black', fontSize: 24}} >{item.Name}</Text>    
+                                        </View>                                    
                                     </Tile>
                                 </Image>
                                 <CalendarStrip
