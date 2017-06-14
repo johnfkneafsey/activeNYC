@@ -14,7 +14,6 @@ import store from '../store/store';
 class App extends React.Component {
     constructor(props) {
         super(props);
-
     }
 
     render() {

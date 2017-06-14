@@ -1,4 +1,3 @@
-
 import React, { Component } from 'react';
 import { View, ScrollView } from 'react-native';
 import { Container, Button, Right, Title, DeckSwiper, Card, Icon, Header, CardItem, Left, Body, Thumbnail, Text, Footer, FooterTab } from 'native-base';
@@ -42,6 +41,7 @@ export class EventsMain extends React.Component {
             this.props.dispatch(actions.asyncSaveVenueToStore(paramsVenues))
         }
     }
+
 
     renderEventsView() {
         this.props.dispatch(actions.renderEventsView());
